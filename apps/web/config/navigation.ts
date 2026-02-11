@@ -1,0 +1,131 @@
+import {
+  LucideIcon,
+  KeyRound,
+  LayoutDashboard,
+  Table,
+  Settings,
+  CreditCard,
+  Rocket,
+  CircleAlert,
+} from "lucide-react";
+
+// Types
+export interface NavItem {
+  title: string;
+  href: string;
+  icon?: LucideIcon;
+  disabled?: boolean;
+  external?: boolean;
+  badge?: string;
+}
+
+export interface NavCategory {
+  title: string;
+  icon?: LucideIcon;
+  items: NavItem[];
+}
+
+// Main nav (TopBar)
+export const mainNav: NavItem[] = [
+  { title: "Docs", href: "/docs" },
+  { title: "Blocks", href: "/blocks" },
+];
+
+// Sidebar categories
+export const blockCategories: NavCategory[] = [
+  {
+    title: "Authentication",
+    icon: KeyRound,
+    items: [
+      { title: "Login", href: "/blocks/auth/login" },
+      { title: "Signup", href: "/blocks/auth/signup" },
+      { title: "Forgot Password", href: "/blocks/auth/forgot-password" },
+      { title: "Reset Password", href: "/blocks/auth/reset-password" },
+      { title: "OAuth Buttons", href: "/blocks/auth/oauth-buttons" },
+      { title: "Verify Email", href: "/blocks/auth/verify-email" },
+      { title: "Two-Factor Auth", href: "/blocks/auth/two-factor" },
+    ],
+  },
+  {
+    title: "Dashboard",
+    icon: LayoutDashboard,
+    items: [
+      { title: "Sidebar", href: "/blocks/dashboard/sidebar" },
+      { title: "Shell", href: "/blocks/dashboard/shell" },
+      { title: "Top Navigation", href: "/blocks/dashboard/top-nav" },
+      { title: "Breadcrumbs", href: "/blocks/dashboard/breadcrumbs" },
+    ],
+  },
+  {
+    title: "Tables",
+    icon: Table,
+    items: [
+      { title: "Data Table", href: "/blocks/tables/data-table" },
+      { title: "Sortable Table", href: "/blocks/tables/sortable" },
+      { title: "Filterable Table", href: "/blocks/tables/filterable" },
+    ],
+  },
+  {
+    title: "Settings",
+    icon: Settings,
+    items: [
+      { title: "Profile", href: "/blocks/settings/profile" },
+      { title: "Account", href: "/blocks/settings/account" },
+      { title: "Notifications", href: "/blocks/settings/notifications" },
+      { title: "Security", href: "/blocks/settings/security" },
+      { title: "API Keys", href: "/blocks/settings/api-keys" },
+    ],
+  },
+  {
+    title: "Billing",
+    icon: CreditCard,
+    items: [
+      { title: "Pricing Table", href: "/blocks/billing/pricing-table" },
+      { title: "Plan Selection", href: "/blocks/billing/plan-selection" },
+      { title: "Payment Form", href: "/blocks/billing/payment-form" },
+      { title: "Invoice History", href: "/blocks/billing/invoice-history" },
+      { title: "Usage Meter", href: "/blocks/billing/usage-meter" },
+    ],
+  },
+  {
+    title: "Onboarding",
+    icon: Rocket,
+    items: [
+      { title: "Multi-Step Wizard", href: "/blocks/onboarding/wizard" },
+      { title: "Progress Indicator", href: "/blocks/onboarding/progress" },
+      { title: "Welcome Tour", href: "/blocks/onboarding/welcome-tour" },
+      { title: "Checklist", href: "/blocks/onboarding/checklist" },
+    ],
+  },
+  {
+    title: "States",
+    icon: CircleAlert,
+    items: [
+      { title: "Empty State", href: "/blocks/states/empty" },
+      { title: "Loading Skeleton", href: "/blocks/states/loading" },
+      { title: "Error State", href: "/blocks/states/error" },
+      { title: "Success", href: "/blocks/states/success" },
+      { title: "404 Page", href: "/blocks/states/404" },
+      { title: "500 Page", href: "/blocks/states/500" },
+    ],
+  },
+];
+
+// Footer nav
+export const footerNav = {
+  product: [
+    { title: "Blocks", href: "/blocks" },
+    { title: "Pricing", href: "/pricing" },
+  ],
+  resources: [
+    { title: "Documentation", href: "/docs" },
+    { title: "GitHub", href: "https://github.com/...", external: true },
+  ],
+};
+
+// Social links
+export const socialLinks = {
+  github: "https://github.com/your-username/chadcn",
+  twitter: "https://twitter.com/...",
+  discord: "https://discord.gg/...",
+};

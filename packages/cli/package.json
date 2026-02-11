@@ -1,0 +1,44 @@
+{
+  "name": "@chadcn/cli",
+  "version": "0.0.1",
+  "description": "CLI for adding chadcn blocks to your project",
+  "bin": {
+    "chadcn": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsup": "^8.0.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.0",
+    "prompts": "^2.4.2"
+  },
+  "keywords": [
+    "cli",
+    "react",
+    "components",
+    "ui",
+    "chadcn"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/chadcn.git",
+    "directory": "packages/cli"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,135 @@
+---
+title: Usage
+description: Learn how to use chadcn blocks in your application.
+---
+
+## Adding Blocks
+
+There are two ways to add blocks to your project:
+
+### Using the CLI
+
+The recommended way to add blocks:
+
+<PackageInstall command="npx @chadcn/cli add auth/login" />
+
+This command will:
+
+1. Download the block code
+2. Install required dependencies
+3. Add the block to your `components/blocks/` directory
+
+### Manual Copy
+
+You can also copy code directly from our documentation:
+
+1. Navigate to the block you want
+2. Click the "Copy" button in the code panel
+3. Paste into your project
+4. Install any required dependencies manually
+
+## Block Variants
+
+Many blocks come with multiple variants:
+
+| Variant | Description |
+| --- | --- |
+| `minimal` | Clean, essential design with minimal styling |
+| `standard` | Balanced design suitable for most use cases |
+| `feature-rich` | Full-featured with all bells and whistles |
+
+To add a specific variant:
+
+<PackageInstall command="npx @chadcn/cli add auth/login --variant minimal" />
+
+## Customization
+
+Every block is designed to be customized. Here's a typical customization workflow:
+
+### 1. Add the Block
+
+<PackageInstall command="npx @chadcn/cli add auth/login" />
+
+### 2. Locate the Component
+
+The block will be added to your project:
+
+```
+components/blocks/auth/login-form.tsx
+```
+
+### 3. Modify the Code
+
+Open the file and customize as needed:
+
+```tsx
+export function LoginForm() {
+  // Customize the form fields
+  // Add your authentication logic
+  // Modify the styling
+}
+```
+
+<Callout variant="tip">
+  Since you own the code, you can make any changes you want. There's no need to override styles or work around library limitations.
+</Callout>
+
+## Working with Forms
+
+Many blocks include forms with validation. We use:
+
+- **React Hook Form** for form state management
+- **Zod** for schema validation
+
+Example form setup:
+
+```tsx
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+
+const schema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+})
+
+type FormData = z.infer<typeof schema>
+
+export function LoginForm() {
+  const form = useForm<FormData>({
+    resolver: zodResolver(schema),
+  })
+
+  const onSubmit = (data: FormData) => {
+    // Handle form submission
+  }
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* Form fields */}
+    </form>
+  )
+}
+```
+
+## Styling
+
+Blocks use Tailwind CSS for styling and follow the shadcn/ui theming system. To customize colors:
+
+1. Modify your `globals.css` CSS variables
+2. The blocks will automatically use your theme
+
+```css
+@layer base {
+  :root {
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    /* ... other variables */
+  }
+}
+```
+
+## Next Steps
+
+- [Browse all blocks](/blocks)
+- [Go back to installation](/docs/getting-started/installation)

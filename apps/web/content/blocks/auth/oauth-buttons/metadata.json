@@ -1,0 +1,15 @@
+{
+  "name": "OAuth Buttons",
+  "slug": "oauth-buttons",
+  "category": "auth",
+  "description": "Social login buttons for OAuth providers including Google, GitHub, Apple, Microsoft, and X with loading states.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["oauth", "social login", "google", "github", "apple", "sso", "auth"]
+}

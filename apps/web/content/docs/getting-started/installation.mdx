@@ -1,0 +1,80 @@
+---
+title: Installation
+description: Learn how to install and set up chadcn in your Next.js project.
+---
+
+## Prerequisites
+
+Before installing chadcn, make sure you have:
+
+- Node.js 18.17 or later
+- A Next.js 14+ project (App Router recommended)
+- [shadcn/ui](https://ui.shadcn.com) initialized in your project
+
+<Callout variant="warning">
+  If you haven't set up shadcn/ui yet, follow the [shadcn/ui installation guide](https://ui.shadcn.com/docs/installation) first.
+</Callout>
+
+## Installation
+
+### Using the CLI (Recommended)
+
+The easiest way to add chadcn blocks is using our CLI:
+
+<PackageInstall command="npx @chadcn/cli init" />
+
+This will:
+
+1. Detect your project configuration
+2. Set up the chadcn registry
+3. Configure path aliases if needed
+
+### Manual Installation
+
+If you prefer manual setup, you can copy blocks directly from our documentation. Each block page includes:
+
+- The complete component code
+- Required dependencies
+- Usage examples
+
+## Adding Your First Block
+
+Once installed, you can add blocks using the CLI:
+
+<PackageInstall command="npx @chadcn/cli add auth/login" />
+
+Or browse our [Block Library](/blocks) and copy the code directly.
+
+## Project Structure
+
+After adding blocks, your project structure will look like this:
+
+<FileTree>
+{`your-project
+  components
+    ui              # shadcn/ui primitives
+    blocks          # chadcn blocks
+      auth
+        login-form.tsx
+  app
+    ...`}
+</FileTree>
+
+## Configuration
+
+### Path Aliases
+
+chadcn uses the `@/` path alias by default. If your project uses a different alias, you can configure it during `init`:
+
+<PackageInstall command="npx @chadcn/cli init --alias ~/components" />
+
+### TypeScript
+
+All chadcn blocks are written in TypeScript. If you're using JavaScript, the CLI will automatically convert the code for you.
+
+## Next Steps
+
+Now that you've installed chadcn, learn how to:
+
+- [Add and customize blocks](/docs/getting-started/usage)
+- [Browse available blocks](/blocks)

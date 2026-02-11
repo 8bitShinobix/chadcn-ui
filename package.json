@@ -1,0 +1,30 @@
+{
+  "name": "chadcn",
+  "version": "0.0.0",
+  "private": true,
+  "description": "chadcn - Production-ready SaaS blocks for React",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "build:cli": "pnpm --filter @chadcn/cli build",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "type-check": "pnpm -r type-check",
+    "test": "pnpm -r test"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "tailwind",
+    "shadcn",
+    "ui",
+    "components",
+    "saas"
+  ],
+  "author": "8bitShinobi",
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "categories": {
+    "auth": {
+      "name": "Authentication",
+      "slug": "auth",
+      "description": "Login, signup, and authentication flows",
+      "icon": "KeyRound"
+    }
+  },
+  "blocks": {
+    "auth/forgot-password": {
+      "category": "auth",
+      "name": "forgot-password"
+    },
+    "auth/login": {
+      "category": "auth",
+      "name": "login"
+    },
+    "auth/oauth-buttons": {
+      "category": "auth",
+      "name": "oauth-buttons"
+    },
+    "auth/reset-password": {
+      "category": "auth",
+      "name": "reset-password"
+    },
+    "auth/signup": {
+      "category": "auth",
+      "name": "signup"
+    },
+    "auth/two-factor": {
+      "category": "auth",
+      "name": "two-factor"
+    },
+    "auth/verify-email": {
+      "category": "auth",
+      "name": "verify-email"
+    }
+  }
+}

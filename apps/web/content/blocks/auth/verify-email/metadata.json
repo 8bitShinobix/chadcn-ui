@@ -1,0 +1,15 @@
+{
+  "name": "Verify Email",
+  "slug": "verify-email",
+  "category": "auth",
+  "description": "An email verification screen with OTP code input, auto-advance, paste support, and resend functionality.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["verify", "email", "otp", "code", "confirmation", "auth"]
+}

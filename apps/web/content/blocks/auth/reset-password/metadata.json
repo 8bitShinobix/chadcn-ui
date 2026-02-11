@@ -1,0 +1,19 @@
+{
+  "name": "Reset Password",
+  "slug": "reset-password",
+  "category": "auth",
+  "description": "A password reset form with new password and confirmation fields, including strength indicator and requirements checklist.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "zod": "^3.22.0",
+    "react-hook-form": "^7.48.0",
+    "@hookform/resolvers": "^3.3.0"
+  },
+  "registryDependencies": ["button", "input", "label"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["reset", "password", "new password", "change password", "auth"]
+}

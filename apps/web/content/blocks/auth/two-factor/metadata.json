@@ -1,0 +1,15 @@
+{
+  "name": "Two-Factor Auth",
+  "slug": "two-factor",
+  "category": "auth",
+  "description": "A two-factor authentication form with TOTP code input, backup code support, and device remember option.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input", "label"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["2fa", "two-factor", "mfa", "totp", "authenticator", "backup code", "auth"]
+}
