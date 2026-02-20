@@ -28,13 +28,13 @@ app/
 content/
   blocks/               # Block source code + metadata (35+ blocks)
     registry.json       # Auto-generated master index
-    auth/               # 7 blocks
-    dashboard/          # 4 blocks
-    states/             # 6 blocks
-    tables/             # 3 blocks
-    settings/           # 5 blocks
+    auth/               # 8 blocks
+    dashboard/          # 3 blocks
+    tables/             # 4 blocks
+    settings/           # 6 blocks
     billing/            # 5 blocks
-    onboarding/         # 4 blocks
+    onboarding/         # 2 blocks
+    states/             # 7 blocks
   docs/                 # MDX documentation files
 
 components/
