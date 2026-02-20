@@ -5,6 +5,42 @@
       "slug": "auth",
       "description": "Login, signup, and authentication flows",
       "icon": "KeyRound"
+    },
+    "billing": {
+      "name": "Billing",
+      "slug": "billing",
+      "description": "Pricing tables, payment forms, and subscription management",
+      "icon": "CreditCard"
+    },
+    "dashboard": {
+      "name": "Dashboard",
+      "slug": "dashboard",
+      "description": "Dashboard layouts and navigation components",
+      "icon": "LayoutDashboard"
+    },
+    "onboarding": {
+      "name": "Onboarding",
+      "slug": "onboarding",
+      "description": "User onboarding flows and wizards",
+      "icon": "Rocket"
+    },
+    "settings": {
+      "name": "Settings",
+      "slug": "settings",
+      "description": "User profile and application settings pages",
+      "icon": "Settings"
+    },
+    "states": {
+      "name": "States",
+      "slug": "states",
+      "description": "Empty states, loading skeletons, and error pages",
+      "icon": "CircleAlert"
+    },
+    "tables": {
+      "name": "Tables",
+      "slug": "tables",
+      "description": "Data tables with sorting, filtering, and pagination",
+      "icon": "Table"
     }
   },
   "blocks": {
@@ -15,6 +51,10 @@
     "auth/login": {
       "category": "auth",
       "name": "login"
+    },
+    "auth/magic-link": {
+      "category": "auth",
+      "name": "magic-link"
     },
     "auth/oauth-buttons": {
       "category": "auth",
@@ -35,6 +75,114 @@
     "auth/verify-email": {
       "category": "auth",
       "name": "verify-email"
+    },
+    "billing/invoice-history": {
+      "category": "billing",
+      "name": "invoice-history"
+    },
+    "billing/payment-form": {
+      "category": "billing",
+      "name": "payment-form"
+    },
+    "billing/plan-selection": {
+      "category": "billing",
+      "name": "plan-selection"
+    },
+    "billing/pricing-table": {
+      "category": "billing",
+      "name": "pricing-table"
+    },
+    "billing/usage-meter": {
+      "category": "billing",
+      "name": "usage-meter"
+    },
+    "dashboard/dashboard-shell": {
+      "category": "dashboard",
+      "name": "dashboard-shell"
+    },
+    "dashboard/sidebar-nav": {
+      "category": "dashboard",
+      "name": "sidebar-nav"
+    },
+    "dashboard/top-nav": {
+      "category": "dashboard",
+      "name": "top-nav"
+    },
+    "onboarding/checklist": {
+      "category": "onboarding",
+      "name": "checklist"
+    },
+    "onboarding/wizard": {
+      "category": "onboarding",
+      "name": "wizard"
+    },
+    "settings/account": {
+      "category": "settings",
+      "name": "account"
+    },
+    "settings/api-keys": {
+      "category": "settings",
+      "name": "api-keys"
+    },
+    "settings/appearance": {
+      "category": "settings",
+      "name": "appearance"
+    },
+    "settings/notifications": {
+      "category": "settings",
+      "name": "notifications"
+    },
+    "settings/profile": {
+      "category": "settings",
+      "name": "profile"
+    },
+    "settings/security": {
+      "category": "settings",
+      "name": "security"
+    },
+    "states/404": {
+      "category": "states",
+      "name": "404"
+    },
+    "states/500": {
+      "category": "states",
+      "name": "500"
+    },
+    "states/empty": {
+      "category": "states",
+      "name": "empty"
+    },
+    "states/error": {
+      "category": "states",
+      "name": "error"
+    },
+    "states/loading": {
+      "category": "states",
+      "name": "loading"
+    },
+    "states/maintenance": {
+      "category": "states",
+      "name": "maintenance"
+    },
+    "states/success": {
+      "category": "states",
+      "name": "success"
+    },
+    "tables/data-table": {
+      "category": "tables",
+      "name": "data-table"
+    },
+    "tables/data-table-actions": {
+      "category": "tables",
+      "name": "data-table-actions"
+    },
+    "tables/filterable": {
+      "category": "tables",
+      "name": "filterable"
+    },
+    "tables/sortable": {
+      "category": "tables",
+      "name": "sortable"
     }
   }
 }

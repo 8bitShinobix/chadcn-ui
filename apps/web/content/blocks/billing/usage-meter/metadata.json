@@ -1,0 +1,15 @@
+{
+  "name": "Usage Meter",
+  "slug": "usage-meter",
+  "category": "billing",
+  "description": "Resource usage displays with progress bars, color-coded thresholds, and upgrade prompts.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["usage", "meter", "quota", "limit", "progress", "consumption"]
+}

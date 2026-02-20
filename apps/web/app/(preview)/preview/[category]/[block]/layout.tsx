@@ -1,9 +1,9 @@
 "use client"
 
 import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 
-export default function PreviewLayout({
+function PreviewLayoutInner({
   children,
 }: {
   children: React.ReactNode
@@ -36,5 +36,23 @@ export default function PreviewLayout({
     <div className="flex min-h-screen items-center justify-center bg-background p-8">
       {children}
     </div>
+  )
+}
+
+export default function PreviewLayout({
+  children,
+}: {
+  children: React.ReactNode
+}): React.ReactElement {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-background p-8">
+          {children}
+        </div>
+      }
+    >
+      <PreviewLayoutInner>{children}</PreviewLayoutInner>
+    </Suspense>
   )
 }

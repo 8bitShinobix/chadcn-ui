@@ -1,0 +1,15 @@
+{
+  "name": "Success State",
+  "slug": "success",
+  "category": "states",
+  "description": "Success confirmation displays with summary details and next-step actions.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["success", "confirmation", "done", "complete", "check", "verified"]
+}

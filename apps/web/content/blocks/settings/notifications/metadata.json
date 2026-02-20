@@ -1,0 +1,15 @@
+{
+  "name": "Notification Settings",
+  "slug": "notifications",
+  "category": "settings",
+  "description": "Notification preference controls with channel toggles and granular category settings.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "label", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["notifications", "settings", "email", "push", "alerts", "preferences"]
+}

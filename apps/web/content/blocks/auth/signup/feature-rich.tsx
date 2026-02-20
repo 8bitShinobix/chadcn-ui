@@ -7,6 +7,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 
 const formSchema = z
@@ -38,6 +39,8 @@ export function SignupForm() {
     register,
     handleSubmit,
     control,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -74,7 +77,7 @@ export function SignupForm() {
 
   const passwordStrength = getPasswordStrength(password);
   const strengthLabels = ["Weak", "Fair", "Good", "Strong"];
-  const strengthColors = ["bg-destructive", "bg-orange-500", "bg-yellow-500", "bg-green-500"];
+  const strengthColors = ["bg-muted-foreground/30", "bg-muted-foreground/50", "bg-muted-foreground/70", "bg-foreground"];
 
   return (
     <div className="mx-auto w-full max-w-sm">
@@ -188,11 +191,10 @@ export function SignupForm() {
         </div>
 
         <div className="flex items-start space-x-2">
-          <input
-            type="checkbox"
+          <Checkbox
             id="terms"
-            className="border-input mt-1 h-4 w-4 rounded"
-            {...register("terms")}
+            checked={!!watch("terms")}
+            onCheckedChange={(checked) => setValue("terms", !!checked as true)}
           />
           <Label htmlFor="terms" className="text-sm leading-snug font-normal">
             I agree to the{" "}

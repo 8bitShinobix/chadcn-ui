@@ -1,0 +1,15 @@
+{
+  "name": "Empty State",
+  "slug": "empty",
+  "category": "states",
+  "description": "Empty state illustrations with call-to-action prompts for when there's no data to display.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["empty", "no data", "placeholder", "zero state", "blank", "no results"]
+}

@@ -30,10 +30,10 @@ export default function ResetPasswordFeatureRich() {
   const passwordStrength = getPasswordStrength(password)
   const strengthLabels = ["Weak", "Fair", "Good", "Strong"]
   const strengthColors = [
-    "bg-destructive",
-    "bg-orange-500",
-    "bg-yellow-500",
-    "bg-green-500",
+    "bg-muted-foreground/30",
+    "bg-muted-foreground/50",
+    "bg-muted-foreground/70",
+    "bg-foreground",
   ]
 
   const requirements = [
@@ -119,7 +119,7 @@ export default function ResetPasswordFeatureRich() {
                   >
                     {req.met ? (
                       <svg
-                        className="h-3.5 w-3.5 text-green-500"
+                        className="h-3.5 w-3.5 text-foreground"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={2}
