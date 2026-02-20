@@ -1,0 +1,15 @@
+{
+  "name": "Maintenance Page",
+  "slug": "maintenance",
+  "category": "states",
+  "description": "Scheduled maintenance and downtime pages with status indicators, estimated time, and notification signup.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["maintenance", "downtime", "status", "scheduled", "unavailable"]
+}

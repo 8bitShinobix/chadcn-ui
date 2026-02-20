@@ -1,35 +1,34 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 
 export default function LoginFeatureRich() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [socialLoading, setSocialLoading] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false);
+  const [socialLoading, setSocialLoading] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsLoading(false)
-  }
+    e.preventDefault();
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
+  };
 
   const handleSocialLogin = async (provider: string) => {
-    setSocialLoading(provider)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setSocialLoading(null)
-  }
+    setSocialLoading(provider);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setSocialLoading(null);
+  };
 
   return (
     <div className="mx-auto w-full max-w-sm">
       <div className="mb-8 text-center">
         <h1 className="text-2xl font-bold tracking-tight">Welcome back</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Sign in to your account to continue
-        </p>
+        <p className="text-muted-foreground mt-2 text-sm">Sign in to your account to continue</p>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
@@ -85,7 +84,7 @@ export default function LoginFeatureRich() {
 
       <div className="relative my-6">
         <Separator />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-2 text-xs text-muted-foreground">
+        <span className="bg-background text-muted-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 text-xs">
           or continue with email
         </span>
       </div>
@@ -99,10 +98,7 @@ export default function LoginFeatureRich() {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <Label htmlFor="password">Password</Label>
-            <a
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
+            <a href="#" className="text-muted-foreground hover:text-foreground text-sm">
               Forgot password?
             </a>
           </div>
@@ -110,11 +106,7 @@ export default function LoginFeatureRich() {
         </div>
 
         <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            id="rememberMe"
-            className="h-4 w-4 rounded border-input"
-          />
+          <Checkbox id="rememberMe" />
           <Label htmlFor="rememberMe" className="text-sm font-normal">
             Remember me for 30 days
           </Label>
@@ -125,12 +117,12 @@ export default function LoginFeatureRich() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="text-muted-foreground mt-6 text-center text-sm">
         Don&apos;t have an account?{" "}
-        <a href="#" className="font-medium text-foreground hover:underline">
+        <a href="#" className="text-foreground font-medium hover:underline">
           Sign up
         </a>
       </p>
     </div>
-  )
+  );
 }

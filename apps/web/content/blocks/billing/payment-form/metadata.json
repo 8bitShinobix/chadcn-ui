@@ -1,0 +1,15 @@
+{
+  "name": "Payment Form",
+  "slug": "payment-form",
+  "category": "billing",
+  "description": "Payment collection forms with card inputs, billing address, and order summary.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": { "zod": "^3.22.0", "react-hook-form": "^7.48.0", "@hookform/resolvers": "^3.3.0" },
+  "registryDependencies": ["button", "input", "label", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["payment", "credit card", "checkout", "billing", "pay", "form"]
+}

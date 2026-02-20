@@ -1,0 +1,15 @@
+{
+  "name": "Plan Selection",
+  "slug": "plan-selection",
+  "category": "billing",
+  "description": "Interactive plan selection cards with billing period toggle and upgrade confirmation.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["plan", "selection", "upgrade", "downgrade", "subscription", "choose"]
+}

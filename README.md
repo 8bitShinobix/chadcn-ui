@@ -24,27 +24,68 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 
 ## Block Categories
 
-| Category | Description | Status |
-|----------|-------------|--------|
-| **Authentication** | Login, signup, forgot password, OAuth, 2FA | 2 blocks |
-| **Dashboard** | Sidebar layouts, shell, top navigation, breadcrumbs | Planned |
-| **Tables** | Data tables with sorting, filtering, pagination | Planned |
-| **Settings** | Profile, account, notifications, security, API keys | Planned |
-| **Billing** | Pricing tables, payment forms, invoices, usage meters | Planned |
-| **Onboarding** | Multi-step wizards, progress indicators, checklists | Planned |
-| **States** | Empty states, loading skeletons, error pages, 404/500 | Planned |
+| Category | Blocks | Description |
+|----------|--------|-------------|
+| **Authentication** | 8 | Login, signup, forgot password, reset password, verify email, two-factor, OAuth buttons, magic link |
+| **Dashboard** | 3 | Sidebar navigation, dashboard shell, top navigation |
+| **Tables** | 4 | Data table, sortable table, filterable table, table actions |
+| **Settings** | 6 | Profile, account, notifications, security, API keys, appearance |
+| **Billing** | 5 | Pricing table, plan selection, payment form, invoice history, usage meter |
+| **Onboarding** | 2 | Multi-step wizard, checklist |
+| **States** | 7 | Empty state, loading skeleton, error state, success, 404 page, 500 page, maintenance |
 
-### Currently Available
+**35 blocks total**, each with 3 variants (minimal, standard, feature-rich) = **105 component variants**.
 
-**Auth / Login** — 3 variants
-- `minimal` — Simple email + password form
-- `standard` — With validation, forgot password link, signup link
-- `feature-rich` — OAuth buttons (Google, GitHub), remember me, full validation
+### All Blocks
 
-**Auth / Signup** — 3 variants
-- `minimal` — Name, email, password form
-- `standard` — With password confirmation, validation
-- `feature-rich` — OAuth, password strength indicator, terms acceptance
+**Authentication** (8 blocks)
+- `auth/login` — Email + password login with OAuth options
+- `auth/signup` — Registration with password strength and terms acceptance
+- `auth/forgot-password` — Password reset request with email verification
+- `auth/reset-password` — New password form with strength indicator
+- `auth/verify-email` — OTP input with resend and cooldown timer
+- `auth/two-factor` — 2FA code input with backup code toggle
+- `auth/oauth-buttons` — Social login buttons (Google, GitHub, Apple, Microsoft, Twitter)
+- `auth/magic-link` — Passwordless login via email magic link
+
+**Dashboard** (3 blocks)
+- `dashboard/sidebar-nav` — Collapsible sidebar with nested navigation
+- `dashboard/dashboard-shell` — Content layout with header bar and stat cards
+- `dashboard/top-nav` — Horizontal navigation with search and user menu
+
+**Tables** (4 blocks)
+- `tables/data-table` — Data display with checkboxes, badges, and row actions
+- `tables/sortable` — Column sorting with direction indicators and pagination
+- `tables/filterable` — Search input with filter dropdowns and active filter chips
+- `tables/data-table-actions` — Table with inline and bulk action controls
+
+**Settings** (6 blocks)
+- `settings/profile` — Personal info form with avatar upload
+- `settings/account` — Username, language, connected accounts, danger zone
+- `settings/notifications` — Channel toggles with per-category granular controls
+- `settings/security` — Password change, 2FA toggle, active sessions
+- `settings/api-keys` — API key management with create, revoke, and permissions
+- `settings/appearance` — Theme, accent color, font size, and density preferences
+
+**Billing** (5 blocks)
+- `billing/pricing-table` — Plan comparison cards with feature checklist
+- `billing/plan-selection` — Interactive plan picker with billing toggle
+- `billing/payment-form` — Card/bank payment with billing address and order summary
+- `billing/invoice-history` — Invoice table with status badges and download actions
+- `billing/usage-meter` — Resource usage bars with color-coded thresholds
+
+**Onboarding** (2 blocks)
+- `onboarding/wizard` — Multi-step form with step indicators and navigation
+- `onboarding/checklist` — Task checklist with progress tracking
+
+**States** (7 blocks)
+- `states/empty` — No-data placeholders with call-to-action prompts
+- `states/loading` — Skeleton loading placeholders mimicking content layout
+- `states/error` — Error displays with retry actions and error details
+- `states/success` — Confirmation screens with summary details
+- `states/404` — Page not found with search and popular links
+- `states/500` — Server error with system status indicators
+- `states/maintenance` — Scheduled maintenance page with status and countdown
 
 ---
 
@@ -126,10 +167,14 @@ chadcn/
 │       │   └── docs/                # MDX components, TOC, CodeBlock
 │       ├── content/
 │       │   ├── blocks/              # Block source code + metadata
-│       │   │   ├── registry.json    # Auto-generated master index
-│       │   │   └── auth/
-│       │   │       ├── login/       # metadata.json + variant .tsx files
-│       │   │       └── signup/
+│       │   │   ├── registry.json    # Auto-generated master index (35 blocks)
+│       │   │   ├── auth/            # 8 blocks (login, signup, magic-link, ...)
+│       │   │   ├── dashboard/       # 3 blocks (sidebar-nav, dashboard-shell, top-nav)
+│       │   │   ├── tables/          # 4 blocks (data-table, sortable, filterable, actions)
+│       │   │   ├── settings/        # 6 blocks (profile, account, appearance, ...)
+│       │   │   ├── billing/         # 5 blocks (pricing-table, payment-form, ...)
+│       │   │   ├── onboarding/      # 2 blocks (wizard, checklist)
+│       │   │   └── states/          # 7 blocks (empty, loading, error, maintenance, ...)
 │       │   └── docs/                # MDX documentation files
 │       ├── config/                  # Navigation, site config
 │       ├── lib/                     # Utilities (registry, mdx, highlight)
@@ -360,25 +405,31 @@ Server Components are the default. Client Components (`"use client"`) are used o
 
 ## Roadmap
 
-chadcn is in active development. Current status: **Phase 1 — Foundation (~80% complete)**.
+chadcn is in active development. Current status: **All 35 blocks implemented across 7 categories**.
 
-### Near Term
-- [ ] Complete dark mode verification
-- [ ] Core layout and navigation polish
-- [ ] MDX content system for documentation
+### Completed
+- [x] Core layout and navigation (TopBar, Sidebar, Footer, MobileNav)
+- [x] MDX content system for documentation
+- [x] Theme system with dark/light mode
+- [x] Block registry with auto-generated registry.json
+- [x] Authentication blocks (8 blocks)
+- [x] Dashboard blocks (3 blocks)
+- [x] Tables blocks (4 blocks)
+- [x] Settings blocks (6 blocks)
+- [x] Billing blocks (5 blocks)
+- [x] Onboarding blocks (2 blocks)
+- [x] States blocks (7 blocks)
+
+### In Progress
+- [ ] Block preview system with viewport switcher
 - [ ] Block registry API endpoints
 - [ ] Search with command palette (Cmd+K)
 
-### Medium Term
-- [ ] Dashboard, Tables, and Settings block categories
-- [ ] Block preview system with viewport switcher
+### Planned
 - [ ] CLI implementation (`npx @chadcn/cli add`)
-
-### Long Term
-- [ ] Onboarding and States block categories
-- [ ] Billing block category
 - [ ] Theming customization guide
 - [ ] Community block contributions
+- [ ] Integration guides (Supabase, Clerk)
 
 See [research/Progress.md](research/Progress.md) for the full phase-by-phase breakdown.
 

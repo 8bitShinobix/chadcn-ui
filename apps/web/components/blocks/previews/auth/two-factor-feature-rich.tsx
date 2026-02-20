@@ -1,60 +1,58 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 export default function TwoFactorFeatureRich() {
-  const [otp, setOtp] = useState<string[]>(Array(6).fill(""))
-  const [isLoading, setIsLoading] = useState(false)
-  const [useBackupCode, setUseBackupCode] = useState(false)
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([])
+  const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
+  const [isLoading, setIsLoading] = useState(false);
+  const [useBackupCode, setUseBackupCode] = useState(false);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleChange = (index: number, value: string) => {
-    if (!/^\d*$/.test(value)) return
-    const newOtp = [...otp]
-    newOtp[index] = value.slice(-1)
-    setOtp(newOtp)
+    if (!/^\d*$/.test(value)) return;
+    const newOtp = [...otp];
+    newOtp[index] = value.slice(-1);
+    setOtp(newOtp);
     if (value && index < 5) {
-      inputRefs.current[index + 1]?.focus()
+      inputRefs.current[index + 1]?.focus();
     }
-  }
+  };
 
-  const handleKeyDown = (
-    index: number,
-    e: React.KeyboardEvent<HTMLInputElement>
-  ) => {
+  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus()
+      inputRefs.current[index - 1]?.focus();
     }
-  }
+  };
 
   const handlePaste = (e: React.ClipboardEvent) => {
-    e.preventDefault()
-    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6)
-    if (!pasted) return
-    const newOtp = [...otp]
+    e.preventDefault();
+    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+    if (!pasted) return;
+    const newOtp = [...otp];
     for (let i = 0; i < pasted.length; i++) {
-      newOtp[i] = pasted[i]
+      newOtp[i] = pasted[i];
     }
-    setOtp(newOtp)
-    inputRefs.current[Math.min(pasted.length, 5)]?.focus()
-  }
+    setOtp(newOtp);
+    inputRefs.current[Math.min(pasted.length, 5)]?.focus();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsLoading(false)
-  }
+    e.preventDefault();
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
+  };
 
   return (
     <div className="mx-auto w-full max-w-sm">
       <div className="mb-8 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+        <div className="bg-muted mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
           <svg
-            className="h-6 w-6 text-foreground"
+            className="text-foreground h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
@@ -70,7 +68,7 @@ export default function TwoFactorFeatureRich() {
         <h1 className="text-2xl font-bold tracking-tight">
           {useBackupCode ? "Enter backup code" : "Two-factor authentication"}
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="text-muted-foreground mt-2 text-sm">
           {useBackupCode
             ? "Enter one of your backup recovery codes"
             : "Enter the 6-digit code from your authenticator app"}
@@ -81,12 +79,7 @@ export default function TwoFactorFeatureRich() {
         {useBackupCode ? (
           <div className="space-y-2">
             <Label htmlFor="backupCode">Backup Code</Label>
-            <Input
-              id="backupCode"
-              type="text"
-              placeholder="xxxx-xxxx-xxxx"
-              className="font-mono"
-            />
+            <Input id="backupCode" type="text" placeholder="xxxx-xxxx-xxxx" className="font-mono" />
           </div>
         ) : (
           <div className="flex justify-center gap-2" onPaste={handlePaste}>
@@ -94,7 +87,7 @@ export default function TwoFactorFeatureRich() {
               <Input
                 key={index}
                 ref={(el) => {
-                  inputRefs.current[index] = el
+                  inputRefs.current[index] = el;
                 }}
                 type="text"
                 inputMode="numeric"
@@ -110,11 +103,7 @@ export default function TwoFactorFeatureRich() {
         )}
 
         <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            id="rememberDevice"
-            className="h-4 w-4 rounded border-input"
-          />
+          <Checkbox id="rememberDevice" />
           <Label htmlFor="rememberDevice" className="text-sm font-normal">
             Remember this device for 30 days
           </Label>
@@ -125,25 +114,23 @@ export default function TwoFactorFeatureRich() {
         </Button>
       </form>
 
-      <div className="mt-4 text-center space-y-2">
+      <div className="mt-4 space-y-2 text-center">
         <button
           type="button"
           onClick={() => {
-            setUseBackupCode(!useBackupCode)
-            setOtp(Array(6).fill(""))
+            setUseBackupCode(!useBackupCode);
+            setOtp(Array(6).fill(""));
           }}
-          className="text-sm text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground text-sm"
         >
-          {useBackupCode
-            ? "Use authenticator code instead"
-            : "Use a backup code instead"}
+          {useBackupCode ? "Use authenticator code instead" : "Use a backup code instead"}
         </button>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           <a href="#" className="hover:text-foreground">
             Contact support
           </a>
         </p>
       </div>
     </div>
-  )
+  );
 }

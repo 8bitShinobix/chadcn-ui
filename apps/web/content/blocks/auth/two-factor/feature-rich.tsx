@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 export function TwoFactorForm() {
@@ -198,18 +199,16 @@ export function TwoFactorForm() {
             {error && <p className="text-destructive text-center text-sm">{error}</p>}
 
             {attempts >= 3 && !isLocked && (
-              <p className="text-center text-xs text-orange-500">
+              <p className="text-center text-xs text-muted-foreground">
                 Warning: {5 - attempts} attempt(s) remaining before lockout
               </p>
             )}
 
             <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
+              <Checkbox
                 id="rememberDevice"
-                className="border-input h-4 w-4 rounded"
                 checked={rememberDevice}
-                onChange={(e) => setRememberDevice(e.target.checked)}
+                onCheckedChange={(checked) => setRememberDevice(!!checked)}
               />
               <Label htmlFor="rememberDevice" className="text-sm font-normal">
                 Remember this device for 30 days

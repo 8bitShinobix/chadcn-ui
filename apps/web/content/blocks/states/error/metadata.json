@@ -1,0 +1,15 @@
+{
+  "name": "Error State",
+  "slug": "error",
+  "category": "states",
+  "description": "Error state displays with contextual messages and recovery actions.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["error", "failure", "crash", "broken", "retry", "something went wrong"]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Pricing Table",
+  "slug": "pricing-table",
+  "category": "billing",
+  "description": "Pricing comparison tables with plan features, billing toggles, and call-to-action buttons.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["pricing", "plans", "billing", "subscription", "tier", "compare"]
+}

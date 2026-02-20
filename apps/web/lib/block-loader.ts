@@ -59,6 +59,157 @@ const blockRegistry: BlockRegistry = {
     standard: () => import("@/components/blocks/previews/auth/oauth-buttons-standard"),
     "feature-rich": () => import("@/components/blocks/previews/auth/oauth-buttons-feature-rich"),
   },
+  "auth/magic-link": {
+    minimal: () => import("@/components/blocks/previews/auth/magic-link-minimal"),
+    standard: () => import("@/components/blocks/previews/auth/magic-link-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/auth/magic-link-feature-rich"),
+  },
+  "dashboard/sidebar-nav": {
+    minimal: () => import("@/components/blocks/previews/dashboard/sidebar-nav-minimal"),
+    standard: () => import("@/components/blocks/previews/dashboard/sidebar-nav-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/dashboard/sidebar-nav-feature-rich"),
+  },
+  "dashboard/dashboard-shell": {
+    minimal: () => import("@/components/blocks/previews/dashboard/dashboard-shell-minimal"),
+    standard: () => import("@/components/blocks/previews/dashboard/dashboard-shell-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/dashboard/dashboard-shell-feature-rich"),
+  },
+  "dashboard/top-nav": {
+    minimal: () => import("@/components/blocks/previews/dashboard/top-nav-minimal"),
+    standard: () => import("@/components/blocks/previews/dashboard/top-nav-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/dashboard/top-nav-feature-rich"),
+  },
+  // States
+  "states/empty": {
+    minimal: () => import("@/components/blocks/previews/states/empty-minimal"),
+    standard: () => import("@/components/blocks/previews/states/empty-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/states/empty-feature-rich"),
+  },
+  "states/loading": {
+    minimal: () => import("@/components/blocks/previews/states/loading-minimal"),
+    standard: () => import("@/components/blocks/previews/states/loading-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/states/loading-feature-rich"),
+  },
+  "states/error": {
+    minimal: () => import("@/components/blocks/previews/states/error-minimal"),
+    standard: () => import("@/components/blocks/previews/states/error-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/states/error-feature-rich"),
+  },
+  "states/success": {
+    minimal: () => import("@/components/blocks/previews/states/success-minimal"),
+    standard: () => import("@/components/blocks/previews/states/success-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/states/success-feature-rich"),
+  },
+  "states/404": {
+    minimal: () => import("@/components/blocks/previews/states/404-minimal"),
+    standard: () => import("@/components/blocks/previews/states/404-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/states/404-feature-rich"),
+  },
+  "states/500": {
+    minimal: () => import("@/components/blocks/previews/states/500-minimal"),
+    standard: () => import("@/components/blocks/previews/states/500-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/states/500-feature-rich"),
+  },
+  "states/maintenance": {
+    minimal: () => import("@/components/blocks/previews/states/maintenance-minimal"),
+    standard: () => import("@/components/blocks/previews/states/maintenance-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/states/maintenance-feature-rich"),
+  },
+  // Tables
+  "tables/data-table": {
+    minimal: () => import("@/components/blocks/previews/tables/data-table-minimal"),
+    standard: () => import("@/components/blocks/previews/tables/data-table-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/tables/data-table-feature-rich"),
+  },
+  "tables/sortable": {
+    minimal: () => import("@/components/blocks/previews/tables/sortable-minimal"),
+    standard: () => import("@/components/blocks/previews/tables/sortable-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/tables/sortable-feature-rich"),
+  },
+  "tables/filterable": {
+    minimal: () => import("@/components/blocks/previews/tables/filterable-minimal"),
+    standard: () => import("@/components/blocks/previews/tables/filterable-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/tables/filterable-feature-rich"),
+  },
+  "tables/data-table-actions": {
+    minimal: () => import("@/components/blocks/previews/tables/data-table-actions-minimal"),
+    standard: () => import("@/components/blocks/previews/tables/data-table-actions-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/tables/data-table-actions-feature-rich"),
+  },
+  // Settings
+  "settings/profile": {
+    minimal: () => import("@/components/blocks/previews/settings/profile-minimal"),
+    standard: () => import("@/components/blocks/previews/settings/profile-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/settings/profile-feature-rich"),
+  },
+  "settings/account": {
+    minimal: () => import("@/components/blocks/previews/settings/account-minimal"),
+    standard: () => import("@/components/blocks/previews/settings/account-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/settings/account-feature-rich"),
+  },
+  "settings/notifications": {
+    minimal: () => import("@/components/blocks/previews/settings/notifications-minimal"),
+    standard: () => import("@/components/blocks/previews/settings/notifications-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/settings/notifications-feature-rich"),
+  },
+  "settings/security": {
+    minimal: () => import("@/components/blocks/previews/settings/security-minimal"),
+    standard: () => import("@/components/blocks/previews/settings/security-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/settings/security-feature-rich"),
+  },
+  "settings/api-keys": {
+    minimal: () => import("@/components/blocks/previews/settings/api-keys-minimal"),
+    standard: () => import("@/components/blocks/previews/settings/api-keys-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/settings/api-keys-feature-rich"),
+  },
+  "settings/appearance": {
+    minimal: () => import("@/components/blocks/previews/settings/appearance-minimal"),
+    standard: () => import("@/components/blocks/previews/settings/appearance-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/settings/appearance-feature-rich"),
+  },
+  // Billing
+  "billing/pricing-table": {
+    minimal: () => import("@/components/blocks/previews/billing/pricing-table-minimal"),
+    standard: () => import("@/components/blocks/previews/billing/pricing-table-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/billing/pricing-table-feature-rich"),
+  },
+  "billing/plan-selection": {
+    minimal: () => import("@/components/blocks/previews/billing/plan-selection-minimal"),
+    standard: () => import("@/components/blocks/previews/billing/plan-selection-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/billing/plan-selection-feature-rich"),
+  },
+  "billing/payment-form": {
+    minimal: () => import("@/components/blocks/previews/billing/payment-form-minimal"),
+    standard: () => import("@/components/blocks/previews/billing/payment-form-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/billing/payment-form-feature-rich"),
+  },
+  "billing/invoice-history": {
+    minimal: () => import("@/components/blocks/previews/billing/invoice-history-minimal"),
+    standard: () => import("@/components/blocks/previews/billing/invoice-history-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/billing/invoice-history-feature-rich"),
+  },
+  "billing/usage-meter": {
+    minimal: () => import("@/components/blocks/previews/billing/usage-meter-minimal"),
+    standard: () => import("@/components/blocks/previews/billing/usage-meter-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/billing/usage-meter-feature-rich"),
+  },
+  // Onboarding
+  "onboarding/wizard": {
+    minimal: () => import("@/components/blocks/previews/onboarding/wizard-minimal"),
+    standard: () => import("@/components/blocks/previews/onboarding/wizard-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/onboarding/wizard-feature-rich"),
+  },
+  "onboarding/checklist": {
+    minimal: () => import("@/components/blocks/previews/onboarding/checklist-minimal"),
+    standard: () => import("@/components/blocks/previews/onboarding/checklist-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/onboarding/checklist-feature-rich"),
+  },
 };
 
 /**

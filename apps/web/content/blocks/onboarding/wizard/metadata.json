@@ -1,0 +1,19 @@
+{
+  "name": "Multi-Step Wizard",
+  "slug": "wizard",
+  "category": "onboarding",
+  "description": "Multi-step onboarding wizards with step indicators, form content, and navigation controls.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "zod": "^3.22.0",
+    "react-hook-form": "^7.48.0",
+    "@hookform/resolvers": "^3.3.0"
+  },
+  "registryDependencies": ["button", "input", "label", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["wizard", "onboarding", "multi-step", "form", "stepper", "flow"]
+}

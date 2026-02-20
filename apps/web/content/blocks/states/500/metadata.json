@@ -1,0 +1,15 @@
+{
+  "name": "500 Page",
+  "slug": "500",
+  "category": "states",
+  "description": "Server error pages with error details and recovery options.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["500", "server error", "internal error", "crash", "down", "outage"]
+}

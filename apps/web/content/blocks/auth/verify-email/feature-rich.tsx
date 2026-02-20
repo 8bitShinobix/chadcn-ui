@@ -104,9 +104,9 @@ export function VerifyEmailForm() {
   if (isVerified) {
     return (
       <div className="mx-auto w-full max-w-sm text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10">
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-muted/50">
           <svg
-            className="h-6 w-6 text-green-500"
+            className="h-6 w-6 text-muted-foreground"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}

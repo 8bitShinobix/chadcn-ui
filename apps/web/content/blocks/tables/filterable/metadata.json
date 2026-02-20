@@ -1,0 +1,15 @@
+{
+  "name": "Filterable Table",
+  "slug": "filterable",
+  "category": "tables",
+  "description": "Tables with search, filter dropdowns, and active filter management.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input", "dropdown-menu"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["table", "filter", "search", "filterable", "query", "refine"]
+}

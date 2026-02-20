@@ -1,0 +1,15 @@
+{
+  "name": "Data Table",
+  "slug": "data-table",
+  "category": "tables",
+  "description": "Data tables for displaying structured information with actions and pagination.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "dropdown-menu", "avatar"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["table", "data", "list", "grid", "rows", "columns"]
+}

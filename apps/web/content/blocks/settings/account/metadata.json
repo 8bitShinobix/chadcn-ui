@@ -1,0 +1,19 @@
+{
+  "name": "Account Settings",
+  "slug": "account",
+  "category": "settings",
+  "description": "Account management settings with username, email, connected accounts, and danger zone.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "zod": "^3.22.0",
+    "react-hook-form": "^7.48.0",
+    "@hookform/resolvers": "^3.3.0"
+  },
+  "registryDependencies": ["button", "input", "label", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["account", "settings", "username", "delete", "danger zone", "connected accounts"]
+}

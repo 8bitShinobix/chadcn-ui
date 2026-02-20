@@ -4,7 +4,7 @@ import { GitHubIcon } from "@/components/icons";
 export function GithubLinkButton() {
   return (
     <Link
-      href="https://github.com/your-username/chadcn"
+      href="https://github.com/8bitShinobix/chadcn-ui"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub"
