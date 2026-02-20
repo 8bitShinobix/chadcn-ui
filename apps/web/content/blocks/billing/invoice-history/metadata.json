@@ -1,0 +1,15 @@
+{
+  "name": "Invoice History",
+  "slug": "invoice-history",
+  "category": "billing",
+  "description": "Invoice listing tables with status badges, download actions, and filtering.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input", "dropdown-menu"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["invoice", "billing", "history", "receipt", "payment history", "transactions"]
+}

@@ -1,54 +1,48 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 
 export default function SignupFeatureRich() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [socialLoading, setSocialLoading] = useState<string | null>(null)
-  const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false);
+  const [socialLoading, setSocialLoading] = useState<string | null>(null);
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsLoading(false)
-  }
+    e.preventDefault();
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
+  };
 
   const handleSocialSignup = async (provider: string) => {
-    setSocialLoading(provider)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setSocialLoading(null)
-  }
+    setSocialLoading(provider);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setSocialLoading(null);
+  };
 
   const getPasswordStrength = (pwd: string) => {
-    let strength = 0
-    if (pwd.length >= 8) strength++
-    if (/[A-Z]/.test(pwd)) strength++
-    if (/[0-9]/.test(pwd)) strength++
-    if (/[^A-Za-z0-9]/.test(pwd)) strength++
-    return strength
-  }
+    let strength = 0;
+    if (pwd.length >= 8) strength++;
+    if (/[A-Z]/.test(pwd)) strength++;
+    if (/[0-9]/.test(pwd)) strength++;
+    if (/[^A-Za-z0-9]/.test(pwd)) strength++;
+    return strength;
+  };
 
-  const passwordStrength = getPasswordStrength(password)
-  const strengthLabels = ["Weak", "Fair", "Good", "Strong"]
-  const strengthColors = [
-    "bg-destructive",
-    "bg-orange-500",
-    "bg-yellow-500",
-    "bg-green-500",
-  ]
+  const passwordStrength = getPasswordStrength(password);
+  const strengthLabels = ["Weak", "Fair", "Good", "Strong"];
+  const strengthColors = ["bg-muted-foreground/30", "bg-muted-foreground/50", "bg-muted-foreground/70", "bg-foreground"];
 
   return (
     <div className="mx-auto w-full max-w-sm">
       <div className="mb-8 text-center">
         <h1 className="text-2xl font-bold tracking-tight">Create an account</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Enter your details to get started
-        </p>
+        <p className="text-muted-foreground mt-2 text-sm">Enter your details to get started</p>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
@@ -104,7 +98,7 @@ export default function SignupFeatureRich() {
 
       <div className="relative my-6">
         <Separator />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-2 text-xs text-muted-foreground">
+        <span className="bg-background text-muted-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 text-xs">
           or continue with email
         </span>
       </div>
@@ -135,18 +129,14 @@ export default function SignupFeatureRich() {
                   <div
                     key={i}
                     className={`h-1 flex-1 rounded-full ${
-                      i < passwordStrength
-                        ? strengthColors[passwordStrength - 1]
-                        : "bg-muted"
+                      i < passwordStrength ? strengthColors[passwordStrength - 1] : "bg-muted"
                     }`}
                   />
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Password strength:{" "}
-                {passwordStrength > 0
-                  ? strengthLabels[passwordStrength - 1]
-                  : "Too weak"}
+                {passwordStrength > 0 ? strengthLabels[passwordStrength - 1] : "Too weak"}
               </p>
             </div>
           )}
@@ -158,12 +148,8 @@ export default function SignupFeatureRich() {
         </div>
 
         <div className="flex items-start space-x-2">
-          <input
-            type="checkbox"
-            id="terms"
-            className="mt-1 h-4 w-4 rounded border-input"
-          />
-          <Label htmlFor="terms" className="text-sm font-normal leading-snug">
+          <Checkbox id="terms" />
+          <Label htmlFor="terms" className="text-sm leading-snug font-normal">
             I agree to the{" "}
             <a href="#" className="text-foreground underline">
               Terms of Service
@@ -180,12 +166,12 @@ export default function SignupFeatureRich() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="text-muted-foreground mt-6 text-center text-sm">
         Already have an account?{" "}
-        <a href="#" className="font-medium text-foreground hover:underline">
+        <a href="#" className="text-foreground font-medium hover:underline">
           Sign in
         </a>
       </p>
     </div>
-  )
+  );
 }

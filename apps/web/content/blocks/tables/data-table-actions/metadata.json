@@ -1,0 +1,15 @@
+{
+  "name": "Data Table with Actions",
+  "slug": "data-table-actions",
+  "category": "tables",
+  "description": "Data table with bulk actions toolbar including delete, export, and status change operations.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "table", "checkbox", "badge", "dropdown-menu"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["table", "data table", "bulk actions", "delete", "export", "admin"]
+}

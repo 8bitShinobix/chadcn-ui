@@ -15,7 +15,7 @@ export function Hero(): React.ReactElement {
 
       {/* Headline */}
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-        The missing layer above shadcn.{" "}
+        Everything between shadcn and Production UI.{" "}
       </h1>
       {/* Subtitle */}
       <p className="text-muted-foreground mt-4 max-w-xl text-base sm:text-lg">

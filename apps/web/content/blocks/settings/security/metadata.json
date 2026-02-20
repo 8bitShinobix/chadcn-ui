@@ -1,0 +1,19 @@
+{
+  "name": "Security Settings",
+  "slug": "security",
+  "category": "settings",
+  "description": "Security settings with password management, two-factor authentication, and session controls.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "zod": "^3.22.0",
+    "react-hook-form": "^7.48.0",
+    "@hookform/resolvers": "^3.3.0"
+  },
+  "registryDependencies": ["button", "input", "label", "separator", "switch", "card"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["security", "password", "2fa", "two-factor", "sessions", "authentication"]
+}

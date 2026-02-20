@@ -1,0 +1,15 @@
+{
+  "name": "Appearance Settings",
+  "slug": "appearance",
+  "category": "settings",
+  "description": "Theme and display settings for customizing the application appearance including color scheme, font size, and density.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "label", "separator", "radio-group", "select"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["appearance", "theme", "dark mode", "light mode", "display", "settings"]
+}

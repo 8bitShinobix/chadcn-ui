@@ -1,0 +1,19 @@
+{
+  "name": "Magic Link Login",
+  "slug": "magic-link",
+  "category": "auth",
+  "description": "Passwordless authentication with magic link email. Send a login link to the user's email for secure, frictionless access.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "zod": "^3.22.0",
+    "react-hook-form": "^7.48.0",
+    "@hookform/resolvers": "^3.3.0"
+  },
+  "registryDependencies": ["button", "input", "label"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["magic link", "passwordless", "email login", "auth", "authentication"]
+}

@@ -44,16 +44,16 @@ export const blockCategories: NavCategory[] = [
       { title: "OAuth Buttons", href: "/blocks/auth/oauth-buttons" },
       { title: "Verify Email", href: "/blocks/auth/verify-email" },
       { title: "Two-Factor Auth", href: "/blocks/auth/two-factor" },
+      { title: "Magic Link", href: "/blocks/auth/magic-link" },
     ],
   },
   {
     title: "Dashboard",
     icon: LayoutDashboard,
     items: [
-      { title: "Sidebar", href: "/blocks/dashboard/sidebar" },
-      { title: "Shell", href: "/blocks/dashboard/shell" },
+      { title: "Sidebar Navigation", href: "/blocks/dashboard/sidebar-nav" },
+      { title: "Dashboard Shell", href: "/blocks/dashboard/dashboard-shell" },
       { title: "Top Navigation", href: "/blocks/dashboard/top-nav" },
-      { title: "Breadcrumbs", href: "/blocks/dashboard/breadcrumbs" },
     ],
   },
   {
@@ -63,6 +63,7 @@ export const blockCategories: NavCategory[] = [
       { title: "Data Table", href: "/blocks/tables/data-table" },
       { title: "Sortable Table", href: "/blocks/tables/sortable" },
       { title: "Filterable Table", href: "/blocks/tables/filterable" },
+      { title: "Table Actions", href: "/blocks/tables/data-table-actions" },
     ],
   },
   {
@@ -74,6 +75,7 @@ export const blockCategories: NavCategory[] = [
       { title: "Notifications", href: "/blocks/settings/notifications" },
       { title: "Security", href: "/blocks/settings/security" },
       { title: "API Keys", href: "/blocks/settings/api-keys" },
+      { title: "Appearance", href: "/blocks/settings/appearance" },
     ],
   },
   {
@@ -92,8 +94,6 @@ export const blockCategories: NavCategory[] = [
     icon: Rocket,
     items: [
       { title: "Multi-Step Wizard", href: "/blocks/onboarding/wizard" },
-      { title: "Progress Indicator", href: "/blocks/onboarding/progress" },
-      { title: "Welcome Tour", href: "/blocks/onboarding/welcome-tour" },
       { title: "Checklist", href: "/blocks/onboarding/checklist" },
     ],
   },
@@ -107,6 +107,7 @@ export const blockCategories: NavCategory[] = [
       { title: "Success", href: "/blocks/states/success" },
       { title: "404 Page", href: "/blocks/states/404" },
       { title: "500 Page", href: "/blocks/states/500" },
+      { title: "Maintenance", href: "/blocks/states/maintenance" },
     ],
   },
 ];

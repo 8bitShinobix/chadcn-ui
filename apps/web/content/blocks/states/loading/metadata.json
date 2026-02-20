@@ -1,0 +1,15 @@
+{
+  "name": "Loading Skeleton",
+  "slug": "loading",
+  "category": "states",
+  "description": "Skeleton loading placeholders that mimic content layout while data is being fetched.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["skeleton"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["loading", "skeleton", "placeholder", "shimmer", "lazy", "fetching"]
+}

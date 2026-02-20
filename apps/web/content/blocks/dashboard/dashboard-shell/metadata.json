@@ -1,0 +1,15 @@
+{
+  "name": "Dashboard Shell",
+  "slug": "dashboard-shell",
+  "category": "dashboard",
+  "description": "A dashboard content layout with top header bar, breadcrumbs, and main content area. Pair with sidebar-nav for full dashboard.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["avatar", "breadcrumb", "dropdown-menu", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["dashboard", "shell", "layout", "admin", "panel", "app shell", "content layout"]
+}

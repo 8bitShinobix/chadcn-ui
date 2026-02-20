@@ -1,0 +1,15 @@
+{
+  "name": "Sortable Table",
+  "slug": "sortable",
+  "category": "tables",
+  "description": "Tables with interactive column sorting and sort direction indicators.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["table", "sort", "sortable", "order", "ascending", "descending"]
+}

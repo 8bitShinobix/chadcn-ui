@@ -1,0 +1,15 @@
+{
+  "name": "404 Page",
+  "slug": "404",
+  "category": "states",
+  "description": "Page not found displays with navigation aids and search functionality.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["404", "not found", "missing", "page not found", "lost"]
+}
