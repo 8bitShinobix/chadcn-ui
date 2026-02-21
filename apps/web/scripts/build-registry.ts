@@ -77,6 +77,12 @@ const CATEGORY_META: Record<string, CategoryInfo> = {
     description: "Empty states, loading skeletons, and error pages",
     icon: "CircleAlert",
   },
+  ai: {
+    name: "AI Interfaces",
+    slug: "ai",
+    description: "Chat, search, and AI-powered interfaces for modern applications",
+    icon: "Sparkles",
+  },
 };
 
 function buildRegistry(): void {
