@@ -159,7 +159,8 @@ chadcn/
 │       │   ├── (site)/(docs)/        # Docs + block pages (with sidebar)
 │       │   │   ├── docs/[...slug]/   # MDX documentation pages
 │       │   │   └── blocks/           # Block listing + detail pages
-│       │   └── (preview)/            # Isolated block preview (iframe)
+│       │   ├── (preview)/            # Isolated block preview (iframe)
+│       │   └── (dev)/                # Dev-only playground (not in production)
 │       ├── components/
 │       │   ├── ui/                   # shadcn primitives (Button, Input, etc.)
 │       │   ├── layout/              # TopBar, Sidebar, MobileNav, Logo
@@ -419,9 +420,9 @@ chadcn is in active development. Current status: **All 35 blocks implemented acr
 - [x] Billing blocks (5 blocks)
 - [x] Onboarding blocks (2 blocks)
 - [x] States blocks (7 blocks)
+- [x] Dev playground with block browser and sandbox mode
 
 ### In Progress
-- [ ] Block preview system with viewport switcher
 - [ ] Block registry API endpoints
 - [ ] Search with command palette (Cmd+K)
 
