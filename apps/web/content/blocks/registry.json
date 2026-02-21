@@ -1,5 +1,11 @@
 {
   "categories": {
+    "ai": {
+      "name": "AI Interfaces",
+      "slug": "ai",
+      "description": "Chat, search, and AI-powered interfaces for modern applications",
+      "icon": "Sparkles"
+    },
     "auth": {
       "name": "Authentication",
       "slug": "auth",
@@ -44,6 +50,38 @@
     }
   },
   "blocks": {
+    "ai/ai-search": {
+      "category": "ai",
+      "name": "ai-search"
+    },
+    "ai/chat": {
+      "category": "ai",
+      "name": "chat"
+    },
+    "ai/copilot-sidebar": {
+      "category": "ai",
+      "name": "copilot-sidebar"
+    },
+    "ai/generation-gallery": {
+      "category": "ai",
+      "name": "generation-gallery"
+    },
+    "ai/message-card": {
+      "category": "ai",
+      "name": "message-card"
+    },
+    "ai/playground": {
+      "category": "ai",
+      "name": "playground"
+    },
+    "ai/prompt-input": {
+      "category": "ai",
+      "name": "prompt-input"
+    },
+    "ai/token-usage": {
+      "category": "ai",
+      "name": "token-usage"
+    },
     "auth/forgot-password": {
       "category": "auth",
       "name": "forgot-password"

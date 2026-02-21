@@ -1,0 +1,15 @@
+{
+  "name": "Token Usage",
+  "slug": "token-usage",
+  "category": "ai",
+  "description": "AI token and cost monitoring dashboard with usage breakdowns, model metrics, and budget tracking.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "card", "badge", "select", "separator", "progress"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["tokens", "usage", "cost", "dashboard", "ai", "monitoring", "budget", "metrics"]
+}

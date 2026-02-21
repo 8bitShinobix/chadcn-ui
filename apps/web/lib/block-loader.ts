@@ -210,6 +210,47 @@ const blockRegistry: BlockRegistry = {
     standard: () => import("@/components/blocks/previews/onboarding/checklist-standard"),
     "feature-rich": () => import("@/components/blocks/previews/onboarding/checklist-feature-rich"),
   },
+  // AI Interfaces
+  "ai/chat": {
+    minimal: () => import("@/components/blocks/previews/ai/chat-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/chat-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/chat-feature-rich"),
+  },
+  "ai/prompt-input": {
+    minimal: () => import("@/components/blocks/previews/ai/prompt-input-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/prompt-input-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/prompt-input-feature-rich"),
+  },
+  "ai/message-card": {
+    minimal: () => import("@/components/blocks/previews/ai/message-card-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/message-card-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/message-card-feature-rich"),
+  },
+  "ai/copilot-sidebar": {
+    minimal: () => import("@/components/blocks/previews/ai/copilot-sidebar-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/copilot-sidebar-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/copilot-sidebar-feature-rich"),
+  },
+  "ai/ai-search": {
+    minimal: () => import("@/components/blocks/previews/ai/ai-search-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/ai-search-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/ai-search-feature-rich"),
+  },
+  "ai/playground": {
+    minimal: () => import("@/components/blocks/previews/ai/playground-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/playground-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/playground-feature-rich"),
+  },
+  "ai/token-usage": {
+    minimal: () => import("@/components/blocks/previews/ai/token-usage-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/token-usage-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/token-usage-feature-rich"),
+  },
+  "ai/generation-gallery": {
+    minimal: () => import("@/components/blocks/previews/ai/generation-gallery-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/generation-gallery-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/generation-gallery-feature-rich"),
+  },
 };
 
 /**

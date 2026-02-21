@@ -1,0 +1,17 @@
+{
+  "name": "AI Search",
+  "slug": "ai-search",
+  "category": "ai",
+  "description": "An AI-powered search interface with streaming answers, inline citations, source cards, and follow-up suggestions.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "react-markdown": "^9.0.0"
+  },
+  "registryDependencies": ["button", "input", "badge", "card", "skeleton", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["search", "ai", "perplexity", "citations", "sources", "answer engine"]
+}
