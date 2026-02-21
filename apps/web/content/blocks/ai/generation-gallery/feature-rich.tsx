@@ -195,28 +195,24 @@ export function GenerationGallery() {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-6xl space-y-6 rounded-lg border p-6">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto w-full max-w-6xl space-y-4 rounded-lg border p-4 md:space-y-6 md:p-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
-            <h2 className="flex items-center gap-2 font-semibold">
-              <Sparkles className="h-5 w-5 text-amber-500" />
+            <h2 className="flex items-center gap-2 text-base font-semibold md:text-lg">
+              <Sparkles className="h-4 w-4 text-amber-500 md:h-5 md:w-5" />
               Image Generation Studio
             </h2>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs text-muted-foreground md:text-sm">
               Advanced generation with parameter controls and batch processing
             </p>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowParams(!showParams)}
-          >
+          <Button variant="outline" size="sm" onClick={() => setShowParams(!showParams)} className="w-full sm:w-auto">
             <SlidersHorizontal className="mr-2 h-4 w-4" />
             {showParams ? "Hide" : "Show"} Parameters
           </Button>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex-1 space-y-4">
             <div className="space-y-3">
               <div className="space-y-1.5">
@@ -243,39 +239,23 @@ export function GenerationGallery() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-1.5">
-                <span className="text-xs font-medium text-muted-foreground">
-                  Aspect Ratio
-                </span>
+            <div className="flex flex-wrap items-center gap-3 md:gap-4">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-xs font-medium text-muted-foreground">Aspect Ratio</span>
                 <div className="flex gap-1">
                   {ASPECT_RATIOS.map((ar) => (
-                    <Button
-                      key={ar.label}
-                      variant={aspectRatio === ar.value ? "default" : "outline"}
-                      size="sm"
-                      className="h-7 px-2.5 text-xs"
-                      onClick={() => setAspectRatio(ar.value)}
-                    >
+                    <Button key={ar.label} variant={aspectRatio === ar.value ? "default" : "outline"} size="sm" className="h-7 px-2.5 text-xs" onClick={() => setAspectRatio(ar.value)}>
                       {ar.label}
                     </Button>
                   ))}
                 </div>
               </div>
-              <Separator orientation="vertical" className="h-6" />
-              <div className="flex items-center gap-1.5">
-                <span className="text-xs font-medium text-muted-foreground">
-                  Style
-                </span>
-                <div className="flex gap-1">
+              <Separator orientation="vertical" className="hidden h-6 md:block" />
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-xs font-medium text-muted-foreground">Style</span>
+                <div className="flex flex-wrap gap-1">
                   {STYLE_PRESETS.map((style) => (
-                    <Button
-                      key={style}
-                      variant={activeStyle === style ? "default" : "outline"}
-                      size="sm"
-                      className="h-7 px-2.5 text-xs"
-                      onClick={() => setActiveStyle(style)}
-                    >
+                    <Button key={style} variant={activeStyle === style ? "default" : "outline"} size="sm" className="h-7 px-2.5 text-xs" onClick={() => setActiveStyle(style)}>
                       {style}
                     </Button>
                   ))}
@@ -289,90 +269,45 @@ export function GenerationGallery() {
                   <SlidersHorizontal className="h-3.5 w-3.5" />
                   Generation Parameters
                 </h4>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs text-muted-foreground">Steps</label>
                       <span className="text-xs font-mono font-medium">{steps}</span>
                     </div>
-                    <input
-                      type="range"
-                      min={10}
-                      max={50}
-                      value={steps}
-                      onChange={(e) => setSteps(Number(e.target.value))}
-                      className="h-2 w-full cursor-pointer appearance-none rounded-full bg-primary/20 accent-primary"
-                    />
-                    <div className="flex justify-between text-[10px] text-muted-foreground">
-                      <span>10</span>
-                      <span>50</span>
-                    </div>
+                    <input type="range" min={10} max={50} value={steps} onChange={(e) => setSteps(Number(e.target.value))} className="h-2 w-full cursor-pointer appearance-none rounded-full bg-primary/20 accent-primary" />
+                    <div className="flex justify-between text-[10px] text-muted-foreground"><span>10</span><span>50</span></div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <label className="text-xs text-muted-foreground">
-                        Guidance Scale
-                      </label>
-                      <span className="text-xs font-mono font-medium">
-                        {guidance.toFixed(1)}
-                      </span>
+                      <label className="text-xs text-muted-foreground">Guidance Scale</label>
+                      <span className="text-xs font-mono font-medium">{guidance.toFixed(1)}</span>
                     </div>
-                    <input
-                      type="range"
-                      min={1}
-                      max={20}
-                      step={0.5}
-                      value={guidance}
-                      onChange={(e) => setGuidance(Number(e.target.value))}
-                      className="h-2 w-full cursor-pointer appearance-none rounded-full bg-primary/20 accent-primary"
-                    />
-                    <div className="flex justify-between text-[10px] text-muted-foreground">
-                      <span>1</span>
-                      <span>20</span>
-                    </div>
+                    <input type="range" min={1} max={20} step={0.5} value={guidance} onChange={(e) => setGuidance(Number(e.target.value))} className="h-2 w-full cursor-pointer appearance-none rounded-full bg-primary/20 accent-primary" />
+                    <div className="flex justify-between text-[10px] text-muted-foreground"><span>1</span><span>20</span></div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs text-muted-foreground">Seed</label>
-                    <Input
-                      type="number"
-                      value={seed}
-                      onChange={(e) => setSeed(e.target.value)}
-                      placeholder="Random"
-                      className="h-8 text-xs"
-                    />
-                    <p className="text-[10px] text-muted-foreground">
-                      Leave empty for random
-                    </p>
+                    <Input type="number" value={seed} onChange={(e) => setSeed(e.target.value)} placeholder="Random" className="h-8 text-xs" />
+                    <p className="text-[10px] text-muted-foreground">Leave empty for random</p>
                   </div>
                 </div>
               </div>
             )}
 
-            <div className="flex gap-2">
-              <Button
-                onClick={handleGenerate}
-                disabled={!prompt.trim() || isGenerating}
-                className="flex-1"
-              >
-                {isGenerating ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Sparkles className="mr-2 h-4 w-4" />
-                )}
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Button onClick={handleGenerate} disabled={!prompt.trim() || isGenerating} className="flex-1">
+                {isGenerating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
                 Generate
               </Button>
-              <Button
-                variant="outline"
-                onClick={handleBatchGenerate}
-                disabled={!prompt.trim() || isGenerating}
-              >
+              <Button variant="outline" onClick={handleBatchGenerate} disabled={!prompt.trim() || isGenerating} className="w-full sm:w-auto">
                 <ListChecks className="mr-2 h-4 w-4" />
                 Batch (3x)
               </Button>
             </div>
           </div>
 
-          <div className="w-64 shrink-0 space-y-3">
+          <div className="hidden w-full shrink-0 space-y-3 border-t pt-4 lg:block lg:w-64 lg:border-l lg:border-t-0 lg:pt-0">
             <h3 className="flex items-center gap-1.5 text-sm font-medium">
               <ListChecks className="h-4 w-4 text-muted-foreground" />
               Generation Queue
@@ -449,7 +384,7 @@ export function GenerationGallery() {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
               {gallery.map((image) => (
                 <div key={image.id} className="group relative">
                   <div

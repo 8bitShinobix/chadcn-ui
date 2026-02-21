@@ -124,9 +124,9 @@ export default function PlaygroundStandard() {
   }
 
   return (
-    <div className="mx-auto flex h-[700px] w-full max-w-4xl rounded-lg border">
+    <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col rounded-lg border sm:h-[700px] sm:flex-row">
       {/* Left Panel - Conversation History */}
-      <div className="flex w-64 shrink-0 flex-col border-r">
+      <div className="hidden sm:flex sm:w-64 sm:shrink-0 sm:flex-col sm:border-r">
         <div className="flex items-center justify-between border-b px-3 py-3">
           <span className="text-sm font-medium">History</span>
           <Button
@@ -285,7 +285,7 @@ export default function PlaygroundStandard() {
       </div>
 
       {/* Right Panel - Parameters */}
-      <div className="flex w-56 shrink-0 flex-col border-l">
+      <div className="hidden sm:flex sm:w-56 sm:shrink-0 sm:flex-col sm:border-l">
         <div className="border-b px-3 py-3">
           <span className="text-sm font-medium">Parameters</span>
         </div>

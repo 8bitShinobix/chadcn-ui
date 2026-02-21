@@ -37,33 +37,18 @@ export function AISearch() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-6 rounded-lg border p-6">
-      <div className="space-y-2">
-        <h2 className="text-lg font-semibold">AI Search</h2>
-        <p className="text-sm text-muted-foreground">
-          Ask anything and get an AI-powered answer with sources
-        </p>
+    <div className="mx-auto w-full max-w-2xl space-y-4 rounded-lg border p-4 md:space-y-6 md:p-6">
+      <div className="space-y-1">
+        <h2 className="text-base font-semibold md:text-lg">AI Search</h2>
+        <p className="text-xs text-muted-foreground md:text-sm">Ask anything and get an AI-powered answer with sources</p>
       </div>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          handleSearch()
-        }}
-        className="flex gap-2"
-      >
+      <form onSubmit={(e) => { e.preventDefault(); handleSearch() }} className="flex flex-col gap-2 sm:flex-row">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask anything..."
-            className="pl-9"
-          />
+          <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Ask anything..." className="pl-9" />
         </div>
-        <Button type="submit" disabled={!query.trim()}>
-          Search
-        </Button>
+        <Button type="submit" disabled={!query.trim()} className="w-full sm:w-auto">Search</Button>
       </form>
 
       {hasSearched && (

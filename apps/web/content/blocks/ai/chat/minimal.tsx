@@ -48,9 +48,9 @@ export function AIChat() {
   }
 
   return (
-    <div className="mx-auto flex h-[500px] w-full max-w-2xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[450px] w-full max-w-2xl flex-col rounded-lg border md:h-[500px]">
       <div className="border-b px-4 py-3">
-        <h2 className="font-semibold">AI Chat</h2>
+        <h2 className="text-sm font-semibold md:text-base">AI Chat</h2>
       </div>
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto p-4">

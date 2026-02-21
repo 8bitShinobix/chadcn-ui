@@ -52,37 +52,19 @@ export function GenerationGallery() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-6 rounded-lg border p-6">
+    <div className="mx-auto w-full max-w-2xl space-y-4 rounded-lg border p-4 md:space-y-6 md:p-6">
       <div className="space-y-1">
-        <h2 className="flex items-center gap-2 font-semibold">
-          <Sparkles className="h-5 w-5 text-amber-500" />
+        <h2 className="flex items-center gap-2 text-base font-semibold md:text-lg">
+          <Sparkles className="h-4 w-4 text-amber-500 md:h-5 md:w-5" />
           Image Generation
         </h2>
-        <p className="text-sm text-muted-foreground">
-          Describe what you want to create
-        </p>
+        <p className="text-xs text-muted-foreground md:text-sm">Describe what you want to create</p>
       </div>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          handleGenerate()
-        }}
-        className="flex gap-2"
-      >
-        <Input
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="A sunset over mountains with vibrant colors..."
-          className="flex-1"
-          disabled={isGenerating}
-        />
-        <Button type="submit" disabled={!prompt.trim() || isGenerating}>
-          {isGenerating ? (
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <Sparkles className="mr-2 h-4 w-4" />
-          )}
+      <form onSubmit={(e) => { e.preventDefault(); handleGenerate() }} className="flex flex-col gap-2 sm:flex-row">
+        <Input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="A sunset over mountains with vibrant colors..." className="flex-1" disabled={isGenerating} />
+        <Button type="submit" disabled={!prompt.trim() || isGenerating} className="w-full sm:w-auto">
+          {isGenerating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
           Generate
         </Button>
       </form>

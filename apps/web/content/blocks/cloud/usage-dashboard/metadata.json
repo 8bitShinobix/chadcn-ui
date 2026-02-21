@@ -1,0 +1,15 @@
+{
+  "name": "Usage Dashboard",
+  "slug": "usage-dashboard",
+  "category": "cloud",
+  "description": "Cloud resource usage metrics with bandwidth, compute, storage, and cost tracking dashboards.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["card", "progress", "separator", "select", "badge", "button", "tabs", "table", "switch", "input", "label"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["usage", "metrics", "bandwidth", "compute", "storage", "monitoring", "cost", "billing"]
+}

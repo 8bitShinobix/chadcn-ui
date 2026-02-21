@@ -89,42 +89,26 @@ export function AISearch() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-6 rounded-lg border p-6">
-      <div className="space-y-2">
-        <h2 className="text-lg font-semibold">AI Search</h2>
-        <p className="text-sm text-muted-foreground">
-          Get AI-powered answers with cited sources
-        </p>
+    <div className="mx-auto w-full max-w-2xl space-y-4 rounded-lg border p-4 md:space-y-6 md:p-6">
+      <div className="space-y-1">
+        <h2 className="text-base font-semibold md:text-lg">AI Search</h2>
+        <p className="text-xs text-muted-foreground md:text-sm">Get AI-powered answers with cited sources</p>
       </div>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          handleSearch()
-        }}
-        className="flex gap-2"
-      >
+      <form onSubmit={(e) => { e.preventDefault(); handleSearch() }} className="flex flex-col gap-2 sm:flex-row">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask anything..."
-            className="pl-9"
-            disabled={isSearching}
-          />
+          <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Ask anything..." className="pl-9" disabled={isSearching} />
         </div>
-        <Button type="submit" disabled={!query.trim() || isSearching}>
-          Search
-        </Button>
+        <Button type="submit" disabled={!query.trim() || isSearching} className="w-full sm:w-auto">Search</Button>
       </form>
 
       {isSearching && (
         <div className="space-y-4">
           <div className="flex gap-3 overflow-x-auto pb-1">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex min-w-[180px] items-center gap-2 rounded-lg border p-3">
-                <Skeleton className="h-6 w-6 rounded-full" />
+              <div key={i} className="flex min-w-[140px] items-center gap-2 rounded-lg border p-3 sm:min-w-[180px]">
+                <Skeleton className="h-5 w-5 rounded-full sm:h-6 sm:w-6" />
                 <div className="flex-1 space-y-1.5">
                   <Skeleton className="h-3 w-full" />
                   <Skeleton className="h-2 w-2/3" />
@@ -147,12 +131,9 @@ export function AISearch() {
           {/* Source cards */}
           <div className="flex gap-3 overflow-x-auto pb-1">
             {DEMO_SOURCES.map((source) => (
-              <div
-                key={source.id}
-                className="flex min-w-[200px] cursor-pointer items-start gap-2.5 rounded-lg border p-3 transition-colors hover:bg-muted/50"
-              >
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted">
-                  <Globe className="h-3 w-3 text-muted-foreground" />
+              <div key={source.id} className="flex min-w-[160px] cursor-pointer items-start gap-2.5 rounded-lg border p-3 transition-colors hover:bg-muted/50 sm:min-w-[200px]">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted sm:h-6 sm:w-6">
+                  <Globe className="h-2.5 w-2.5 text-muted-foreground sm:h-3 sm:w-3" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-xs font-medium leading-tight">

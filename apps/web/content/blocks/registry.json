@@ -18,11 +18,23 @@
       "description": "Pricing tables, payment forms, and subscription management",
       "icon": "CreditCard"
     },
+    "cloud": {
+      "name": "Cloud",
+      "slug": "cloud",
+      "description": "Deployment logs, environment variables, domain management, and infrastructure dashboards",
+      "icon": "Cloud"
+    },
     "dashboard": {
       "name": "Dashboard",
       "slug": "dashboard",
       "description": "Dashboard layouts and navigation components",
       "icon": "LayoutDashboard"
+    },
+    "design": {
+      "name": "Design",
+      "slug": "design",
+      "description": "Color pickers, layer panels, typography selectors, and creative tool interfaces",
+      "icon": "Palette"
     },
     "onboarding": {
       "name": "Onboarding",
@@ -134,6 +146,34 @@
       "category": "billing",
       "name": "usage-meter"
     },
+    "cloud/deployment-status": {
+      "category": "cloud",
+      "name": "deployment-status"
+    },
+    "cloud/domain-manager": {
+      "category": "cloud",
+      "name": "domain-manager"
+    },
+    "cloud/env-variables": {
+      "category": "cloud",
+      "name": "env-variables"
+    },
+    "cloud/region-selector": {
+      "category": "cloud",
+      "name": "region-selector"
+    },
+    "cloud/service-monitor": {
+      "category": "cloud",
+      "name": "service-monitor"
+    },
+    "cloud/storage-browser": {
+      "category": "cloud",
+      "name": "storage-browser"
+    },
+    "cloud/usage-dashboard": {
+      "category": "cloud",
+      "name": "usage-dashboard"
+    },
     "dashboard/dashboard-shell": {
       "category": "dashboard",
       "name": "dashboard-shell"
@@ -145,6 +185,34 @@
     "dashboard/top-nav": {
       "category": "dashboard",
       "name": "top-nav"
+    },
+    "design/asset-gallery": {
+      "category": "design",
+      "name": "asset-gallery"
+    },
+    "design/color-picker": {
+      "category": "design",
+      "name": "color-picker"
+    },
+    "design/export-dialog": {
+      "category": "design",
+      "name": "export-dialog"
+    },
+    "design/layer-panel": {
+      "category": "design",
+      "name": "layer-panel"
+    },
+    "design/template-browser": {
+      "category": "design",
+      "name": "template-browser"
+    },
+    "design/token-editor": {
+      "category": "design",
+      "name": "token-editor"
+    },
+    "design/typography-selector": {
+      "category": "design",
+      "name": "typography-selector"
     },
     "onboarding/checklist": {
       "category": "onboarding",

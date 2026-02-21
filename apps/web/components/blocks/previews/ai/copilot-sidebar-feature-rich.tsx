@@ -207,11 +207,11 @@ export default function CopilotSidebarFeatureRich() {
       className="flex items-start gap-2 rounded-md border bg-muted/30 px-2.5 py-2"
     >
       {tc.status === "running" ? (
-        <Loader2 className="mt-0.5 h-3.5 w-3.5 shrink-0 animate-spin text-amber-500" />
+        <Loader2 className="mt-0.5 h-3.5 w-3.5 shrink-0 animate-spin text-muted-foreground" />
       ) : tc.status === "completed" ? (
-        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
+        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
       ) : (
-        <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-red-500" />
+        <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
       )}
       <div className="min-w-0 flex-1">
         <p className="text-[11px] font-medium">{tc.name}</p>
@@ -233,7 +233,7 @@ export default function CopilotSidebarFeatureRich() {
   )
 
   return (
-    <div className="flex h-[700px] w-full overflow-hidden rounded-lg border">
+    <div className="mx-auto flex h-[500px] w-full max-w-5xl flex-col overflow-hidden rounded-lg border sm:h-[700px] sm:flex-row">
       {/* Main content area */}
       <div className="flex flex-1 flex-col">
         <div className="flex items-center justify-between border-b px-6 py-3">
@@ -254,14 +254,14 @@ export default function CopilotSidebarFeatureRich() {
           <div className="space-y-6">
             <div>
               <h3 className="mb-3 text-lg font-semibold">Overview</h3>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="rounded-lg border p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <BarChart3 className="h-4 w-4" />
                     Revenue
                   </div>
                   <p className="mt-1 text-2xl font-bold">$12,480</p>
-                  <p className="text-xs text-emerald-600">+12% today</p>
+                  <p className="text-xs text-muted-foreground">+12% today</p>
                 </div>
                 <div className="rounded-lg border p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -277,7 +277,7 @@ export default function CopilotSidebarFeatureRich() {
                     Active Users
                   </div>
                   <p className="mt-1 text-2xl font-bold">1,429</p>
-                  <p className="text-xs text-emerald-600">+3.2%</p>
+                  <p className="text-xs text-muted-foreground">+3.2%</p>
                 </div>
               </div>
             </div>
@@ -306,11 +306,11 @@ export default function CopilotSidebarFeatureRich() {
 
       {/* Copilot sidebar panel */}
       {sidebarOpen && (
-        <div className="flex w-[380px] shrink-0 flex-col border-l bg-background">
+        <div className="flex w-full shrink-0 flex-col border-t bg-background sm:w-[380px] sm:border-l sm:border-t-0">
           {/* Header */}
           <div className="flex items-center justify-between border-b px-3 py-2.5">
             <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-amber-500" />
+              <Sparkles className="h-4 w-4 text-muted-foreground" />
               <h3 className="text-sm font-semibold">AI Copilot</h3>
             </div>
             <div className="flex items-center gap-0.5">
@@ -461,9 +461,9 @@ export default function CopilotSidebarFeatureRich() {
                       className="flex items-start gap-2.5 rounded-md border p-2.5"
                     >
                       {action.status === "completed" ? (
-                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                       ) : (
-                        <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-red-500" />
+                        <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                       )}
                       <div className="min-w-0 flex-1">
                         <p className="text-xs font-medium">{action.action}</p>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Key, Copy, Plus, Trash2 } from "lucide-react";
+import { Copy, Plus, Trash2, KeySquareIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -39,7 +39,7 @@ export default function ApiKeysStandard() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Key size={16} className="text-muted-foreground" />
+                  <KeySquareIcon size={16} className="text-muted-foreground" />
                   <span className="font-medium">{key.name}</span>
                 </div>
                 <div className="flex gap-2">

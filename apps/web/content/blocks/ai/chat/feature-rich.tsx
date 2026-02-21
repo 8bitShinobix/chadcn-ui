@@ -191,15 +191,13 @@ For type safety, TypeScript [3] adds static types that catch errors at compile t
     date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
   return (
-    <div className="mx-auto flex h-[700px] w-full max-w-2xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[550px] w-full max-w-2xl flex-col rounded-lg border md:h-[700px]">
       <div className="flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-amber-500" />
+          <Sparkles className="h-4 w-4 text-amber-500 md:h-5 md:w-5" />
           <div>
-            <h2 className="font-semibold">AI Chat</h2>
-            <p className="text-xs text-muted-foreground">
-              with reasoning, citations & branching
-            </p>
+            <h2 className="text-sm font-semibold md:text-base">AI Chat</h2>
+            <p className="hidden text-xs text-muted-foreground md:block">with reasoning, citations & branching</p>
           </div>
         </div>
         <div className="flex items-center gap-1.5">
@@ -284,10 +282,8 @@ For type safety, TypeScript [3] adds static types that catch errors at compile t
                     )}
 
                   {/* Actions bar */}
-                  <div className="flex items-center gap-1">
-                    <span className="mr-2 text-xs text-muted-foreground">
-                      {formatTime(msg.timestamp)}
-                    </span>
+                  <div className="flex flex-wrap items-center gap-1">
+                    <span className="mr-2 text-xs text-muted-foreground">{formatTime(msg.timestamp)}</span>
                     {msg.role === "assistant" && !msg.isStreaming && (
                       <>
                         <Button

@@ -180,26 +180,14 @@ export function PromptInput() {
         />
 
         {/* Bottom toolbar */}
-        <div className="absolute right-3 bottom-3 left-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <input
-              ref={fileInputRef}
-              type="file"
-              multiple
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8"
-              onClick={handleFileSelect}
-              disabled={isGenerating}
-            >
+        <div className="absolute right-3 bottom-3 left-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <input ref={fileInputRef} type="file" multiple className="hidden" onChange={handleFileChange} />
+            <Button variant="ghost" size="icon" className="h-8 w-8 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0" onClick={handleFileSelect} disabled={isGenerating}>
               <Paperclip className="h-4 w-4" />
             </Button>
             <Select value={model} onValueChange={setModel}>
-              <SelectTrigger className="h-8 w-[140px] border-none bg-transparent text-xs shadow-none">
+              <SelectTrigger className="h-8 w-full border-none bg-transparent text-xs shadow-none sm:w-[140px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

@@ -19,6 +19,9 @@ import {
   Loader2,
   Trash2,
   MessageSquare,
+  History,
+  Settings2,
+  X,
 } from "lucide-react"
 
 interface ConversationEntry {
@@ -75,6 +78,8 @@ export function AIPlayground() {
   const [conversation, setConversation] = useState<ConversationEntry[]>([])
   const [isRunning, setIsRunning] = useState(false)
   const [currentResponse, setCurrentResponse] = useState("")
+  const [showHistory, setShowHistory] = useState(false)
+  const [showParams, setShowParams] = useState(false)
 
   const promptTokens = estimateTokens(systemPrompt + " " + userMessage)
   const completionTokens = estimateTokens(currentResponse)
@@ -124,9 +129,90 @@ export function AIPlayground() {
   }
 
   return (
-    <div className="mx-auto flex h-[700px] w-full max-w-4xl rounded-lg border">
-      {/* Left Panel - Conversation History */}
-      <div className="flex w-64 shrink-0 flex-col border-r">
+    <div className="mx-auto flex h-[600px] w-full flex-col rounded-lg border md:h-[700px] md:flex-row">
+      {/* Mobile History Drawer */}
+      {showHistory && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowHistory(false)} />
+          <div className="absolute inset-y-0 left-0 w-full max-w-xs bg-background shadow-xl">
+            <div className="flex h-full flex-col">
+              <div className="flex items-center justify-between border-b px-4 py-3">
+                <span className="text-sm font-medium">History</span>
+                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowHistory(false)}>
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="flex-1 overflow-y-auto p-3">
+                {conversation.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center gap-2 py-8 text-center">
+                    <MessageSquare className="h-8 w-8 text-muted-foreground/50" />
+                    <p className="text-xs text-muted-foreground">No messages yet</p>
+                  </div>
+                ) : (
+                  <div className="space-y-1.5">
+                    {conversation.map((entry) => (
+                      <div key={entry.id} className="rounded-md border px-2.5 py-2">
+                        <div className="mb-1 flex items-center gap-1.5">
+                          <Badge variant={entry.role === "user" ? "default" : "secondary"} className="text-[10px] px-1.5 py-0">
+                            {entry.role === "user" ? "User" : "AI"}
+                          </Badge>
+                        </div>
+                        <p className="line-clamp-2 text-xs text-muted-foreground">{entry.content}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Parameters Drawer */}
+      {showParams && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowParams(false)} />
+          <div className="absolute inset-x-0 bottom-0 rounded-t-2xl bg-background shadow-xl">
+            <div className="flex h-full max-h-[70vh] flex-col">
+              <div className="flex items-center justify-between border-b px-4 py-3">
+                <span className="text-sm font-medium">Parameters</span>
+                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowParams(false)}>
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="flex-1 space-y-5 overflow-y-auto p-4">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-xs">Temperature</Label>
+                    <span className="text-xs font-mono text-muted-foreground">{temperature.toFixed(1)}</span>
+                  </div>
+                  <input type="range" min={0} max={2} step={0.1} value={temperature} onChange={(e) => setTemperature(parseFloat(e.target.value))} className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary" disabled={isRunning} />
+                  <div className="flex justify-between text-[10px] text-muted-foreground"><span>Precise</span><span>Creative</span></div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-xs">Max Tokens</Label>
+                    <span className="text-xs font-mono text-muted-foreground">{maxTokens}</span>
+                  </div>
+                  <input type="range" min={1} max={4096} step={1} value={maxTokens} onChange={(e) => setMaxTokens(parseInt(e.target.value))} className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary" disabled={isRunning} />
+                  <div className="flex justify-between text-[10px] text-muted-foreground"><span>1</span><span>4096</span></div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-xs">Top P</Label>
+                    <span className="text-xs font-mono text-muted-foreground">{topP.toFixed(1)}</span>
+                  </div>
+                  <input type="range" min={0} max={1} step={0.1} value={topP} onChange={(e) => setTopP(parseFloat(e.target.value))} className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary" disabled={isRunning} />
+                  <div className="flex justify-between text-[10px] text-muted-foreground"><span>0</span><span>1</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Left Panel - Conversation History (Desktop) */}
+      <div className="hidden w-64 shrink-0 flex-col border-r md:flex">
         <div className="flex items-center justify-between border-b px-3 py-3">
           <span className="text-sm font-medium">History</span>
           <Button
@@ -175,12 +261,12 @@ export function AIPlayground() {
       </div>
 
       {/* Center Panel - Main Area */}
-      <div className="flex flex-1 flex-col">
-        <div className="flex items-center justify-between border-b px-4 py-3">
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
           <h2 className="font-semibold">Playground</h2>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             <Select value={model} onValueChange={setModel}>
-              <SelectTrigger className="h-8 w-[180px] text-xs">
+              <SelectTrigger className="h-8 w-[140px] text-xs md:w-[180px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -191,12 +277,14 @@ export function AIPlayground() {
                 ))}
               </SelectContent>
             </Select>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleClear}
-              disabled={isRunning}
-            >
+            {/* Mobile action buttons */}
+            <Button variant="outline" size="icon" className="h-8 w-8 md:hidden" onClick={() => setShowHistory(true)}>
+              <History className="h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="icon" className="h-8 w-8 md:hidden" onClick={() => setShowParams(true)}>
+              <Settings2 className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="sm" onClick={handleClear} disabled={isRunning} className="hidden md:flex">
               <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
               Reset
             </Button>
@@ -249,9 +337,9 @@ export function AIPlayground() {
           </Button>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <Label>Response</Label>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="outline" className="text-[10px] font-mono">
                   Prompt: {promptTokens}
                 </Badge>
@@ -284,8 +372,8 @@ export function AIPlayground() {
         </div>
       </div>
 
-      {/* Right Panel - Parameters */}
-      <div className="flex w-56 shrink-0 flex-col border-l">
+      {/* Right Panel - Parameters (Desktop only) */}
+      <div className="hidden w-56 shrink-0 flex-col border-l md:flex">
         <div className="border-b px-3 py-3">
           <span className="text-sm font-medium">Parameters</span>
         </div>

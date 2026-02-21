@@ -117,11 +117,11 @@ export default function GenerationGalleryStandard() {
     date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl gap-6 rounded-lg border p-6">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 rounded-lg border p-6 sm:flex-row">
       <div className="flex-1 space-y-5">
         <div className="space-y-1">
           <h2 className="flex items-center gap-2 font-semibold">
-            <Sparkles className="h-5 w-5 text-amber-500" />
+            <Sparkles className="h-5 w-5" />
             Image Generation
           </h2>
           <p className="text-sm text-muted-foreground">
@@ -255,7 +255,7 @@ export default function GenerationGalleryStandard() {
         )}
       </div>
 
-      <div className="w-56 shrink-0 space-y-3">
+      <div className="w-full space-y-3 sm:w-56 sm:shrink-0">
         <h3 className="flex items-center gap-1.5 text-sm font-medium">
           <Clock className="h-4 w-4 text-muted-foreground" />
           Prompt History

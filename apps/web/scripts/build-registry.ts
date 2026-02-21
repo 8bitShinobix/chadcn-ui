@@ -83,6 +83,18 @@ const CATEGORY_META: Record<string, CategoryInfo> = {
     description: "Chat, search, and AI-powered interfaces for modern applications",
     icon: "Sparkles",
   },
+  design: {
+    name: "Design",
+    slug: "design",
+    description: "Color pickers, layer panels, typography selectors, and creative tool interfaces",
+    icon: "Palette",
+  },
+  cloud: {
+    name: "Cloud",
+    slug: "cloud",
+    description: "Deployment logs, environment variables, domain management, and infrastructure dashboards",
+    icon: "Cloud",
+  },
 };
 
 function buildRegistry(): void {

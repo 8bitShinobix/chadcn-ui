@@ -81,14 +81,12 @@ export function TokenUsage() {
   const costPerRequest = totalCost / totalRequests
 
   return (
-    <div className="mx-auto w-full max-w-4xl space-y-6">
+    <div className="mx-auto w-full max-w-4xl space-y-4 md:space-y-6">
       {/* Header with Date Range Selector */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Token Usage</h2>
-          <p className="text-sm text-muted-foreground">
-            Monitor your API usage and costs
-          </p>
+          <h2 className="text-base font-semibold md:text-lg">Token Usage</h2>
+          <p className="text-xs text-muted-foreground md:text-sm">Monitor your API usage and costs</p>
         </div>
         <Select value={dateRange} onValueChange={setDateRange}>
           <SelectTrigger className="w-[140px]">
@@ -203,12 +201,11 @@ export function TokenUsage() {
       {/* Model Breakdown Table */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm font-medium">
-            Usage by Model
-          </CardTitle>
+          <CardTitle className="text-sm font-medium">Usage by Model</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
+          <div className="overflow-x-auto">
+            <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Model</TableHead>
@@ -259,6 +256,7 @@ export function TokenUsage() {
               })}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 

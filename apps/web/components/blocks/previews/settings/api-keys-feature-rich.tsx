@@ -1,7 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Key, Copy, Plus, Trash2, RotateCw, Eye, EyeOff, MoreVertical } from "lucide-react";
+import {
+  Copy,
+  Plus,
+  Trash2,
+  RotateCw,
+  Eye,
+  EyeOff,
+  MoreVertical,
+  KeySquareIcon,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -67,7 +76,7 @@ export default function ApiKeysFeatureRich() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Key size={16} className="text-muted-foreground" />
+                  <KeySquareIcon size={16} className="text-muted-foreground" />
                   <span className="font-medium">{key.name}</span>
                 </div>
                 <DropdownMenu>

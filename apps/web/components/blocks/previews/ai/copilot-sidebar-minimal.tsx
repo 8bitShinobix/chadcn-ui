@@ -69,7 +69,7 @@ export default function CopilotSidebarMinimal() {
   }
 
   return (
-    <div className="flex h-[600px] w-full overflow-hidden rounded-lg border">
+    <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col overflow-hidden rounded-lg border sm:h-[600px] sm:flex-row">
       {/* Main content area */}
       <div className="flex flex-1 flex-col">
         <div className="flex items-center justify-between border-b px-6 py-3">
@@ -90,14 +90,14 @@ export default function CopilotSidebarMinimal() {
           <div className="space-y-6">
             <div>
               <h3 className="mb-3 text-lg font-semibold">Overview</h3>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="rounded-lg border p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <BarChart3 className="h-4 w-4" />
                     Revenue
                   </div>
                   <p className="mt-1 text-2xl font-bold">$12,480</p>
-                  <p className="text-xs text-emerald-600">+12% today</p>
+                  <p className="text-xs text-muted-foreground">+12% today</p>
                 </div>
                 <div className="rounded-lg border p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -113,7 +113,7 @@ export default function CopilotSidebarMinimal() {
                     Active Users
                   </div>
                   <p className="mt-1 text-2xl font-bold">1,429</p>
-                  <p className="text-xs text-emerald-600">+3.2%</p>
+                  <p className="text-xs text-muted-foreground">+3.2%</p>
                 </div>
               </div>
             </div>
@@ -142,10 +142,10 @@ export default function CopilotSidebarMinimal() {
 
       {/* Copilot sidebar panel */}
       {sidebarOpen && (
-        <div className="flex w-[340px] shrink-0 flex-col border-l bg-background">
+        <div className="flex w-full shrink-0 flex-col border-t bg-background sm:w-[340px] sm:border-l sm:border-t-0">
           <div className="flex items-center justify-between border-b px-4 py-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-amber-500" />
+              <Sparkles className="h-4 w-4" />
               <h3 className="text-sm font-semibold">AI Copilot</h3>
             </div>
             <Button

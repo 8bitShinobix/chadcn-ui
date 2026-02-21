@@ -45,17 +45,12 @@ The response respects the system instructions provided and generates output acco
   }
 
   return (
-    <div className="mx-auto flex h-[600px] w-full max-w-2xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[550px] w-full max-w-2xl flex-col rounded-lg border md:h-[600px]">
       <div className="flex items-center justify-between border-b px-4 py-3">
         <h2 className="font-semibold">Playground</h2>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleClear}
-          disabled={isRunning}
-        >
+        <Button variant="ghost" size="sm" onClick={handleClear} disabled={isRunning}>
           <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-          Clear
+          <span className="hidden sm:inline">Clear</span>
         </Button>
       </div>
 

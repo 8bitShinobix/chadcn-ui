@@ -16,7 +16,6 @@ import {
   Settings,
   GripVertical,
   Minimize2,
-  Maximize2,
   Globe,
   Zap,
   HelpCircle,
@@ -106,36 +105,36 @@ export function CopilotSidebar() {
   // Minimized floating button
   if (isMinimized) {
     return (
-      <div className="flex h-[600px] w-full overflow-hidden rounded-lg border">
+      <div className="flex h-[500px] w-full overflow-hidden rounded-lg border md:h-[600px]">
         <div className="flex flex-1 flex-col">
-          <div className="flex items-center justify-between border-b px-6 py-3">
+          <div className="flex items-center justify-between border-b px-4 py-3 md:px-6">
             <h2 className="font-semibold">Dashboard</h2>
           </div>
-          <div className="relative flex-1 overflow-y-auto p-6">
+          <div className="relative flex-1 overflow-y-auto p-4 md:p-6">
             <div className="space-y-6">
               <div>
-                <h3 className="mb-3 text-lg font-semibold">Overview</h3>
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="rounded-lg border p-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <BarChart3 className="h-4 w-4" />
+                <h3 className="mb-3 text-base font-semibold md:text-lg">Overview</h3>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:gap-4">
+                  <div className="rounded-lg border p-3 md:p-4">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                      <BarChart3 className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       Revenue
                     </div>
-                    <p className="mt-1 text-2xl font-bold">$12,480</p>
+                    <p className="mt-1 text-xl font-bold md:text-2xl">$12,480</p>
                   </div>
-                  <div className="rounded-lg border p-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <FileText className="h-4 w-4" />
+                  <div className="rounded-lg border p-3 md:p-4">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                      <FileText className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       Documents
                     </div>
-                    <p className="mt-1 text-2xl font-bold">284</p>
+                    <p className="mt-1 text-xl font-bold md:text-2xl">284</p>
                   </div>
-                  <div className="rounded-lg border p-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Settings className="h-4 w-4" />
+                  <div className="rounded-lg border p-3 md:p-4">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                      <Settings className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       Active Users
                     </div>
-                    <p className="mt-1 text-2xl font-bold">1,429</p>
+                    <p className="mt-1 text-xl font-bold md:text-2xl">1,429</p>
                   </div>
                 </div>
               </div>
@@ -154,10 +153,10 @@ export function CopilotSidebar() {
   }
 
   return (
-    <div className="flex h-[600px] w-full overflow-hidden rounded-lg border">
+    <div className="flex h-[500px] w-full overflow-hidden rounded-lg border md:h-[600px]">
       {/* Main content area */}
       <div className="flex flex-1 flex-col">
-        <div className="flex items-center justify-between border-b px-6 py-3">
+        <div className="flex items-center justify-between border-b px-4 py-3 md:px-6">
           <h2 className="font-semibold">Dashboard</h2>
           {!sidebarOpen && (
             <Button
@@ -167,37 +166,37 @@ export function CopilotSidebar() {
               className="gap-2"
             >
               <Sparkles className="h-4 w-4" />
-              AI Copilot
+              <span className="hidden sm:inline">AI Copilot</span>
             </Button>
           )}
         </div>
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4 md:p-6">
           <div className="space-y-6">
             <div>
-              <h3 className="mb-3 text-lg font-semibold">Overview</h3>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <BarChart3 className="h-4 w-4" />
+              <h3 className="mb-3 text-base font-semibold md:text-lg">Overview</h3>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:gap-4">
+                <div className="rounded-lg border p-3 md:p-4">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                    <BarChart3 className="h-3.5 w-3.5 md:h-4 md:w-4" />
                     Revenue
                   </div>
-                  <p className="mt-1 text-2xl font-bold">$12,480</p>
+                  <p className="mt-1 text-xl font-bold md:text-2xl">$12,480</p>
                   <p className="text-xs text-emerald-600">+12% today</p>
                 </div>
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <FileText className="h-4 w-4" />
+                <div className="rounded-lg border p-3 md:p-4">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                    <FileText className="h-3.5 w-3.5 md:h-4 md:w-4" />
                     Documents
                   </div>
-                  <p className="mt-1 text-2xl font-bold">284</p>
+                  <p className="mt-1 text-xl font-bold md:text-2xl">284</p>
                   <p className="text-xs text-muted-foreground">8 new</p>
                 </div>
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Settings className="h-4 w-4" />
+                <div className="rounded-lg border p-3 md:p-4">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                    <Settings className="h-3.5 w-3.5 md:h-4 md:w-4" />
                     Active Users
                   </div>
-                  <p className="mt-1 text-2xl font-bold">1,429</p>
+                  <p className="mt-1 text-xl font-bold md:text-2xl">1,429</p>
                   <p className="text-xs text-emerald-600">+3.2%</p>
                 </div>
               </div>
@@ -213,7 +212,7 @@ export function CopilotSidebar() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="rounded-md border px-3 py-2 text-sm text-muted-foreground"
+                    className="rounded-md border px-3 py-2 text-xs text-muted-foreground md:text-sm"
                   >
                     {item}
                   </div>
@@ -224,15 +223,23 @@ export function CopilotSidebar() {
         </div>
       </div>
 
-      {/* Copilot sidebar panel */}
+      {/* Mobile overlay */}
       {sidebarOpen && (
         <div
-          className="flex shrink-0 flex-col border-l bg-background"
-          style={{ width: panelWidth }}
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Copilot sidebar panel - Desktop: side panel, Mobile: overlay */}
+      {sidebarOpen && (
+        <div
+          className={`fixed inset-y-0 right-0 z-50 flex w-full shrink-0 flex-col border-l bg-background transition-transform duration-300 md:static md:z-auto md:w-[360px] md:transition-none ${sidebarOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"}`}
+          style={{ width: undefined }}
         >
-          {/* Resize handle */}
+          {/* Resize handle - Desktop only */}
           <div
-            className="absolute left-0 top-0 z-10 flex h-full w-1 cursor-col-resize items-center justify-center hover:bg-primary/20"
+            className="absolute left-0 top-0 z-10 hidden h-full w-1 cursor-col-resize items-center justify-center hover:bg-primary/20 md:flex"
             onMouseDown={handleMouseDown}
           >
             <GripVertical className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity hover:opacity-100" />

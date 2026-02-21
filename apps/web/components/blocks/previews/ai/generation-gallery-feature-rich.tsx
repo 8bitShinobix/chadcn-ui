@@ -198,7 +198,7 @@ export default function GenerationGalleryFeatureRich() {
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <h2 className="flex items-center gap-2 font-semibold">
-              <Sparkles className="h-5 w-5 text-amber-500" />
+              <Sparkles className="h-5 w-5" />
               Image Generation Studio
             </h2>
             <p className="text-sm text-muted-foreground">
@@ -215,7 +215,7 @@ export default function GenerationGalleryFeatureRich() {
           </Button>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col gap-6 sm:flex-row">
           <div className="flex-1 space-y-4">
             <div className="space-y-3">
               <div className="space-y-1.5">
@@ -288,7 +288,7 @@ export default function GenerationGalleryFeatureRich() {
                   <SlidersHorizontal className="h-3.5 w-3.5" />
                   Generation Parameters
                 </h4>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs text-muted-foreground">Steps</label>
@@ -371,7 +371,7 @@ export default function GenerationGalleryFeatureRich() {
             </div>
           </div>
 
-          <div className="w-64 shrink-0 space-y-3">
+          <div className="w-full space-y-3 sm:w-64 sm:shrink-0">
             <h3 className="flex items-center gap-1.5 text-sm font-medium">
               <ListChecks className="h-4 w-4 text-muted-foreground" />
               Generation Queue
@@ -395,7 +395,7 @@ export default function GenerationGalleryFeatureRich() {
                       {item.status === "complete" ? (
                         <Badge
                           variant="outline"
-                          className="shrink-0 border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                          className="shrink-0"
                         >
                           <Check className="mr-1 h-3 w-3" />
                           Done
@@ -448,7 +448,7 @@ export default function GenerationGalleryFeatureRich() {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
               {gallery.map((image) => (
                 <div key={image.id} className="group relative">
                   <div
@@ -467,7 +467,7 @@ export default function GenerationGalleryFeatureRich() {
                         }}
                       >
                         <Heart
-                          className={`h-3 w-3 ${image.favorited ? "fill-red-500 text-red-500" : ""}`}
+                          className={`h-3 w-3 ${image.favorited ? "fill-foreground text-foreground" : ""}`}
                         />
                       </Button>
                       <Button
@@ -480,7 +480,7 @@ export default function GenerationGalleryFeatureRich() {
                         }}
                       >
                         <Bookmark
-                          className={`h-3 w-3 ${image.saved ? "fill-amber-500 text-amber-500" : ""}`}
+                          className={`h-3 w-3 ${image.saved ? "fill-foreground text-foreground" : ""}`}
                         />
                       </Button>
                     </div>
@@ -541,7 +541,7 @@ export default function GenerationGalleryFeatureRich() {
                 onClick={() => toggleFavorite(lightboxImage.id)}
               >
                 <Heart
-                  className={`h-4 w-4 ${lightboxImage.favorited ? "fill-red-500 text-red-500" : ""}`}
+                  className={`h-4 w-4 ${lightboxImage.favorited ? "fill-foreground text-foreground" : ""}`}
                 />
               </Button>
               <Button
@@ -551,7 +551,7 @@ export default function GenerationGalleryFeatureRich() {
                 onClick={() => toggleSave(lightboxImage.id)}
               >
                 <Bookmark
-                  className={`h-4 w-4 ${lightboxImage.saved ? "fill-amber-500 text-amber-500" : ""}`}
+                  className={`h-4 w-4 ${lightboxImage.saved ? "fill-foreground text-foreground" : ""}`}
                 />
               </Button>
               <Button

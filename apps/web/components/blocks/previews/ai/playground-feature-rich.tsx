@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useCallback } from "react"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { Badge } from "@/components/ui/badge"
-import { Switch } from "@/components/ui/switch"
+import { useState, useCallback } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import {
   Play,
   RotateCcw,
@@ -23,31 +23,81 @@ import {
   Braces,
   BookmarkPlus,
   Columns2,
-} from "lucide-react"
+} from "lucide-react";
 
 interface ModelConfig {
-  value: string
-  label: string
-  provider: string
-  inputCostPer1k: number
-  outputCostPer1k: number
+  value: string;
+  label: string;
+  provider: string;
+  inputCostPer1k: number;
+  outputCostPer1k: number;
 }
 
 const MODELS: ModelConfig[] = [
-  { value: "gpt-4o", label: "GPT-4o", provider: "OpenAI", inputCostPer1k: 0.005, outputCostPer1k: 0.015 },
-  { value: "claude-3.5-sonnet", label: "Claude 3.5 Sonnet", provider: "Anthropic", inputCostPer1k: 0.003, outputCostPer1k: 0.015 },
-  { value: "gemini-pro", label: "Gemini Pro", provider: "Google", inputCostPer1k: 0.00125, outputCostPer1k: 0.005 },
-  { value: "gpt-4o-mini", label: "GPT-4o Mini", provider: "OpenAI", inputCostPer1k: 0.00015, outputCostPer1k: 0.0006 },
-  { value: "claude-3-haiku", label: "Claude 3 Haiku", provider: "Anthropic", inputCostPer1k: 0.00025, outputCostPer1k: 0.00125 },
-]
+  {
+    value: "gpt-4o",
+    label: "GPT-4o",
+    provider: "OpenAI",
+    inputCostPer1k: 0.005,
+    outputCostPer1k: 0.015,
+  },
+  {
+    value: "claude-3.5-sonnet",
+    label: "Claude 3.5 Sonnet",
+    provider: "Anthropic",
+    inputCostPer1k: 0.003,
+    outputCostPer1k: 0.015,
+  },
+  {
+    value: "gemini-pro",
+    label: "Gemini Pro",
+    provider: "Google",
+    inputCostPer1k: 0.00125,
+    outputCostPer1k: 0.005,
+  },
+  {
+    value: "gpt-4o-mini",
+    label: "GPT-4o Mini",
+    provider: "OpenAI",
+    inputCostPer1k: 0.00015,
+    outputCostPer1k: 0.0006,
+  },
+  {
+    value: "claude-3-haiku",
+    label: "Claude 3 Haiku",
+    provider: "Anthropic",
+    inputCostPer1k: 0.00025,
+    outputCostPer1k: 0.00125,
+  },
+];
 
 const PRESETS = [
   { value: "default", label: "Default", systemPrompt: "You are a helpful assistant." },
-  { value: "coder", label: "Code Assistant", systemPrompt: "You are an expert programmer. Write clean, well-documented code with clear explanations." },
-  { value: "writer", label: "Creative Writer", systemPrompt: "You are a creative writing assistant. Write engaging, vivid prose with attention to narrative structure." },
-  { value: "analyst", label: "Data Analyst", systemPrompt: "You are a data analyst. Provide structured analysis with insights, trends, and actionable recommendations." },
-  { value: "tutor", label: "Tutor", systemPrompt: "You are a patient tutor. Explain concepts step-by-step and check for understanding." },
-]
+  {
+    value: "coder",
+    label: "Code Assistant",
+    systemPrompt:
+      "You are an expert programmer. Write clean, well-documented code with clear explanations.",
+  },
+  {
+    value: "writer",
+    label: "Creative Writer",
+    systemPrompt:
+      "You are a creative writing assistant. Write engaging, vivid prose with attention to narrative structure.",
+  },
+  {
+    value: "analyst",
+    label: "Data Analyst",
+    systemPrompt:
+      "You are a data analyst. Provide structured analysis with insights, trends, and actionable recommendations.",
+  },
+  {
+    value: "tutor",
+    label: "Tutor",
+    systemPrompt:
+      "You are a patient tutor. Explain concepts step-by-step and check for understanding.",
+  },
+];
 
 const SAMPLE_RESPONSES: Record<string, string> = {
   "gpt-4o": `Here's the response from GPT-4o:
@@ -75,59 +125,56 @@ Key strengths include fast response times, low cost, and solid general performan
 The fastest model in the Claude family, optimized for near-instant responses. Ideal for high-throughput applications that need quick, accurate outputs.
 
 Key strengths include speed, cost efficiency, and reliable structured outputs.`,
-}
+};
 
 function estimateTokens(text: string): number {
-  return Math.ceil(text.split(/\s+/).filter(Boolean).length * 1.3)
+  return Math.ceil(text.split(/\s+/).filter(Boolean).length * 1.3);
 }
 
 interface ComparisonColumn {
-  model: string
-  response: string
-  isRunning: boolean
-  tokens: { prompt: number; completion: number }
+  model: string;
+  response: string;
+  isRunning: boolean;
+  tokens: { prompt: number; completion: number };
 }
 
 export default function PlaygroundFeatureRich() {
   const [systemPrompt, setSystemPrompt] = useState(
     "You are a helpful assistant. Respond concisely and accurately."
-  )
-  const [userMessage, setUserMessage] = useState("")
-  const [preset, setPreset] = useState("default")
-  const [jsonMode, setJsonMode] = useState(false)
-  const [comparisonMode, setComparisonMode] = useState(false)
-  const [temperature, setTemperature] = useState(0.7)
-  const [maxTokens, setMaxTokens] = useState(1024)
+  );
+  const [userMessage, setUserMessage] = useState("");
+  const [preset, setPreset] = useState("default");
+  const [jsonMode, setJsonMode] = useState(false);
+  const [comparisonMode, setComparisonMode] = useState(false);
+  const [temperature, setTemperature] = useState(0.7);
+  const [maxTokens, setMaxTokens] = useState(1024);
 
   const [leftColumn, setLeftColumn] = useState<ComparisonColumn>({
     model: "gpt-4o",
     response: "",
     isRunning: false,
     tokens: { prompt: 0, completion: 0 },
-  })
+  });
 
   const [rightColumn, setRightColumn] = useState<ComparisonColumn>({
     model: "claude-3.5-sonnet",
     response: "",
     isRunning: false,
     tokens: { prompt: 0, completion: 0 },
-  })
+  });
 
   const handlePresetChange = (value: string) => {
-    setPreset(value)
-    const selected = PRESETS.find((p) => p.value === value)
+    setPreset(value);
+    const selected = PRESETS.find((p) => p.value === value);
     if (selected) {
-      setSystemPrompt(selected.systemPrompt)
+      setSystemPrompt(selected.systemPrompt);
     }
-  }
+  };
 
   const simulateResponse = useCallback(
-    (
-      modelValue: string,
-      setColumn: React.Dispatch<React.SetStateAction<ComparisonColumn>>
-    ) => {
-      const promptTk = estimateTokens(systemPrompt + " " + userMessage)
-      let fullResponse = SAMPLE_RESPONSES[modelValue] || SAMPLE_RESPONSES["gpt-4o"]!
+    (modelValue: string, setColumn: React.Dispatch<React.SetStateAction<ComparisonColumn>>) => {
+      const promptTk = estimateTokens(systemPrompt + " " + userMessage);
+      let fullResponse = SAMPLE_RESPONSES[modelValue] || SAMPLE_RESPONSES["gpt-4o"]!;
 
       if (jsonMode) {
         fullResponse = JSON.stringify(
@@ -143,7 +190,7 @@ export default function PlaygroundFeatureRich() {
           },
           null,
           2
-        )
+        );
       }
 
       setColumn((prev) => ({
@@ -151,20 +198,20 @@ export default function PlaygroundFeatureRich() {
         response: "",
         isRunning: true,
         tokens: { prompt: promptTk, completion: 0 },
-      }))
+      }));
 
-      let i = 0
+      let i = 0;
       const interval = setInterval(() => {
-        i += 3
+        i += 3;
         if (i >= fullResponse.length) {
-          const completionTk = estimateTokens(fullResponse)
+          const completionTk = estimateTokens(fullResponse);
           setColumn((prev) => ({
             ...prev,
             response: fullResponse,
             isRunning: false,
             tokens: { prompt: promptTk, completion: completionTk },
-          }))
-          clearInterval(interval)
+          }));
+          clearInterval(interval);
         } else {
           setColumn((prev) => ({
             ...prev,
@@ -173,34 +220,34 @@ export default function PlaygroundFeatureRich() {
               ...prev.tokens,
               completion: estimateTokens(fullResponse.slice(0, i)),
             },
-          }))
+          }));
         }
-      }, 15)
+      }, 15);
     },
     [systemPrompt, userMessage, jsonMode, temperature, maxTokens]
-  )
+  );
 
   const handleSubmit = () => {
-    if (!userMessage.trim()) return
-    simulateResponse(leftColumn.model, setLeftColumn)
+    if (!userMessage.trim()) return;
+    simulateResponse(leftColumn.model, setLeftColumn);
     if (comparisonMode) {
-      simulateResponse(rightColumn.model, setRightColumn)
+      simulateResponse(rightColumn.model, setRightColumn);
     }
-  }
+  };
 
   const handleClear = () => {
-    setUserMessage("")
+    setUserMessage("");
     setLeftColumn((prev) => ({
       ...prev,
       response: "",
       tokens: { prompt: 0, completion: 0 },
-    }))
+    }));
     setRightColumn((prev) => ({
       ...prev,
       response: "",
       tokens: { prompt: 0, completion: 0 },
-    }))
-  }
+    }));
+  };
 
   const handleExport = () => {
     const exportData = {
@@ -211,32 +258,35 @@ export default function PlaygroundFeatureRich() {
       results: comparisonMode
         ? [
             { model: leftColumn.model, response: leftColumn.response, tokens: leftColumn.tokens },
-            { model: rightColumn.model, response: rightColumn.response, tokens: rightColumn.tokens },
+            {
+              model: rightColumn.model,
+              response: rightColumn.response,
+              tokens: rightColumn.tokens,
+            },
           ]
         : [{ model: leftColumn.model, response: leftColumn.response, tokens: leftColumn.tokens }],
       exportedAt: new Date().toISOString(),
-    }
+    };
     const blob = new Blob([JSON.stringify(exportData, null, 2)], {
       type: "application/json",
-    })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement("a")
-    a.href = url
-    a.download = "playground-export.json"
-    a.click()
-    URL.revokeObjectURL(url)
-  }
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "playground-export.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const getCostEstimate = (col: ComparisonColumn): string => {
-    const modelConfig = MODELS.find((m) => m.value === col.model)
-    if (!modelConfig) return "$0.000"
-    const inputCost = (col.tokens.prompt / 1000) * modelConfig.inputCostPer1k
-    const outputCost =
-      (col.tokens.completion / 1000) * modelConfig.outputCostPer1k
-    return `$${(inputCost + outputCost).toFixed(4)}`
-  }
+    const modelConfig = MODELS.find((m) => m.value === col.model);
+    if (!modelConfig) return "$0.000";
+    const inputCost = (col.tokens.prompt / 1000) * modelConfig.inputCostPer1k;
+    const outputCost = (col.tokens.completion / 1000) * modelConfig.outputCostPer1k;
+    return `$${(inputCost + outputCost).toFixed(4)}`;
+  };
 
-  const isRunning = leftColumn.isRunning || rightColumn.isRunning
+  const isRunning = leftColumn.isRunning || rightColumn.isRunning;
 
   const renderResponseColumn = (
     column: ComparisonColumn,
@@ -263,37 +313,35 @@ export default function PlaygroundFeatureRich() {
       )}
 
       <div className="flex items-center gap-2">
-        <Badge variant="outline" className="text-[10px] font-mono">
+        <Badge variant="outline" className="font-mono text-[10px]">
           In: {column.tokens.prompt}
         </Badge>
-        <Badge variant="outline" className="text-[10px] font-mono">
+        <Badge variant="outline" className="font-mono text-[10px]">
           Out: {column.tokens.completion}
         </Badge>
-        <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
+        <div className="text-muted-foreground flex items-center gap-1 text-[10px]">
           <DollarSign className="h-3 w-3" />
           <span className="font-mono">{getCostEstimate(column)}</span>
         </div>
       </div>
 
-      <div className="min-h-[140px] flex-1 rounded-md border bg-muted/50 p-3 text-sm">
+      <div className="bg-muted/50 min-h-[140px] flex-1 rounded-md border p-3 text-sm">
         {column.response ? (
           <div className={`whitespace-pre-wrap ${jsonMode ? "font-mono text-xs" : ""}`}>
             {column.response}
             {column.isRunning && (
-              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-foreground" />
+              <span className="bg-foreground ml-0.5 inline-block h-4 w-0.5 animate-pulse" />
             )}
           </div>
         ) : (
-          <p className="text-muted-foreground">
-            Response will appear here...
-          </p>
+          <p className="text-muted-foreground">Response will appear here...</p>
         )}
       </div>
     </div>
-  )
+  );
 
   return (
-    <div className="mx-auto flex h-[750px] w-full max-w-4xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col rounded-lg border sm:h-[750px]">
       {/* Header */}
       <div className="flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-3">
@@ -315,8 +363,8 @@ export default function PlaygroundFeatureRich() {
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 rounded-md border px-2.5 py-1.5">
-            <Braces className="h-3.5 w-3.5 text-muted-foreground" />
-            <Label className="text-xs cursor-pointer" htmlFor="json-mode">
+            <Braces className="text-muted-foreground h-3.5 w-3.5" />
+            <Label className="cursor-pointer text-xs" htmlFor="json-mode">
               JSON
             </Label>
             <Switch
@@ -328,8 +376,8 @@ export default function PlaygroundFeatureRich() {
             />
           </div>
           <div className="flex items-center gap-2 rounded-md border px-2.5 py-1.5">
-            <Columns2 className="h-3.5 w-3.5 text-muted-foreground" />
-            <Label className="text-xs cursor-pointer" htmlFor="compare-mode">
+            <Columns2 className="text-muted-foreground h-3.5 w-3.5" />
+            <Label className="cursor-pointer text-xs" htmlFor="compare-mode">
               Compare
             </Label>
             <Switch
@@ -349,12 +397,7 @@ export default function PlaygroundFeatureRich() {
             <Download className="mr-1.5 h-3.5 w-3.5" />
             Export
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleClear}
-            disabled={isRunning}
-          >
+          <Button variant="ghost" size="sm" onClick={handleClear} disabled={isRunning}>
             <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
             Reset
           </Button>
@@ -410,21 +453,16 @@ export default function PlaygroundFeatureRich() {
 
           {/* Response Area */}
           <div className="space-y-2">
-            <Label>
-              {comparisonMode ? "Model Comparison" : "Response"}
-            </Label>
-            <div
-              className={`flex gap-4 ${comparisonMode ? "" : "flex-col"}`}
-            >
+            <Label>{comparisonMode ? "Model Comparison" : "Response"}</Label>
+            <div className={`flex gap-4 ${comparisonMode ? "" : "flex-col"}`}>
               {renderResponseColumn(leftColumn, setLeftColumn, true)}
-              {comparisonMode &&
-                renderResponseColumn(rightColumn, setRightColumn, true)}
+              {comparisonMode && renderResponseColumn(rightColumn, setRightColumn, true)}
             </div>
           </div>
         </div>
 
         {/* Right Sidebar - Parameters */}
-        <div className="flex w-52 shrink-0 flex-col border-l">
+        <div className="hidden sm:flex sm:w-52 sm:shrink-0 sm:flex-col sm:border-l">
           <div className="border-b px-3 py-3">
             <span className="text-sm font-medium">Parameters</span>
           </div>
@@ -432,7 +470,7 @@ export default function PlaygroundFeatureRich() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-xs">Temperature</Label>
-                <span className="text-xs font-mono text-muted-foreground">
+                <span className="text-muted-foreground font-mono text-xs">
                   {temperature.toFixed(1)}
                 </span>
               </div>
@@ -442,13 +480,11 @@ export default function PlaygroundFeatureRich() {
                 max={2}
                 step={0.1}
                 value={temperature}
-                onChange={(e) =>
-                  setTemperature(parseFloat(e.target.value))
-                }
-                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+                onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                className="bg-muted accent-primary h-2 w-full cursor-pointer appearance-none rounded-lg"
                 disabled={isRunning}
               />
-              <div className="flex justify-between text-[10px] text-muted-foreground">
+              <div className="text-muted-foreground flex justify-between text-[10px]">
                 <span>Precise</span>
                 <span>Creative</span>
               </div>
@@ -457,9 +493,7 @@ export default function PlaygroundFeatureRich() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-xs">Max Tokens</Label>
-                <span className="text-xs font-mono text-muted-foreground">
-                  {maxTokens}
-                </span>
+                <span className="text-muted-foreground font-mono text-xs">{maxTokens}</span>
               </div>
               <input
                 type="range"
@@ -467,13 +501,11 @@ export default function PlaygroundFeatureRich() {
                 max={4096}
                 step={1}
                 value={maxTokens}
-                onChange={(e) =>
-                  setMaxTokens(parseInt(e.target.value))
-                }
-                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+                onChange={(e) => setMaxTokens(parseInt(e.target.value))}
+                className="bg-muted accent-primary h-2 w-full cursor-pointer appearance-none rounded-lg"
                 disabled={isRunning}
               />
-              <div className="flex justify-between text-[10px] text-muted-foreground">
+              <div className="text-muted-foreground flex justify-between text-[10px]">
                 <span>1</span>
                 <span>4096</span>
               </div>
@@ -484,26 +516,20 @@ export default function PlaygroundFeatureRich() {
             {/* Cost Summary */}
             <div className="space-y-2">
               <Label className="text-xs">Cost Estimate</Label>
-              <div className="rounded-md border bg-muted/50 p-2 text-xs">
+              <div className="bg-muted/50 rounded-md border p-2 text-xs">
                 <div className="space-y-1.5">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">
-                      {MODELS.find((m) => m.value === leftColumn.model)
-                        ?.label || "Model A"}
+                      {MODELS.find((m) => m.value === leftColumn.model)?.label || "Model A"}
                     </span>
-                    <span className="font-mono font-medium">
-                      {getCostEstimate(leftColumn)}
-                    </span>
+                    <span className="font-mono font-medium">{getCostEstimate(leftColumn)}</span>
                   </div>
                   {comparisonMode && (
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">
-                        {MODELS.find((m) => m.value === rightColumn.model)
-                          ?.label || "Model B"}
+                        {MODELS.find((m) => m.value === rightColumn.model)?.label || "Model B"}
                       </span>
-                      <span className="font-mono font-medium">
-                        {getCostEstimate(rightColumn)}
-                      </span>
+                      <span className="font-mono font-medium">{getCostEstimate(rightColumn)}</span>
                     </div>
                   )}
                   <Separator />
@@ -512,13 +538,9 @@ export default function PlaygroundFeatureRich() {
                     <span className="font-mono">
                       $
                       {(
-                        parseFloat(
-                          getCostEstimate(leftColumn).replace("$", "")
-                        ) +
+                        parseFloat(getCostEstimate(leftColumn).replace("$", "")) +
                         (comparisonMode
-                          ? parseFloat(
-                              getCostEstimate(rightColumn).replace("$", "")
-                            )
+                          ? parseFloat(getCostEstimate(rightColumn).replace("$", ""))
                           : 0)
                       ).toFixed(4)}
                     </span>
@@ -532,33 +554,29 @@ export default function PlaygroundFeatureRich() {
             {/* Token Summary */}
             <div className="space-y-2">
               <Label className="text-xs">Token Summary</Label>
-              <div className="rounded-md border bg-muted/50 p-2 text-xs text-muted-foreground">
+              <div className="bg-muted/50 text-muted-foreground rounded-md border p-2 text-xs">
                 <div className="space-y-1">
                   <div className="flex justify-between">
                     <span>Total Input</span>
-                    <span className="font-mono font-medium text-foreground">
-                      {leftColumn.tokens.prompt +
-                        (comparisonMode ? rightColumn.tokens.prompt : 0)}
+                    <span className="text-foreground font-mono font-medium">
+                      {leftColumn.tokens.prompt + (comparisonMode ? rightColumn.tokens.prompt : 0)}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Total Output</span>
-                    <span className="font-mono font-medium text-foreground">
+                    <span className="text-foreground font-mono font-medium">
                       {leftColumn.tokens.completion +
-                        (comparisonMode
-                          ? rightColumn.tokens.completion
-                          : 0)}
+                        (comparisonMode ? rightColumn.tokens.completion : 0)}
                     </span>
                   </div>
                   <Separator />
                   <div className="flex justify-between font-medium">
                     <span>Grand Total</span>
-                    <span className="font-mono text-foreground">
+                    <span className="text-foreground font-mono">
                       {leftColumn.tokens.prompt +
                         leftColumn.tokens.completion +
                         (comparisonMode
-                          ? rightColumn.tokens.prompt +
-                            rightColumn.tokens.completion
+                          ? rightColumn.tokens.prompt + rightColumn.tokens.completion
                           : 0)}
                     </span>
                   </div>
@@ -569,5 +587,5 @@ export default function PlaygroundFeatureRich() {
         </div>
       </div>
     </div>
-  )
+  );
 }

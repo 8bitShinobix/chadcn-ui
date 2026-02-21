@@ -1,0 +1,15 @@
+{
+  "name": "Template Browser",
+  "slug": "template-browser",
+  "category": "design",
+  "description": "Browsable template gallery with categories, previews, and quick-use actions for design tools.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "card", "badge", "tabs", "input", "separator", "avatar", "dropdown-menu", "dialog"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["templates", "gallery", "browse", "design", "starter", "presets", "themes"]
+}

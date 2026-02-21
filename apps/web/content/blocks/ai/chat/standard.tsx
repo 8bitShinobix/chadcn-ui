@@ -122,7 +122,7 @@ This is what a real AI response looks like in production.`
     date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
   return (
-    <div className="mx-auto flex h-[600px] w-full max-w-2xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[500px] w-full max-w-2xl flex-col rounded-lg border md:h-[600px]">
       <div className="flex items-center justify-between border-b px-4 py-3">
         <div>
           <h2 className="font-semibold">AI Chat</h2>

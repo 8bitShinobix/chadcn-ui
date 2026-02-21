@@ -128,14 +128,12 @@ export function TokenUsage() {
   const projectedSpend = (currentMonthSpend / daysElapsed) * daysInMonth
 
   return (
-    <div className="mx-auto w-full max-w-5xl space-y-6">
+    <div className="mx-auto w-full max-w-5xl space-y-4 md:space-y-6">
       {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Token Usage Dashboard</h2>
-          <p className="text-sm text-muted-foreground">
-            Comprehensive usage analytics and cost management
-          </p>
+          <h2 className="text-base font-semibold md:text-lg">Token Usage Dashboard</h2>
+          <p className="text-xs text-muted-foreground md:text-sm">Comprehensive usage analytics and cost management</p>
         </div>
         <div className="flex items-center gap-2">
           <Select value={dateRange} onValueChange={setDateRange}>
@@ -287,12 +285,11 @@ export function TokenUsage() {
       {/* Model Breakdown Table */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm font-medium">
-            Usage by Model
-          </CardTitle>
+          <CardTitle className="text-sm font-medium">Usage by Model</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
+          <div className="overflow-x-auto">
+            <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Model</TableHead>
@@ -343,6 +340,7 @@ export function TokenUsage() {
               })}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 
@@ -350,17 +348,14 @@ export function TokenUsage() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
-            <CardTitle className="text-sm font-medium">
-              Team &amp; Project Breakdown
-            </CardTitle>
-            <CardDescription>
-              Usage by team and project across your organization
-            </CardDescription>
+            <CardTitle className="text-sm font-medium">Team &amp; Project Breakdown</CardTitle>
+            <CardDescription>Usage by team and project across your organization</CardDescription>
           </div>
           <Users className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <Table>
+          <div className="overflow-x-auto">
+            <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Team</TableHead>
@@ -408,6 +403,7 @@ export function TokenUsage() {
               ))}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 

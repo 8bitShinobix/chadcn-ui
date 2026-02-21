@@ -293,14 +293,14 @@ export function AIPlayground() {
   )
 
   return (
-    <div className="mx-auto flex h-[750px] w-full max-w-4xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[600px] w-full flex-col rounded-lg border md:h-[750px] md:max-w-4xl md:flex-col lg:flex-row">
       {/* Header */}
-      <div className="flex items-center justify-between border-b px-4 py-3">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
+        <div className="flex flex-wrap items-center gap-2 md:gap-3">
           <h2 className="font-semibold">Playground</h2>
-          <Separator orientation="vertical" className="h-5" />
+          <Separator orientation="vertical" className="hidden h-5 md:block" />
           <Select value={preset} onValueChange={handlePresetChange}>
-            <SelectTrigger className="h-8 w-[160px] text-xs">
+            <SelectTrigger className="h-8 w-[140px] text-xs md:w-[160px]">
               <BookmarkPlus className="mr-1.5 h-3.5 w-3.5" />
               <SelectValue />
             </SelectTrigger>
@@ -313,14 +313,14 @@ export function AIPlayground() {
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="flex items-center gap-2 rounded-md border px-2.5 py-1.5">
             <Braces className="h-3.5 w-3.5 text-muted-foreground" />
-            <Label className="text-xs cursor-pointer" htmlFor="json-mode">
+            <Label className="cursor-pointer text-xs" htmlFor="json-mode-fr">
               JSON
             </Label>
             <Switch
-              id="json-mode"
+              id="json-mode-fr"
               size="sm"
               checked={jsonMode}
               onCheckedChange={setJsonMode}
@@ -329,39 +329,29 @@ export function AIPlayground() {
           </div>
           <div className="flex items-center gap-2 rounded-md border px-2.5 py-1.5">
             <Columns2 className="h-3.5 w-3.5 text-muted-foreground" />
-            <Label className="text-xs cursor-pointer" htmlFor="compare-mode">
+            <Label className="cursor-pointer text-xs" htmlFor="compare-mode-fr">
               Compare
             </Label>
             <Switch
-              id="compare-mode"
+              id="compare-mode-fr"
               size="sm"
               checked={comparisonMode}
               onCheckedChange={setComparisonMode}
               disabled={isRunning}
             />
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleExport}
-            disabled={!leftColumn.response}
-          >
+          <Button variant="outline" size="sm" onClick={handleExport} disabled={!leftColumn.response} className="hidden sm:flex">
             <Download className="mr-1.5 h-3.5 w-3.5" />
             Export
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleClear}
-            disabled={isRunning}
-          >
+          <Button variant="ghost" size="sm" onClick={handleClear} disabled={isRunning}>
             <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-            Reset
+            <span className="hidden sm:inline">Reset</span>
           </Button>
         </div>
       </div>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 flex-col overflow-hidden md:flex-row">
         {/* Main Content */}
         <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4">
           <div className="space-y-2">
@@ -410,12 +400,8 @@ export function AIPlayground() {
 
           {/* Response Area */}
           <div className="space-y-2">
-            <Label>
-              {comparisonMode ? "Model Comparison" : "Response"}
-            </Label>
-            <div
-              className={`flex gap-4 ${comparisonMode ? "" : "flex-col"}`}
-            >
+            <Label>{comparisonMode ? "Model Comparison" : "Response"}</Label>
+            <div className={`flex gap-4 ${comparisonMode ? "flex-col lg:flex-row" : "flex-col"}`}>
               {renderResponseColumn(leftColumn, setLeftColumn, true)}
               {comparisonMode &&
                 renderResponseColumn(rightColumn, setRightColumn, true)}
@@ -424,7 +410,7 @@ export function AIPlayground() {
         </div>
 
         {/* Right Sidebar - Parameters */}
-        <div className="flex w-52 shrink-0 flex-col border-l">
+        <div className="hidden w-full shrink-0 flex-col border-t md:w-52 md:border-l md:border-t-0 lg:flex">
           <div className="border-b px-3 py-3">
             <span className="text-sm font-medium">Parameters</span>
           </div>

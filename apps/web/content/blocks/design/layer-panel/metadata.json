@@ -1,0 +1,15 @@
+{
+  "name": "Layer Panel",
+  "slug": "layer-panel",
+  "category": "design",
+  "description": "Layer management panel with visibility toggles, reordering, grouping, and lock controls.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "separator", "badge", "tooltip", "select", "checkbox", "collapsible", "dropdown-menu", "input"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["layer", "panel", "layers", "visibility", "order", "group", "design", "canvas"]
+}

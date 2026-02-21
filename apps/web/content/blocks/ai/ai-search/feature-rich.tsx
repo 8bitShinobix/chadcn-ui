@@ -157,16 +157,14 @@ export function AISearch() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl gap-0 rounded-lg border">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-0 rounded-lg border md:flex-row">
       {/* Main content area */}
-      <div className="flex min-w-0 flex-1 flex-col p-6">
+      <div className="flex min-w-0 flex-1 flex-col p-4 md:p-6">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-semibold">AI Search</h2>
-              <p className="text-sm text-muted-foreground">
-                Deep research with AI-powered answers
-              </p>
+              <h2 className="text-base font-semibold md:text-lg">AI Search</h2>
+              <p className="text-xs text-muted-foreground md:text-sm">Deep research with AI-powered answers</p>
             </div>
             {hasResult && (
               <Button
@@ -314,12 +312,10 @@ export function AISearch() {
 
       {/* Source sidebar */}
       {hasResult && (
-        <div className="w-72 shrink-0 border-l bg-muted/30 p-4">
+        <div className="hidden w-full shrink-0 border-t p-4 md:block md:w-72 md:border-l md:border-t-0">
           <div className="mb-3 flex items-center justify-between">
             <h3 className="text-sm font-semibold">Sources</h3>
-            <Badge variant="secondary" className="text-[10px]">
-              {DEMO_SOURCES.length} found
-            </Badge>
+            <Badge variant="secondary" className="text-[10px]">{DEMO_SOURCES.length} found</Badge>
           </div>
           <div className="space-y-3">
             {DEMO_SOURCES.map((source) => (

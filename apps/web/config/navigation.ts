@@ -8,6 +8,8 @@ import {
   Rocket,
   CircleAlert,
   Sparkles,
+  Palette,
+  Cloud,
 } from "lucide-react";
 
 // Types
@@ -123,6 +125,32 @@ export const blockCategories: NavCategory[] = [
       { title: "404 Page", href: "/blocks/states/404" },
       { title: "500 Page", href: "/blocks/states/500" },
       { title: "Maintenance", href: "/blocks/states/maintenance" },
+    ],
+  },
+  {
+    title: "Design",
+    icon: Palette,
+    items: [
+      { title: "Color Picker", href: "/blocks/design/color-picker" },
+      { title: "Layer Panel", href: "/blocks/design/layer-panel" },
+      { title: "Typography Selector", href: "/blocks/design/typography-selector" },
+      { title: "Asset Gallery", href: "/blocks/design/asset-gallery" },
+      { title: "Design Token Editor", href: "/blocks/design/token-editor" },
+      { title: "Template Browser", href: "/blocks/design/template-browser" },
+      { title: "Export Dialog", href: "/blocks/design/export-dialog" },
+    ],
+  },
+  {
+    title: "Cloud",
+    icon: Cloud,
+    items: [
+      { title: "Deployment Status", href: "/blocks/cloud/deployment-status" },
+      { title: "Environment Variables", href: "/blocks/cloud/env-variables" },
+      { title: "Domain Manager", href: "/blocks/cloud/domain-manager" },
+      { title: "Usage Dashboard", href: "/blocks/cloud/usage-dashboard" },
+      { title: "Region Selector", href: "/blocks/cloud/region-selector" },
+      { title: "Service Monitor", href: "/blocks/cloud/service-monitor" },
+      { title: "Storage Browser", href: "/blocks/cloud/storage-browser" },
     ],
   },
 ];

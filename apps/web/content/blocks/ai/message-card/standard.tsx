@@ -310,53 +310,20 @@ export function MessageCard() {
                 )}
               </div>
 
-              <div
-                className={`flex items-center gap-1 ${
-                  msg.role === "user" ? "justify-end" : ""
-                }`}
-              >
-                <span className="mr-2 text-xs text-muted-foreground">
-                  {msg.timestamp}
-                </span>
+              <div className={`flex items-center gap-1 ${msg.role === "user" ? "justify-end" : ""}`}>
+                <span className="mr-2 text-xs text-muted-foreground">{msg.timestamp}</span>
                 {msg.role === "assistant" && (
                   <div className="flex items-center gap-0.5 opacity-0 transition-opacity group-hover:opacity-100">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                      onClick={() => handleCopy(msg.id, msg.content)}
-                    >
-                      {copiedId === msg.id ? (
-                        <Check className="h-3.5 w-3.5" />
-                      ) : (
-                        <Copy className="h-3.5 w-3.5" />
-                      )}
+                    <Button variant="ghost" size="icon" className="h-7 w-7 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0" onClick={() => handleCopy(msg.id, msg.content)}>
+                      {copiedId === msg.id ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
                     </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                    >
+                    <Button variant="ghost" size="icon" className="h-7 w-7 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0">
                       <RotateCcw className="h-3.5 w-3.5" />
                     </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className={`h-7 w-7 ${
-                        feedback[msg.id] === "up" ? "text-emerald-500" : ""
-                      }`}
-                      onClick={() => handleFeedback(msg.id, "up")}
-                    >
+                    <Button variant="ghost" size="icon" className={`h-7 w-7 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0 ${feedback[msg.id] === "up" ? "text-emerald-500" : ""}`} onClick={() => handleFeedback(msg.id, "up")}>
                       <ThumbsUp className="h-3.5 w-3.5" />
                     </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className={`h-7 w-7 ${
-                        feedback[msg.id] === "down" ? "text-red-500" : ""
-                      }`}
-                      onClick={() => handleFeedback(msg.id, "down")}
-                    >
+                    <Button variant="ghost" size="icon" className={`h-7 w-7 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0 ${feedback[msg.id] === "down" ? "text-red-500" : ""}`} onClick={() => handleFeedback(msg.id, "down")}>
                       <ThumbsDown className="h-3.5 w-3.5" />
                     </Button>
                   </div>

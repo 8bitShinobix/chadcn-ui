@@ -117,14 +117,14 @@ export function GenerationGallery() {
     date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl gap-6 rounded-lg border p-6">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 rounded-lg border p-4 md:flex-row md:gap-6 md:p-6">
       <div className="flex-1 space-y-5">
         <div className="space-y-1">
-          <h2 className="flex items-center gap-2 font-semibold">
-            <Sparkles className="h-5 w-5 text-amber-500" />
+          <h2 className="flex items-center gap-2 text-base font-semibold md:text-lg">
+            <Sparkles className="h-4 w-4 text-amber-500 md:h-5 md:w-5" />
             Image Generation
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-muted-foreground md:text-sm">
             Generate and refine AI images
           </p>
         </div>
@@ -134,7 +134,7 @@ export function GenerationGallery() {
             e.preventDefault()
             handleGenerate()
           }}
-          className="flex gap-2"
+          className="flex flex-col gap-2 sm:flex-row"
         >
           <Input
             value={prompt}
@@ -143,7 +143,7 @@ export function GenerationGallery() {
             className="flex-1"
             disabled={isGenerating}
           />
-          <Button type="submit" disabled={!prompt.trim() || isGenerating}>
+          <Button type="submit" disabled={!prompt.trim() || isGenerating} className="w-full sm:w-auto">
             {isGenerating ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : (
@@ -153,39 +153,23 @@ export function GenerationGallery() {
           </Button>
         </form>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="flex items-center gap-1.5">
-            <span className="text-xs font-medium text-muted-foreground">
-              Aspect Ratio
-            </span>
+        <div className="flex flex-wrap items-center gap-3 md:gap-4">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-xs font-medium text-muted-foreground">Aspect Ratio</span>
             <div className="flex gap-1">
               {ASPECT_RATIOS.map((ar) => (
-                <Button
-                  key={ar.label}
-                  variant={aspectRatio === ar.value ? "default" : "outline"}
-                  size="sm"
-                  className="h-7 px-2.5 text-xs"
-                  onClick={() => setAspectRatio(ar.value)}
-                >
+                <Button key={ar.label} variant={aspectRatio === ar.value ? "default" : "outline"} size="sm" className="h-7 px-2.5 text-xs" onClick={() => setAspectRatio(ar.value)}>
                   {ar.label}
                 </Button>
               ))}
             </div>
           </div>
-          <Separator orientation="vertical" className="h-6" />
-          <div className="flex items-center gap-1.5">
-            <span className="text-xs font-medium text-muted-foreground">
-              Style
-            </span>
-            <div className="flex gap-1">
+          <Separator orientation="vertical" className="hidden h-6 md:block" />
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-xs font-medium text-muted-foreground">Style</span>
+            <div className="flex flex-wrap gap-1">
               {STYLE_PRESETS.map((style) => (
-                <Button
-                  key={style}
-                  variant={activeStyle === style ? "default" : "outline"}
-                  size="sm"
-                  className="h-7 px-2.5 text-xs"
-                  onClick={() => setActiveStyle(style)}
-                >
+                <Button key={style} variant={activeStyle === style ? "default" : "outline"} size="sm" className="h-7 px-2.5 text-xs" onClick={() => setActiveStyle(style)}>
                   {style}
                 </Button>
               ))}
@@ -194,18 +178,13 @@ export function GenerationGallery() {
         </div>
 
         {isGenerating ? (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className={`${aspectRatio} animate-pulse rounded-lg bg-muted`}
-              />
+              <div key={i} className={`${aspectRatio} animate-pulse rounded-lg bg-muted`} />
             ))}
           </div>
         ) : images.length > 0 ? (
-          <div
-            className={`grid gap-3 ${images.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}
-          >
+          <div className={`grid gap-3 ${images.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
             {images.map((image, index) => (
               <div key={image.id} className="group relative">
                 <div
@@ -255,32 +234,22 @@ export function GenerationGallery() {
         )}
       </div>
 
-      <div className="w-56 shrink-0 space-y-3">
+      <div className="hidden w-full shrink-0 space-y-3 border-t pt-4 md:block md:w-56 md:border-l md:border-t-0 md:pt-0">
         <h3 className="flex items-center gap-1.5 text-sm font-medium">
           <Clock className="h-4 w-4 text-muted-foreground" />
           Prompt History
         </h3>
         <Separator />
         {history.length === 0 ? (
-          <p className="text-xs text-muted-foreground">
-            Your prompt history will appear here
-          </p>
+          <p className="text-xs text-muted-foreground">Your prompt history will appear here</p>
         ) : (
           <div className="space-y-2">
             {history.map((entry) => (
-              <button
-                key={entry.id}
-                className="w-full rounded-md border bg-background p-2.5 text-left transition-colors hover:bg-muted/50"
-                onClick={() => setPrompt(entry.prompt)}
-              >
+              <button key={entry.id} className="w-full rounded-md border bg-background p-2.5 text-left transition-colors hover:bg-muted/50" onClick={() => setPrompt(entry.prompt)}>
                 <p className="truncate text-xs font-medium">{entry.prompt}</p>
                 <div className="mt-1 flex items-center gap-2">
-                  <span className="text-[10px] text-muted-foreground">
-                    {formatTime(entry.timestamp)}
-                  </span>
-                  <Badge variant="secondary" className="h-4 px-1.5 text-[10px]">
-                    {entry.count} images
-                  </Badge>
+                  <span className="text-[10px] text-muted-foreground">{formatTime(entry.timestamp)}</span>
+                  <Badge variant="secondary" className="h-4 px-1.5 text-[10px]">{entry.count} images</Badge>
                 </div>
               </button>
             ))}

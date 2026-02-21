@@ -345,3 +345,10 @@ body {
   background-color: var(--border-hover);
 }
 
+/* ── Marketing page: shared custom properties ── */
+
+:root {
+  --electric-blue: #0070f3;
+  --electric-purple: #9333ea;
+}
+
