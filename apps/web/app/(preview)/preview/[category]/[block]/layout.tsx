@@ -33,7 +33,7 @@ function PreviewLayoutInner({
   }, [theme])
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-8">
+    <div className="flex min-h-screen items-center justify-center overflow-auto bg-background p-6">
       {children}
     </div>
   )
@@ -47,7 +47,7 @@ export default function PreviewLayout({
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-background p-8">
+        <div className="flex min-h-screen items-center justify-center overflow-auto bg-background p-6">
           {children}
         </div>
       }

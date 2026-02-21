@@ -7,6 +7,7 @@ import {
   CreditCard,
   Rocket,
   CircleAlert,
+  Sparkles,
 } from "lucide-react";
 
 // Types
@@ -33,6 +34,20 @@ export const mainNav: NavItem[] = [
 
 // Sidebar categories
 export const blockCategories: NavCategory[] = [
+  {
+    title: "AI Interfaces",
+    icon: Sparkles,
+    items: [
+      { title: "Chat", href: "/blocks/ai/chat" },
+      { title: "Prompt Input", href: "/blocks/ai/prompt-input" },
+      { title: "Message Card", href: "/blocks/ai/message-card" },
+      { title: "Copilot Sidebar", href: "/blocks/ai/copilot-sidebar" },
+      { title: "AI Search", href: "/blocks/ai/ai-search" },
+      { title: "Playground", href: "/blocks/ai/playground" },
+      { title: "Token Usage", href: "/blocks/ai/token-usage" },
+      { title: "Generation Gallery", href: "/blocks/ai/generation-gallery" },
+    ],
+  },
   {
     title: "Authentication",
     icon: KeyRound,

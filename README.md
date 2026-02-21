@@ -26,6 +26,7 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 
 | Category | Blocks | Description |
 |----------|--------|-------------|
+| **AI Interfaces** | 8 | Chat, prompt input, message card, copilot sidebar, AI search, playground, token usage, generation gallery |
 | **Authentication** | 8 | Login, signup, forgot password, reset password, verify email, two-factor, OAuth buttons, magic link |
 | **Dashboard** | 3 | Sidebar navigation, dashboard shell, top navigation |
 | **Tables** | 4 | Data table, sortable table, filterable table, table actions |
@@ -34,9 +35,19 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 | **Onboarding** | 2 | Multi-step wizard, checklist |
 | **States** | 7 | Empty state, loading skeleton, error state, success, 404 page, 500 page, maintenance |
 
-**35 blocks total**, each with 3 variants (minimal, standard, feature-rich) = **105 component variants**.
+**43 blocks total**, each with 3 variants (minimal, standard, feature-rich) = **129 component variants**.
 
 ### All Blocks
+
+**AI Interfaces** (8 blocks)
+- `ai/chat` — Full AI chat interface with streaming text and markdown rendering
+- `ai/prompt-input` — AI prompt bar with attachments, model selector, and actions
+- `ai/message-card` — AI response cards with reasoning blocks, citations, and feedback
+- `ai/copilot-sidebar` — Side panel AI assistant with tool calls and context awareness
+- `ai/ai-search` — Perplexity-style search with citation-forward answers and source cards
+- `ai/playground` — Model testing sandbox with parameter controls and comparison mode
+- `ai/token-usage` — Token/cost monitoring dashboard with model breakdown and projections
+- `ai/generation-gallery` — AI image generation gallery with lightbox and batch queue
 
 **Authentication** (8 blocks)
 - `auth/login` — Email + password login with OAuth options
@@ -168,7 +179,8 @@ chadcn/
 │       │   └── docs/                # MDX components, TOC, CodeBlock
 │       ├── content/
 │       │   ├── blocks/              # Block source code + metadata
-│       │   │   ├── registry.json    # Auto-generated master index (35 blocks)
+│       │   │   ├── registry.json    # Auto-generated master index (43 blocks)
+│       │   │   ├── ai/              # 8 blocks (chat, prompt-input, playground, ...)
 │       │   │   ├── auth/            # 8 blocks (login, signup, magic-link, ...)
 │       │   │   ├── dashboard/       # 3 blocks (sidebar-nav, dashboard-shell, top-nav)
 │       │   │   ├── tables/          # 4 blocks (data-table, sortable, filterable, actions)
@@ -406,7 +418,7 @@ Server Components are the default. Client Components (`"use client"`) are used o
 
 ## Roadmap
 
-chadcn is in active development. Current status: **All 35 blocks implemented across 7 categories**.
+chadcn is in active development. Current status: **All 43 blocks implemented across 8 categories**.
 
 ### Completed
 - [x] Core layout and navigation (TopBar, Sidebar, Footer, MobileNav)
@@ -420,6 +432,7 @@ chadcn is in active development. Current status: **All 35 blocks implemented acr
 - [x] Billing blocks (5 blocks)
 - [x] Onboarding blocks (2 blocks)
 - [x] States blocks (7 blocks)
+- [x] AI Interfaces blocks (8 blocks)
 - [x] Dev playground with block browser and sandbox mode
 
 ### In Progress
