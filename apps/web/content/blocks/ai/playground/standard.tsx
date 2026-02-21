@@ -124,7 +124,7 @@ export function AIPlayground() {
   }
 
   return (
-    <div className="mx-auto flex h-[700px] w-full max-w-5xl rounded-lg border">
+    <div className="mx-auto flex h-[700px] w-full max-w-4xl rounded-lg border">
       {/* Left Panel - Conversation History */}
       <div className="flex w-64 shrink-0 flex-col border-r">
         <div className="flex items-center justify-between border-b px-3 py-3">

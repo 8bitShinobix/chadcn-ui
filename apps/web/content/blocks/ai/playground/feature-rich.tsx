@@ -293,7 +293,7 @@ export function AIPlayground() {
   )
 
   return (
-    <div className="mx-auto flex h-[750px] w-full max-w-5xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[750px] w-full max-w-4xl flex-col rounded-lg border">
       {/* Header */}
       <div className="flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-3">
