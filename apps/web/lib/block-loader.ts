@@ -86,11 +86,6 @@ const blockRegistry: BlockRegistry = {
     standard: () => import("@/components/blocks/previews/states/empty-standard"),
     "feature-rich": () => import("@/components/blocks/previews/states/empty-feature-rich"),
   },
-  "states/loading": {
-    minimal: () => import("@/components/blocks/previews/states/loading-minimal"),
-    standard: () => import("@/components/blocks/previews/states/loading-standard"),
-    "feature-rich": () => import("@/components/blocks/previews/states/loading-feature-rich"),
-  },
   "states/error": {
     minimal: () => import("@/components/blocks/previews/states/error-minimal"),
     standard: () => import("@/components/blocks/previews/states/error-standard"),

@@ -4,6 +4,13 @@ import { useState, useRef, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
   ArrowUp,
   Paperclip,
   Square,
@@ -45,6 +52,7 @@ const SUGGESTION_PILLS = [
 
 export default function PromptInputFeatureRich() {
   const [value, setValue] = useState("")
+  const [model, setModel] = useState("claude-4")
   const [isGenerating, setIsGenerating] = useState(false)
   const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([])
   const [isRecording, setIsRecording] = useState(false)
@@ -354,6 +362,17 @@ export default function PromptInputFeatureRich() {
                 Recording
               </Badge>
             )}
+            <Select value={model} onValueChange={setModel}>
+              <SelectTrigger className="h-8 w-[140px] border-none bg-transparent text-xs shadow-none">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gpt-4o">GPT-4o</SelectItem>
+                <SelectItem value="claude-4">Claude 4</SelectItem>
+                <SelectItem value="gemini-2">Gemini 2.0</SelectItem>
+                <SelectItem value="gpt-4o-mini">GPT-4o Mini</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="flex items-center gap-2">

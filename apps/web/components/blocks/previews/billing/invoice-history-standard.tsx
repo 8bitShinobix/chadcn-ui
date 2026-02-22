@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, FileText, ChevronLeft, ChevronRight } from "lucide-react";
+import { Download, FileText, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { toast } from "sonner";
 
 const invoices = [
   { id: "INV-001", date: "Jan 15, 2024", amount: "$29.00", plan: "Pro", status: "Paid" },
@@ -31,12 +32,21 @@ const statusVariant: Record<string, "default" | "secondary" | "outline"> = {
 
 export default function InvoiceHistoryStandard() {
   const [page, setPage] = useState(0);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const pageSize = 5;
 
   const paginatedInvoices = invoices.slice(page * pageSize, (page + 1) * pageSize);
   const totalPages = Math.ceil(invoices.length / pageSize);
   const startItem = page * pageSize + 1;
   const endItem = Math.min((page + 1) * pageSize, invoices.length);
+
+  const handleDownload = (invoiceId: string) => {
+    setDownloadingId(invoiceId);
+    setTimeout(() => {
+      setDownloadingId(null);
+      toast.success(`Invoice ${invoiceId} downloaded`);
+    }, 1500);
+  };
 
   return (
     <div className="space-y-4 p-6">
@@ -70,8 +80,17 @@ export default function InvoiceHistoryStandard() {
                 <Badge variant={statusVariant[invoice.status] ?? "outline"}>{invoice.status}</Badge>
               </TableCell>
               <TableCell>
-                <Button variant="ghost" size="sm">
-                  <Download size={14} />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleDownload(invoice.id)}
+                  disabled={downloadingId !== null}
+                >
+                  {downloadingId === invoice.id ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : (
+                    <Download size={14} />
+                  )}
                 </Button>
               </TableCell>
             </TableRow>

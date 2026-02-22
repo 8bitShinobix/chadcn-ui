@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, X, Zap, Crown } from "lucide-react";
+import { Check, X, Zap, Crown, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/table";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -80,6 +81,15 @@ const featureComparison = [
 
 export default function PricingTableFeatureRich() {
   const [annual, setAnnual] = useState(false);
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
+  const handleCta = (planName: string) => {
+    setLoadingPlan(planName);
+    setTimeout(() => {
+      setLoadingPlan(null);
+      toast.success("Redirecting to checkout...");
+    }, 2000);
+  };
 
   return (
     <div className="p-6">
@@ -101,7 +111,13 @@ export default function PricingTableFeatureRich() {
         {plans.map((plan) => {
           const Icon = plan.icon;
           return (
-            <Card key={plan.name} className={cn("rounded-lg py-0 shadow-none", plan.popular && "ring-primary relative ring-2")}>
+            <Card
+              key={plan.name}
+              className={cn(
+                "rounded-lg py-0 shadow-none",
+                plan.popular && "ring-primary relative ring-2"
+              )}
+            >
               <CardContent className="flex flex-col p-6">
                 {plan.popular && (
                   <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -134,8 +150,17 @@ export default function PricingTableFeatureRich() {
                     Current Plan
                   </Button>
                 ) : (
-                  <Button className="mt-6" variant={plan.popular ? "default" : "outline"}>
-                    {plan.cta}
+                  <Button
+                    className="mt-6"
+                    variant={plan.popular ? "default" : "outline"}
+                    onClick={() => handleCta(plan.name)}
+                    disabled={loadingPlan !== null}
+                  >
+                    {loadingPlan === plan.name ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      plan.cta
+                    )}
                   </Button>
                 )}
               </CardContent>

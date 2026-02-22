@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -47,10 +48,24 @@ const plans = [
 
 export default function PlanSelectionStandard() {
   const [selected, setSelected] = useState("pro");
+  const [isLoading, setIsLoading] = useState(false);
   const currentPlan = "free";
 
   const selectedPlanData = plans.find((p) => p.id === selected);
   const isUpgrade = selected !== currentPlan;
+
+  const handleConfirm = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.success("Plan updated!");
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    setSelected(currentPlan);
+    toast("Changes discarded");
+  };
 
   return (
     <div className="mx-auto w-full max-w-3xl p-6">
@@ -112,8 +127,19 @@ export default function PlanSelectionStandard() {
           )}
         </div>
         <div className="flex gap-3">
-          <Button variant="outline">Cancel</Button>
-          <Button>Confirm</Button>
+          <Button variant="outline" onClick={handleCancel} disabled={isLoading}>
+            Cancel
+          </Button>
+          <Button onClick={handleConfirm} disabled={isLoading}>
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Updating...
+              </>
+            ) : (
+              "Confirm"
+            )}
+          </Button>
         </div>
       </div>
     </div>

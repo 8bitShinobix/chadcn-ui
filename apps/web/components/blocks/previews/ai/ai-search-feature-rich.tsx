@@ -157,7 +157,7 @@ export default function AISearchFeatureRich() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl gap-0 rounded-lg border">
+    <div className="mx-auto flex w-full max-w-4xl gap-0">
       {/* Main content area */}
       <div className="flex min-w-0 flex-1 flex-col p-6">
         <div className="space-y-4">

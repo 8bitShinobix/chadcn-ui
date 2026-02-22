@@ -38,7 +38,7 @@ export default function ChatMinimal() {
   }
 
   return (
-    <div className="mx-auto flex h-[500px] w-full max-w-2xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[calc(100vh-3rem)] min-h-[500px] w-full max-w-2xl flex-col">
       <div className="border-b px-4 py-3">
         <h2 className="font-semibold">AI Chat</h2>
       </div>

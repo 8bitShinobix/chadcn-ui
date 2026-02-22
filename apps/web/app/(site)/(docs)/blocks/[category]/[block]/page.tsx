@@ -1,8 +1,18 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getBlockInfo, getBlockCode, getBlockSlugs } from "@/lib/registry";
 import { highlightCode } from "@/lib/highlight-code";
 import { BlockViewer } from "@/components/blocks/block-viewer";
+import { ManualInstallGuide } from "@/components/blocks/manual-install-guide";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import type { BlockVariant } from "@/types/registry";
 
 interface BlockPageProps {
@@ -53,7 +63,7 @@ export default async function BlockPage({
     "Form";
 
   // 1. Generate usage page.tsx
-  const usagePageCode = `import { ${componentName} } from "@/components/${blockSlug}-form"
+  const usagePageCode = `import { ${componentName} } from "@/components/block/${blockSlug}-form"
 
 export default function ${componentName.replace("Form", "")}Page() {
   return (
@@ -66,9 +76,53 @@ export default function ${componentName.replace("Form", "")}Page() {
   // 2. Get current variant's block code
   const blockCode = await getBlockCode(category, blockSlug, validVariant);
 
-  // Build virtual file tree (block code + usage example only)
+  // Extract UI component imports from block code (accurate per-variant)
+  const uiImports = blockCode
+    ? [...blockCode.matchAll(/from\s+["']@\/components\/ui\/([^"']+)["']/g)].map((m) => m[1])
+    : [];
+  const uniqueUiDeps = [...new Set(uiImports)].sort();
+
+  // Extract third-party npm imports from block code (skip built-ins)
+  const builtins = new Set(["react", "next", "next-themes", "next/navigation", "next/image", "next/link"]);
+  const thirdPartyImports = blockCode
+    ? [...blockCode.matchAll(/from\s+["']([^"'@./][^"']*)["']/g)]
+        .map((m) => m[1])
+        .filter((pkg) => !builtins.has(pkg) && !pkg.startsWith("lucide"))
+    : [];
+  const uniqueNpmDeps = [...new Set(thirdPartyImports)].sort();
+
+  // 3. Load and highlight all variants' code for the manual install guide
+  const allVariantCodes = await Promise.all(
+    blockInfo.variants.map(async (v) => ({
+      variant: v,
+      code: await getBlockCode(category, blockSlug, v),
+    }))
+  );
+  const variantFiles: Record<string, { path: string; content: string; highlightedDark: string; highlightedLight: string }> = {};
+  await Promise.all(
+    allVariantCodes.map(async ({ variant: v, code }) => {
+      if (code) {
+        const [highlightedDark, highlightedLight] = await Promise.all([
+          highlightCode({ code, lang: "tsx", theme: "github-dark" }),
+          highlightCode({ code, lang: "tsx", theme: "github-light" }),
+        ]);
+        variantFiles[v] = {
+          path: `components/block/${blockSlug}-form.tsx`,
+          content: code,
+          highlightedDark,
+          highlightedLight,
+        };
+      }
+    })
+  );
+
+  // Build virtual file tree (block code + UI dependencies + usage example)
   const allFiles: { path: string; content: string }[] = [
-    ...(blockCode ? [{ path: `components/${blockSlug}-form.tsx`, content: blockCode }] : []),
+    ...(blockCode ? [{ path: `components/block/${blockSlug}-form.tsx`, content: blockCode }] : []),
+    ...uniqueUiDeps.map((dep) => ({
+      path: `components/ui/${dep}.tsx`,
+      content: `// shadcn/ui component\n// Docs: https://ui.shadcn.com/docs/components/${dep}`,
+    })),
     { path: `app/${category}/page.tsx`, content: usagePageCode },
   ];
 
@@ -90,17 +144,48 @@ export default function ${componentName.replace("Form", "")}Page() {
   );
 
   return (
-    <BlockViewer
-      name={blockInfo.name}
-      description={blockInfo.description}
-      slug={blockInfo.slug}
-      category={category}
-      variants={blockInfo.variants}
-      currentVariant={validVariant}
-      files={highlightedFiles}
-      defaultFileIndex={0}
-      dependencies={blockInfo.dependencies}
-      registryDependencies={blockInfo.registryDependencies}
-    />
+    <>
+      <Breadcrumb className="mb-4">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href="/blocks">Blocks</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href={`/blocks/${category}`} className="capitalize">
+                {category}
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{blockInfo.name}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <BlockViewer
+        name={blockInfo.name}
+        description={blockInfo.description}
+        slug={blockInfo.slug}
+        category={category}
+        variants={blockInfo.variants}
+        currentVariant={validVariant}
+        files={highlightedFiles}
+        defaultFileIndex={0}
+        dependencies={blockInfo.dependencies}
+        registryDependencies={blockInfo.registryDependencies}
+      />
+      <ManualInstallGuide
+        dependencies={uniqueNpmDeps}
+        registryDependencies={uniqueUiDeps}
+        variantFiles={variantFiles}
+        variants={blockInfo.variants}
+        currentVariant={validVariant}
+        usageFile={highlightedFiles[highlightedFiles.length - 1]}
+      />
+    </>
   );
 }

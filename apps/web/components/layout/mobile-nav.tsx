@@ -5,9 +5,7 @@ import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -76,11 +74,6 @@ export function MobileNav({ className }: MobileNavProps) {
               ))}
             </div>
           </div>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button variant="outline">Close</Button>
-            </SheetClose>
-          </SheetFooter>
         </SheetContent>
       </Sheet>
     </div>

@@ -9,11 +9,9 @@ import {
   Eye,
   EyeOff,
   MoreVertical,
-  KeySquareIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
@@ -57,9 +55,8 @@ export default function ApiKeysFeatureRich() {
   ];
 
   const maskKey = (key: string) => {
-    const start = key.slice(0, 12);
-    const end = key.slice(-6);
-    return `${start}${"•".repeat(12)}${end}`;
+    const start = key.slice(0, 7);
+    return `${start}${"•".repeat(20)}`;
   };
 
   return (
@@ -70,80 +67,91 @@ export default function ApiKeysFeatureRich() {
       </div>
       <Separator className="my-4" />
 
-      <div className="mt-6 space-y-4">
+      <div className="divide-y">
         {keys.map((key) => (
-          <Card key={key.id} className="rounded-lg py-0 shadow-none">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <KeySquareIcon size={16} className="text-muted-foreground" />
-                  <span className="font-medium">{key.name}</span>
-                </div>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm">
-                      <MoreVertical size={16} />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem>
-                      <Copy size={14} className="mr-2" />
-                      Copy
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <RotateCw size={14} className="mr-2" />
-                      Regenerate
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="text-destructive">
-                      <Trash2 size={14} className="mr-2" />
-                      Revoke
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-
-              <div className="mt-2 flex items-center gap-2">
-                <div className="bg-muted flex-1 rounded px-3 py-1.5 font-mono text-sm">
-                  {showKey[key.id] ? key.key : maskKey(key.key)}
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowKey((prev) => ({ ...prev, [key.id]: !prev[key.id] }))}
-                >
-                  {showKey[key.id] ? <EyeOff size={14} /> : <Eye size={14} />}
-                </Button>
-              </div>
-
-              <div className="mt-2 flex gap-2">
+          <div key={key.id} className="py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium">{key.name}</span>
                 {key.permissions.map((permission) => (
-                  <Badge key={permission} variant="secondary">
+                  <Badge
+                    key={permission}
+                    variant="secondary"
+                    className="text-[10px] capitalize"
+                  >
                     {permission}
                   </Badge>
                 ))}
               </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <MoreVertical className="h-3.5 w-3.5" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem>
+                    <Copy className="mr-2 h-3.5 w-3.5" />
+                    Copy
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <RotateCw className="mr-2 h-3.5 w-3.5" />
+                    Regenerate
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="text-destructive">
+                    <Trash2 className="mr-2 h-3.5 w-3.5" />
+                    Revoke
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
 
-              <div className="text-muted-foreground mt-2 flex gap-4 text-xs">
-                <span>Created: {key.created}</span>
-                <span>Last used: {key.lastUsed}</span>
-              </div>
-            </CardContent>
-          </Card>
+            <div className="mt-1.5 flex items-center gap-2">
+              <code className="text-muted-foreground text-xs">
+                {showKey[key.id] ? key.key : maskKey(key.key)}
+              </code>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6"
+                onClick={() =>
+                  setShowKey((prev) => ({ ...prev, [key.id]: !prev[key.id] }))
+                }
+              >
+                {showKey[key.id] ? (
+                  <EyeOff className="h-3 w-3" />
+                ) : (
+                  <Eye className="h-3 w-3" />
+                )}
+              </Button>
+            </div>
+
+            <div className="text-muted-foreground mt-2 flex gap-4 text-xs">
+              <span>Created {key.created}</span>
+              <span>Last used {key.lastUsed}</span>
+            </div>
+          </div>
         ))}
       </div>
 
-      <Separator className="my-6" />
+      <Separator className="my-4" />
 
-      <div className="mt-6">
-        <h3 className="text-base font-medium">Create New Key</h3>
+      <div>
+        <h3 className="text-sm font-medium">Create New Key</h3>
         <div className="mt-3 space-y-3">
           <div>
-            <Label htmlFor="key-name">Key Name</Label>
-            <Input id="key-name" placeholder="e.g., Production API Key" className="mt-1" />
+            <Label htmlFor="key-name" className="text-xs">
+              Key Name
+            </Label>
+            <Input
+              id="key-name"
+              placeholder="e.g., Production API Key"
+              className="mt-1 h-9"
+            />
           </div>
 
           <div>
-            <Label>Permissions</Label>
+            <Label className="text-xs">Permissions</Label>
             <ToggleGroup
               type="multiple"
               value={selectedPermissions}
@@ -158,8 +166,8 @@ export default function ApiKeysFeatureRich() {
             </ToggleGroup>
           </div>
 
-          <Button>
-            <Plus size={16} className="mr-2" />
+          <Button size="sm">
+            <Plus className="mr-2 h-3.5 w-3.5" />
             Create API Key
           </Button>
         </div>

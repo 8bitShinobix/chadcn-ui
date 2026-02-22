@@ -312,7 +312,7 @@ export default function PlaygroundFeatureRich() {
         </Select>
       )}
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <Badge variant="outline" className="font-mono text-[10px]">
           In: {column.tokens.prompt}
         </Badge>
@@ -341,14 +341,14 @@ export default function PlaygroundFeatureRich() {
   );
 
   return (
-    <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col rounded-lg border sm:h-[750px]">
+    <div className="mx-auto flex h-[calc(100vh-3rem)] min-h-[500px] w-full max-w-4xl flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between border-b px-4 py-3">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
+        <div className="flex items-center gap-2">
           <h2 className="font-semibold">Playground</h2>
-          <Separator orientation="vertical" className="h-5" />
+          <Separator orientation="vertical" className="hidden h-5 sm:block" />
           <Select value={preset} onValueChange={handlePresetChange}>
-            <SelectTrigger className="h-8 w-[160px] text-xs">
+            <SelectTrigger className="h-8 w-[130px] text-xs sm:w-[160px]">
               <BookmarkPlus className="mr-1.5 h-3.5 w-3.5" />
               <SelectValue />
             </SelectTrigger>
@@ -361,7 +361,7 @@ export default function PlaygroundFeatureRich() {
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="flex items-center gap-2 rounded-md border px-2.5 py-1.5">
             <Braces className="text-muted-foreground h-3.5 w-3.5" />
             <Label className="cursor-pointer text-xs" htmlFor="json-mode">
@@ -454,7 +454,7 @@ export default function PlaygroundFeatureRich() {
           {/* Response Area */}
           <div className="space-y-2">
             <Label>{comparisonMode ? "Model Comparison" : "Response"}</Label>
-            <div className={`flex gap-4 ${comparisonMode ? "" : "flex-col"}`}>
+            <div className={`flex gap-4 ${comparisonMode ? "flex-col sm:flex-row" : "flex-col"}`}>
               {renderResponseColumn(leftColumn, setLeftColumn, true)}
               {comparisonMode && renderResponseColumn(rightColumn, setRightColumn, true)}
             </div>

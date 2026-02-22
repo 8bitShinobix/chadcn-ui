@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -46,6 +47,15 @@ const plans = [
 
 export default function PlanSelectionMinimal() {
   const [selected, setSelected] = useState("pro");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleConfirm = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.success("Plan updated!");
+    }, 2000);
+  };
 
   return (
     <div className="mx-auto w-full max-w-2xl p-6">
@@ -69,9 +79,18 @@ export default function PlanSelectionMinimal() {
           </label>
         ))}
       </RadioGroup>
-      <Button className="mt-6 w-full">
-        <Check className="mr-2 h-4 w-4" />
-        Confirm Selection
+      <Button className="mt-6 w-full" onClick={handleConfirm} disabled={isLoading}>
+        {isLoading ? (
+          <>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            Updating...
+          </>
+        ) : (
+          <>
+            <Check className="mr-2 h-4 w-4" />
+            Confirm Selection
+          </>
+        )}
       </Button>
     </div>
   );

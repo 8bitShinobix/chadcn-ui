@@ -117,7 +117,7 @@ export default function GenerationGalleryStandard() {
     date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 rounded-lg border p-6 sm:flex-row">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-6 sm:flex-row">
       <div className="flex-1 space-y-5">
         <div className="space-y-1">
           <h2 className="flex items-center gap-2 font-semibold">

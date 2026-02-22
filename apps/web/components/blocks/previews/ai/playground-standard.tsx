@@ -17,8 +17,6 @@ import {
   Play,
   RotateCcw,
   Loader2,
-  Trash2,
-  MessageSquare,
 } from "lucide-react"
 
 interface ConversationEntry {
@@ -124,85 +122,37 @@ export default function PlaygroundStandard() {
   }
 
   return (
-    <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col rounded-lg border sm:h-[700px] sm:flex-row">
-      {/* Left Panel - Conversation History */}
-      <div className="hidden sm:flex sm:w-64 sm:shrink-0 sm:flex-col sm:border-r">
-        <div className="flex items-center justify-between border-b px-3 py-3">
-          <span className="text-sm font-medium">History</span>
+    <div className="mx-auto flex h-[calc(100vh-3rem)] min-h-[500px] w-full max-w-4xl flex-col">
+      {/* Header */}
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3">
+        <h2 className="font-semibold">Playground</h2>
+        <div className="flex items-center gap-2">
+          <Select value={model} onValueChange={setModel}>
+            <SelectTrigger className="h-8 w-[140px] text-xs sm:w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {MODELS.map((m) => (
+                <SelectItem key={m.value} value={m.value}>
+                  <span>{m.label}</span>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <Button
             variant="ghost"
-            size="icon"
-            className="h-7 w-7"
+            size="sm"
             onClick={handleClear}
             disabled={isRunning}
           >
-            <Trash2 className="h-3.5 w-3.5" />
+            <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
+            Reset
           </Button>
-        </div>
-        <div className="flex-1 overflow-y-auto p-2">
-          {conversation.length === 0 ? (
-            <div className="flex flex-col items-center justify-center gap-2 py-8 text-center">
-              <MessageSquare className="h-8 w-8 text-muted-foreground/50" />
-              <p className="text-xs text-muted-foreground">
-                No messages yet
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-1.5">
-              {conversation.map((entry) => (
-                <div
-                  key={entry.id}
-                  className="rounded-md border px-2.5 py-2"
-                >
-                  <div className="mb-1 flex items-center gap-1.5">
-                    <Badge
-                      variant={
-                        entry.role === "user" ? "default" : "secondary"
-                      }
-                      className="text-[10px] px-1.5 py-0"
-                    >
-                      {entry.role === "user" ? "User" : "AI"}
-                    </Badge>
-                  </div>
-                  <p className="line-clamp-2 text-xs text-muted-foreground">
-                    {entry.content}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Center Panel - Main Area */}
-      <div className="flex flex-1 flex-col">
-        <div className="flex items-center justify-between border-b px-4 py-3">
-          <h2 className="font-semibold">Playground</h2>
-          <div className="flex items-center gap-3">
-            <Select value={model} onValueChange={setModel}>
-              <SelectTrigger className="h-8 w-[180px] text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {MODELS.map((m) => (
-                  <SelectItem key={m.value} value={m.value}>
-                    <span>{m.label}</span>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleClear}
-              disabled={isRunning}
-            >
-              <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-              Reset
-            </Button>
-          </div>
-        </div>
-
+      <div className="flex flex-1 overflow-hidden">
+        {/* Main Content */}
         <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4">
           <div className="space-y-2">
             <Label htmlFor="system-prompt-std">System Prompt</Label>
@@ -249,9 +199,9 @@ export default function PlaygroundStandard() {
           </Button>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <Label>Response</Label>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="outline" className="text-[10px] font-mono">
                   Prompt: {promptTokens}
                 </Badge>
@@ -282,102 +232,102 @@ export default function PlaygroundStandard() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Right Panel - Parameters */}
-      <div className="hidden sm:flex sm:w-56 sm:shrink-0 sm:flex-col sm:border-l">
-        <div className="border-b px-3 py-3">
-          <span className="text-sm font-medium">Parameters</span>
-        </div>
-        <div className="flex-1 space-y-5 overflow-y-auto p-3">
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label className="text-xs">Temperature</Label>
-              <span className="text-xs font-mono text-muted-foreground">
-                {temperature.toFixed(1)}
-              </span>
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={2}
-              step={0.1}
-              value={temperature}
-              onChange={(e) => setTemperature(parseFloat(e.target.value))}
-              className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
-              disabled={isRunning}
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
-              <span>Precise</span>
-              <span>Creative</span>
-            </div>
+        {/* Right Sidebar - Parameters */}
+        <div className="hidden sm:flex sm:w-52 sm:shrink-0 sm:flex-col sm:border-l">
+          <div className="border-b px-3 py-3">
+            <span className="text-sm font-medium">Parameters</span>
           </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label className="text-xs">Max Tokens</Label>
-              <span className="text-xs font-mono text-muted-foreground">
-                {maxTokens}
-              </span>
+          <div className="flex-1 space-y-5 overflow-y-auto p-3">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className="text-xs">Temperature</Label>
+                <span className="text-xs font-mono text-muted-foreground">
+                  {temperature.toFixed(1)}
+                </span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={2}
+                step={0.1}
+                value={temperature}
+                onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+                disabled={isRunning}
+              />
+              <div className="flex justify-between text-[10px] text-muted-foreground">
+                <span>Precise</span>
+                <span>Creative</span>
+              </div>
             </div>
-            <input
-              type="range"
-              min={1}
-              max={4096}
-              step={1}
-              value={maxTokens}
-              onChange={(e) => setMaxTokens(parseInt(e.target.value))}
-              className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
-              disabled={isRunning}
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
-              <span>1</span>
-              <span>4096</span>
-            </div>
-          </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label className="text-xs">Top P</Label>
-              <span className="text-xs font-mono text-muted-foreground">
-                {topP.toFixed(1)}
-              </span>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className="text-xs">Max Tokens</Label>
+                <span className="text-xs font-mono text-muted-foreground">
+                  {maxTokens}
+                </span>
+              </div>
+              <input
+                type="range"
+                min={1}
+                max={4096}
+                step={1}
+                value={maxTokens}
+                onChange={(e) => setMaxTokens(parseInt(e.target.value))}
+                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+                disabled={isRunning}
+              />
+              <div className="flex justify-between text-[10px] text-muted-foreground">
+                <span>1</span>
+                <span>4096</span>
+              </div>
             </div>
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.1}
-              value={topP}
-              onChange={(e) => setTopP(parseFloat(e.target.value))}
-              className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
-              disabled={isRunning}
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
-              <span>0</span>
-              <span>1</span>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className="text-xs">Top P</Label>
+                <span className="text-xs font-mono text-muted-foreground">
+                  {topP.toFixed(1)}
+                </span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.1}
+                value={topP}
+                onChange={(e) => setTopP(parseFloat(e.target.value))}
+                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+                disabled={isRunning}
+              />
+              <div className="flex justify-between text-[10px] text-muted-foreground">
+                <span>0</span>
+                <span>1</span>
+              </div>
             </div>
-          </div>
 
-          <Separator />
+            <Separator />
 
-          <div className="space-y-2">
-            <Label className="text-xs">Model Info</Label>
-            <div className="rounded-md border bg-muted/50 p-2 text-xs text-muted-foreground">
-              <div className="space-y-1">
-                <div className="flex justify-between">
-                  <span>Provider</span>
-                  <span className="font-medium text-foreground">
-                    {MODELS.find((m) => m.value === model)?.provider}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Max Context</span>
-                  <span className="font-medium text-foreground">128K</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Type</span>
-                  <span className="font-medium text-foreground">Chat</span>
+            <div className="space-y-2">
+              <Label className="text-xs">Model Info</Label>
+              <div className="rounded-md border bg-muted/50 p-2 text-xs text-muted-foreground">
+                <div className="space-y-1">
+                  <div className="flex justify-between">
+                    <span>Provider</span>
+                    <span className="font-medium text-foreground">
+                      {MODELS.find((m) => m.value === model)?.provider}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Max Context</span>
+                    <span className="font-medium text-foreground">128K</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Type</span>
+                    <span className="font-medium text-foreground">Chat</span>
+                  </div>
                 </div>
               </div>
             </div>

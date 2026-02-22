@@ -6,21 +6,20 @@ export function Hero(): React.ReactElement {
     <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
       {/* Announcement pill */}
       <Link
-        href="/docs/changelog"
+        href="/blocks/ai/copilot-sidebar"
         className="group border-border text-muted-foreground hover:text-foreground mb-6 inline-flex items-center gap-1 rounded-full border px-4 py-1.5 text-sm transition-colors"
       >
-        Auth blocks now available
+        AI interfaces now available.
         <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
       </Link>
 
       {/* Headline */}
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-        Everything between shadcn and Production UI.{" "}
+        Ship interfaces, not components.{" "}
       </h1>
       {/* Subtitle */}
       <p className="text-muted-foreground mt-4 max-w-xl text-base sm:text-lg">
-        Production-ready blocks for shadcn/ui that feel custom-built, not template-generated. Copy.
-        Paste. Ship.
+        Built on shadcn/ui and Tailwind. Ready for production.
       </p>
 
       {/* CTA buttons */}

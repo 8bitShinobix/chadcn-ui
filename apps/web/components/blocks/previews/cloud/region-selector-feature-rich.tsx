@@ -277,7 +277,7 @@ export default function RegionSelectorFeatureRich() {
                 <Label
                   key={region.id}
                   htmlFor={`primary-${region.id}`}
-                  className="cursor-pointer"
+                  className="block cursor-pointer"
                 >
                   <Card
                     className={`relative py-0 transition-colors hover:bg-muted/50 ${

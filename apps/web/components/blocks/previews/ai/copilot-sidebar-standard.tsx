@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import {
   Send,
@@ -59,8 +60,17 @@ export default function CopilotSidebarStandard() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [isMinimized, setIsMinimized] = useState(false)
   const [panelWidth, setPanelWidth] = useState(360)
+  const [isDesktop, setIsDesktop] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const isResizing = useRef(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)")
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener("change", handler)
+    return () => mq.removeEventListener("change", handler)
+  }, [])
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight })
@@ -106,7 +116,7 @@ export default function CopilotSidebarStandard() {
   // Minimized floating button
   if (isMinimized) {
     return (
-      <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col overflow-hidden rounded-lg border sm:h-[600px] sm:flex-row">
+      <div className="mx-auto flex h-[calc(100vh-3rem)] min-h-[500px] w-full max-w-4xl flex-col overflow-hidden sm:flex-row">
         <div className="flex flex-1 flex-col">
           <div className="flex items-center justify-between border-b px-6 py-3">
             <h2 className="font-semibold">Dashboard</h2>
@@ -115,28 +125,34 @@ export default function CopilotSidebarStandard() {
             <div className="space-y-6">
               <div>
                 <h3 className="mb-3 text-lg font-semibold">Overview</h3>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <div className="rounded-lg border p-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <BarChart3 className="h-4 w-4" />
-                      Revenue
-                    </div>
-                    <p className="mt-1 text-2xl font-bold">$12,480</p>
-                  </div>
-                  <div className="rounded-lg border p-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <FileText className="h-4 w-4" />
-                      Documents
-                    </div>
-                    <p className="mt-1 text-2xl font-bold">284</p>
-                  </div>
-                  <div className="rounded-lg border p-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Settings className="h-4 w-4" />
-                      Active Users
-                    </div>
-                    <p className="mt-1 text-2xl font-bold">1,429</p>
-                  </div>
+                <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-3">
+                  <Card className="gap-2 overflow-hidden py-3">
+                    <CardContent className="px-4 py-0">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <BarChart3 className="h-4 w-4 shrink-0" />
+                        <span className="truncate">Revenue</span>
+                      </div>
+                      <p className="mt-1 truncate text-xl font-bold sm:text-2xl">$12,480</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="gap-2 overflow-hidden py-3">
+                    <CardContent className="px-4 py-0">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <FileText className="h-4 w-4 shrink-0" />
+                        <span className="truncate">Documents</span>
+                      </div>
+                      <p className="mt-1 truncate text-xl font-bold sm:text-2xl">284</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="gap-2 overflow-hidden py-3">
+                    <CardContent className="px-4 py-0">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Settings className="h-4 w-4 shrink-0" />
+                        <span className="truncate">Active Users</span>
+                      </div>
+                      <p className="mt-1 truncate text-xl font-bold sm:text-2xl">1,429</p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>
@@ -154,9 +170,9 @@ export default function CopilotSidebarStandard() {
   }
 
   return (
-    <div className="mx-auto flex h-[500px] w-full max-w-4xl flex-col overflow-hidden rounded-lg border sm:h-[600px] sm:flex-row">
+    <div className="mx-auto flex h-[calc(100vh-3rem)] min-h-[500px] w-full max-w-4xl flex-col overflow-hidden sm:flex-row">
       {/* Main content area */}
-      <div className="flex flex-1 flex-col">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
         <div className="flex items-center justify-between border-b px-6 py-3">
           <h2 className="font-semibold">Dashboard</h2>
           {!sidebarOpen && (
@@ -175,31 +191,37 @@ export default function CopilotSidebarStandard() {
           <div className="space-y-6">
             <div>
               <h3 className="mb-3 text-lg font-semibold">Overview</h3>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <BarChart3 className="h-4 w-4" />
-                    Revenue
-                  </div>
-                  <p className="mt-1 text-2xl font-bold">$12,480</p>
-                  <p className="text-xs text-muted-foreground">+12% today</p>
-                </div>
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <FileText className="h-4 w-4" />
-                    Documents
-                  </div>
-                  <p className="mt-1 text-2xl font-bold">284</p>
-                  <p className="text-xs text-muted-foreground">8 new</p>
-                </div>
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Settings className="h-4 w-4" />
-                    Active Users
-                  </div>
-                  <p className="mt-1 text-2xl font-bold">1,429</p>
-                  <p className="text-xs text-muted-foreground">+3.2%</p>
-                </div>
+              <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-3">
+                <Card className="gap-2 overflow-hidden py-3">
+                  <CardContent className="px-4 py-0">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <BarChart3 className="h-4 w-4 shrink-0" />
+                      <span className="truncate">Revenue</span>
+                    </div>
+                    <p className="mt-1 truncate text-xl font-bold sm:text-2xl">$12,480</p>
+                    <p className="truncate text-xs text-muted-foreground">+12% today</p>
+                  </CardContent>
+                </Card>
+                <Card className="gap-2 overflow-hidden py-3">
+                  <CardContent className="px-4 py-0">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <FileText className="h-4 w-4 shrink-0" />
+                      <span className="truncate">Documents</span>
+                    </div>
+                    <p className="mt-1 truncate text-xl font-bold sm:text-2xl">284</p>
+                    <p className="truncate text-xs text-muted-foreground">8 new</p>
+                  </CardContent>
+                </Card>
+                <Card className="gap-2 overflow-hidden py-3">
+                  <CardContent className="px-4 py-0">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Settings className="h-4 w-4 shrink-0" />
+                      <span className="truncate">Active Users</span>
+                    </div>
+                    <p className="mt-1 truncate text-xl font-bold sm:text-2xl">1,429</p>
+                    <p className="truncate text-xs text-muted-foreground">+3.2%</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
             <div>
@@ -227,8 +249,8 @@ export default function CopilotSidebarStandard() {
       {/* Copilot sidebar panel */}
       {sidebarOpen && (
         <div
-          className="flex shrink-0 flex-col border-t bg-background sm:border-l sm:border-t-0"
-          style={{ width: panelWidth }}
+          className="flex max-h-[50%] min-h-0 w-full flex-col overflow-hidden border-t bg-background sm:max-h-none sm:w-auto sm:shrink-0 sm:border-l sm:border-t-0"
+          style={isDesktop ? { width: panelWidth } : undefined}
         >
           {/* Resize handle */}
           <div

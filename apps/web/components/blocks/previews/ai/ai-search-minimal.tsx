@@ -37,7 +37,7 @@ export default function AISearchMinimal() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-6 rounded-lg border p-6">
+    <div className="mx-auto w-full max-w-2xl space-y-6 p-6">
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">AI Search</h2>
         <p className="text-sm text-muted-foreground">

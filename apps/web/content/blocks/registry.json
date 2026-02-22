@@ -262,10 +262,6 @@
       "category": "states",
       "name": "error"
     },
-    "states/loading": {
-      "category": "states",
-      "name": "loading"
-    },
     "states/maintenance": {
       "category": "states",
       "name": "maintenance"

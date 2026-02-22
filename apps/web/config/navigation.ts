@@ -34,7 +34,7 @@ export const mainNav: NavItem[] = [
   { title: "Blocks", href: "/blocks" },
 ];
 
-// Sidebar categories
+// Sidebar categories (alphabetical order)
 export const blockCategories: NavCategory[] = [
   {
     title: "AI Interfaces",
@@ -44,8 +44,8 @@ export const blockCategories: NavCategory[] = [
       { title: "Prompt Input", href: "/blocks/ai/prompt-input" },
       { title: "Message Card", href: "/blocks/ai/message-card" },
       { title: "Copilot Sidebar", href: "/blocks/ai/copilot-sidebar" },
-      { title: "AI Search", href: "/blocks/ai/ai-search" },
-      { title: "Playground", href: "/blocks/ai/playground" },
+      { title: "AI Search", href: "/blocks/ai/ai-search", badge: "new" },
+      { title: "Playground", href: "/blocks/ai/playground", badge: "new" },
       { title: "Token Usage", href: "/blocks/ai/token-usage" },
       { title: "Generation Gallery", href: "/blocks/ai/generation-gallery" },
     ],
@@ -65,6 +65,30 @@ export const blockCategories: NavCategory[] = [
     ],
   },
   {
+    title: "Billing",
+    icon: CreditCard,
+    items: [
+      { title: "Pricing Table", href: "/blocks/billing/pricing-table" },
+      { title: "Plan Selection", href: "/blocks/billing/plan-selection" },
+      { title: "Payment Form", href: "/blocks/billing/payment-form" },
+      { title: "Invoice History", href: "/blocks/billing/invoice-history" },
+      { title: "Usage Meter", href: "/blocks/billing/usage-meter" },
+    ],
+  },
+  {
+    title: "Cloud",
+    icon: Cloud,
+    items: [
+      { title: "Deployment Status", href: "/blocks/cloud/deployment-status", badge: "new" },
+      { title: "Environment Variables", href: "/blocks/cloud/env-variables" },
+      { title: "Domain Manager", href: "/blocks/cloud/domain-manager" },
+      { title: "Usage Dashboard", href: "/blocks/cloud/usage-dashboard" },
+      { title: "Region Selector", href: "/blocks/cloud/region-selector" },
+      { title: "Service Monitor", href: "/blocks/cloud/service-monitor", badge: "new" },
+      { title: "Storage Browser", href: "/blocks/cloud/storage-browser", badge: "new" },
+    ],
+  },
+  {
     title: "Dashboard",
     icon: LayoutDashboard,
     items: [
@@ -74,13 +98,24 @@ export const blockCategories: NavCategory[] = [
     ],
   },
   {
-    title: "Tables",
-    icon: Table,
+    title: "Design",
+    icon: Palette,
     items: [
-      { title: "Data Table", href: "/blocks/tables/data-table" },
-      { title: "Sortable Table", href: "/blocks/tables/sortable" },
-      { title: "Filterable Table", href: "/blocks/tables/filterable" },
-      { title: "Table Actions", href: "/blocks/tables/data-table-actions" },
+      { title: "Color Picker", href: "/blocks/design/color-picker" },
+      { title: "Layer Panel", href: "/blocks/design/layer-panel", badge: "new" },
+      { title: "Typography Selector", href: "/blocks/design/typography-selector" },
+      { title: "Asset Gallery", href: "/blocks/design/asset-gallery" },
+      { title: "Design Token Editor", href: "/blocks/design/token-editor", badge: "new" },
+      { title: "Template Browser", href: "/blocks/design/template-browser" },
+      { title: "Export Dialog", href: "/blocks/design/export-dialog" },
+    ],
+  },
+  {
+    title: "Onboarding",
+    icon: Rocket,
+    items: [
+      { title: "Multi-Step Wizard", href: "/blocks/onboarding/wizard" },
+      { title: "Checklist", href: "/blocks/onboarding/checklist" },
     ],
   },
   {
@@ -96,30 +131,10 @@ export const blockCategories: NavCategory[] = [
     ],
   },
   {
-    title: "Billing",
-    icon: CreditCard,
-    items: [
-      { title: "Pricing Table", href: "/blocks/billing/pricing-table" },
-      { title: "Plan Selection", href: "/blocks/billing/plan-selection" },
-      { title: "Payment Form", href: "/blocks/billing/payment-form" },
-      { title: "Invoice History", href: "/blocks/billing/invoice-history" },
-      { title: "Usage Meter", href: "/blocks/billing/usage-meter" },
-    ],
-  },
-  {
-    title: "Onboarding",
-    icon: Rocket,
-    items: [
-      { title: "Multi-Step Wizard", href: "/blocks/onboarding/wizard" },
-      { title: "Checklist", href: "/blocks/onboarding/checklist" },
-    ],
-  },
-  {
     title: "States",
     icon: CircleAlert,
     items: [
       { title: "Empty State", href: "/blocks/states/empty" },
-      { title: "Loading Skeleton", href: "/blocks/states/loading" },
       { title: "Error State", href: "/blocks/states/error" },
       { title: "Success", href: "/blocks/states/success" },
       { title: "404 Page", href: "/blocks/states/404" },
@@ -128,29 +143,13 @@ export const blockCategories: NavCategory[] = [
     ],
   },
   {
-    title: "Design",
-    icon: Palette,
+    title: "Tables",
+    icon: Table,
     items: [
-      { title: "Color Picker", href: "/blocks/design/color-picker" },
-      { title: "Layer Panel", href: "/blocks/design/layer-panel" },
-      { title: "Typography Selector", href: "/blocks/design/typography-selector" },
-      { title: "Asset Gallery", href: "/blocks/design/asset-gallery" },
-      { title: "Design Token Editor", href: "/blocks/design/token-editor" },
-      { title: "Template Browser", href: "/blocks/design/template-browser" },
-      { title: "Export Dialog", href: "/blocks/design/export-dialog" },
-    ],
-  },
-  {
-    title: "Cloud",
-    icon: Cloud,
-    items: [
-      { title: "Deployment Status", href: "/blocks/cloud/deployment-status" },
-      { title: "Environment Variables", href: "/blocks/cloud/env-variables" },
-      { title: "Domain Manager", href: "/blocks/cloud/domain-manager" },
-      { title: "Usage Dashboard", href: "/blocks/cloud/usage-dashboard" },
-      { title: "Region Selector", href: "/blocks/cloud/region-selector" },
-      { title: "Service Monitor", href: "/blocks/cloud/service-monitor" },
-      { title: "Storage Browser", href: "/blocks/cloud/storage-browser" },
+      { title: "Data Table", href: "/blocks/tables/data-table" },
+      { title: "Sortable Table", href: "/blocks/tables/sortable" },
+      { title: "Filterable Table", href: "/blocks/tables/filterable" },
+      { title: "Table Actions", href: "/blocks/tables/data-table-actions" },
     ],
   },
 ];

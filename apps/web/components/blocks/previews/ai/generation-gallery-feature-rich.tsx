@@ -194,7 +194,7 @@ export default function GenerationGalleryFeatureRich() {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-6xl space-y-6 rounded-lg border p-6">
+      <div className="mx-auto w-full max-w-6xl space-y-6 p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <h2 className="flex items-center gap-2 font-semibold">

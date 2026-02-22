@@ -52,7 +52,7 @@ export default function GenerationGalleryMinimal() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-6 rounded-lg border p-6">
+    <div className="mx-auto w-full max-w-2xl space-y-6 p-6">
       <div className="space-y-1">
         <h2 className="flex items-center gap-2 font-semibold">
           <Sparkles className="h-5 w-5" />

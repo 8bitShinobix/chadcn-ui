@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, FileText, ChevronLeft, ChevronRight, Search, Eye } from "lucide-react";
+import { Download, FileText, ChevronLeft, ChevronRight, Search, Eye, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { toast } from "sonner";
 
 const invoices = [
   { id: "INV-001", date: "Jan 15, 2024", amount: "$29.00", plan: "Pro", status: "Paid" },
@@ -40,6 +41,7 @@ export default function InvoiceHistoryFeatureRich() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [page, setPage] = useState(0);
+  const [actionId, setActionId] = useState<string | null>(null);
   const pageSize = 5;
 
   const filteredInvoices = invoices.filter((invoice) => {
@@ -63,6 +65,22 @@ export default function InvoiceHistoryFeatureRich() {
     const amount = parseFloat(invoice.amount.replace("$", ""));
     return sum + amount;
   }, 0);
+
+  const handleView = (invoiceId: string) => {
+    setActionId(`view-${invoiceId}`);
+    setTimeout(() => {
+      setActionId(null);
+      toast.success(`Viewing invoice ${invoiceId}`);
+    }, 1500);
+  };
+
+  const handleDownload = (invoiceId: string) => {
+    setActionId(`dl-${invoiceId}`);
+    setTimeout(() => {
+      setActionId(null);
+      toast.success(`Invoice ${invoiceId} downloaded`);
+    }, 1500);
+  };
 
   return (
     <div className="space-y-4 p-6">
@@ -126,11 +144,29 @@ export default function InvoiceHistoryFeatureRich() {
               </TableCell>
               <TableCell>
                 <div className="flex gap-1">
-                  <Button variant="ghost" size="sm">
-                    <Eye size={14} />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleView(invoice.id)}
+                    disabled={actionId !== null}
+                  >
+                    {actionId === `view-${invoice.id}` ? (
+                      <Loader2 size={14} className="animate-spin" />
+                    ) : (
+                      <Eye size={14} />
+                    )}
                   </Button>
-                  <Button variant="ghost" size="sm">
-                    <Download size={14} />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDownload(invoice.id)}
+                    disabled={actionId !== null}
+                  >
+                    {actionId === `dl-${invoice.id}` ? (
+                      <Loader2 size={14} className="animate-spin" />
+                    ) : (
+                      <Download size={14} />
+                    )}
                   </Button>
                 </div>
               </TableCell>

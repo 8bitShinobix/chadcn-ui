@@ -63,7 +63,7 @@ export default function ChatStandard() {
   const formatTime = (date: Date) => date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
   return (
-    <div className="mx-auto flex h-[600px] w-full max-w-2xl flex-col rounded-lg border">
+    <div className="mx-auto flex h-[calc(100vh-3rem)] min-h-[500px] w-full max-w-2xl flex-col">
       <div className="flex items-center justify-between border-b px-4 py-3">
         <div>
           <h2 className="font-semibold">AI Chat</h2>

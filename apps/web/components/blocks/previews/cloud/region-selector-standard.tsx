@@ -162,7 +162,7 @@ export default function RegionSelectorStandard() {
         className="grid gap-3 sm:grid-cols-2"
       >
         {filtered.map((region) => (
-          <Label key={region.id} htmlFor={`region-${region.id}`} className="cursor-pointer">
+          <Label key={region.id} htmlFor={`region-${region.id}`} className="block cursor-pointer">
             <Card
               className={`relative py-0 transition-colors hover:bg-muted/50 ${
                 selected === region.id
