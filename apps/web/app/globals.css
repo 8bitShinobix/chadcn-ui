@@ -345,3 +345,60 @@ body {
   background-color: var(--border-hover);
 }
 
+/* ── Marketing page: shared custom properties ── */
+
+:root {
+  --electric-blue: #0070f3;
+  --electric-purple: #9333ea;
+}
+
+/* ── Command Palette (cmdk) ── */
+
+[cmdk-input],
+[cmdk-input]:focus,
+[cmdk-input]:focus-visible {
+  border: none !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  ring: none !important;
+}
+
+[cmdk-list],
+[data-slot="dialog-content"] [cmdk-list] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+}
+
+[cmdk-list]::-webkit-scrollbar,
+[data-slot="dialog-content"] [cmdk-list]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+[cmdk-group-heading] {
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+[cmdk-item] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--foreground);
+  outline: none;
+  user-select: none;
+}
+
+[cmdk-item][data-selected="true"] {
+  background: var(--muted);
+}
+

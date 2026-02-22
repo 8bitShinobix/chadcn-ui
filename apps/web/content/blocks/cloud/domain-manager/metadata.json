@@ -1,0 +1,15 @@
+{
+  "name": "Domain Manager",
+  "slug": "domain-manager",
+  "category": "cloud",
+  "description": "Domain and DNS management with SSL status, DNS record configuration, and custom domain setup.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["badge", "button", "separator", "input", "label", "card", "table", "select", "switch", "tabs", "dropdown-menu", "progress"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["domain", "dns", "ssl", "certificate", "https", "custom-domain", "subdomain"]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Deployment Status",
+  "slug": "deployment-status",
+  "category": "cloud",
+  "description": "Deployment history and status tracking with build logs, commit info, and rollback controls.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["badge", "separator", "button", "avatar", "select", "card", "tabs", "collapsible", "dropdown-menu", "progress"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["deployment", "deploy", "status", "build", "ci-cd", "release", "logs", "vercel"]
+}

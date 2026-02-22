@@ -1,0 +1,15 @@
+{
+  "name": "Region Selector",
+  "slug": "region-selector",
+  "category": "cloud",
+  "description": "Server region and availability zone selector with latency indicators and multi-region configuration.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["radio-group", "label", "card", "badge", "input", "separator", "button", "table", "select", "switch", "checkbox", "tabs"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["region", "server", "datacenter", "latency", "availability", "zone", "location", "global"]
+}

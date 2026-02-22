@@ -86,11 +86,6 @@ const blockRegistry: BlockRegistry = {
     standard: () => import("@/components/blocks/previews/states/empty-standard"),
     "feature-rich": () => import("@/components/blocks/previews/states/empty-feature-rich"),
   },
-  "states/loading": {
-    minimal: () => import("@/components/blocks/previews/states/loading-minimal"),
-    standard: () => import("@/components/blocks/previews/states/loading-standard"),
-    "feature-rich": () => import("@/components/blocks/previews/states/loading-feature-rich"),
-  },
   "states/error": {
     minimal: () => import("@/components/blocks/previews/states/error-minimal"),
     standard: () => import("@/components/blocks/previews/states/error-standard"),
@@ -209,6 +204,126 @@ const blockRegistry: BlockRegistry = {
     minimal: () => import("@/components/blocks/previews/onboarding/checklist-minimal"),
     standard: () => import("@/components/blocks/previews/onboarding/checklist-standard"),
     "feature-rich": () => import("@/components/blocks/previews/onboarding/checklist-feature-rich"),
+  },
+  // AI Interfaces
+  "ai/chat": {
+    minimal: () => import("@/components/blocks/previews/ai/chat-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/chat-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/chat-feature-rich"),
+  },
+  "ai/prompt-input": {
+    minimal: () => import("@/components/blocks/previews/ai/prompt-input-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/prompt-input-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/prompt-input-feature-rich"),
+  },
+  "ai/message-card": {
+    minimal: () => import("@/components/blocks/previews/ai/message-card-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/message-card-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/message-card-feature-rich"),
+  },
+  "ai/copilot-sidebar": {
+    minimal: () => import("@/components/blocks/previews/ai/copilot-sidebar-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/copilot-sidebar-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/copilot-sidebar-feature-rich"),
+  },
+  "ai/ai-search": {
+    minimal: () => import("@/components/blocks/previews/ai/ai-search-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/ai-search-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/ai-search-feature-rich"),
+  },
+  "ai/playground": {
+    minimal: () => import("@/components/blocks/previews/ai/playground-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/playground-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/playground-feature-rich"),
+  },
+  "ai/token-usage": {
+    minimal: () => import("@/components/blocks/previews/ai/token-usage-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/token-usage-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/token-usage-feature-rich"),
+  },
+  "ai/generation-gallery": {
+    minimal: () => import("@/components/blocks/previews/ai/generation-gallery-minimal"),
+    standard: () => import("@/components/blocks/previews/ai/generation-gallery-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/ai/generation-gallery-feature-rich"),
+  },
+  // Design
+  "design/color-picker": {
+    minimal: () => import("@/components/blocks/previews/design/color-picker-minimal"),
+    standard: () => import("@/components/blocks/previews/design/color-picker-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/design/color-picker-feature-rich"),
+  },
+  "design/layer-panel": {
+    minimal: () => import("@/components/blocks/previews/design/layer-panel-minimal"),
+    standard: () => import("@/components/blocks/previews/design/layer-panel-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/design/layer-panel-feature-rich"),
+  },
+  "design/typography-selector": {
+    minimal: () => import("@/components/blocks/previews/design/typography-selector-minimal"),
+    standard: () => import("@/components/blocks/previews/design/typography-selector-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/design/typography-selector-feature-rich"),
+  },
+  "design/asset-gallery": {
+    minimal: () => import("@/components/blocks/previews/design/asset-gallery-minimal"),
+    standard: () => import("@/components/blocks/previews/design/asset-gallery-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/design/asset-gallery-feature-rich"),
+  },
+  "design/token-editor": {
+    minimal: () => import("@/components/blocks/previews/design/token-editor-minimal"),
+    standard: () => import("@/components/blocks/previews/design/token-editor-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/design/token-editor-feature-rich"),
+  },
+  "design/template-browser": {
+    minimal: () => import("@/components/blocks/previews/design/template-browser-minimal"),
+    standard: () => import("@/components/blocks/previews/design/template-browser-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/design/template-browser-feature-rich"),
+  },
+  "design/export-dialog": {
+    minimal: () => import("@/components/blocks/previews/design/export-dialog-minimal"),
+    standard: () => import("@/components/blocks/previews/design/export-dialog-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/design/export-dialog-feature-rich"),
+  },
+  // Cloud
+  "cloud/deployment-status": {
+    minimal: () => import("@/components/blocks/previews/cloud/deployment-status-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/deployment-status-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/cloud/deployment-status-feature-rich"),
+  },
+  "cloud/env-variables": {
+    minimal: () => import("@/components/blocks/previews/cloud/env-variables-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/env-variables-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/cloud/env-variables-feature-rich"),
+  },
+  "cloud/domain-manager": {
+    minimal: () => import("@/components/blocks/previews/cloud/domain-manager-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/domain-manager-standard"),
+    "feature-rich": () => import("@/components/blocks/previews/cloud/domain-manager-feature-rich"),
+  },
+  "cloud/usage-dashboard": {
+    minimal: () => import("@/components/blocks/previews/cloud/usage-dashboard-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/usage-dashboard-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/cloud/usage-dashboard-feature-rich"),
+  },
+  "cloud/region-selector": {
+    minimal: () => import("@/components/blocks/previews/cloud/region-selector-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/region-selector-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/cloud/region-selector-feature-rich"),
+  },
+  "cloud/service-monitor": {
+    minimal: () => import("@/components/blocks/previews/cloud/service-monitor-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/service-monitor-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/cloud/service-monitor-feature-rich"),
+  },
+  "cloud/storage-browser": {
+    minimal: () => import("@/components/blocks/previews/cloud/storage-browser-minimal"),
+    standard: () => import("@/components/blocks/previews/cloud/storage-browser-standard"),
+    "feature-rich": () =>
+      import("@/components/blocks/previews/cloud/storage-browser-feature-rich"),
   },
 };
 

@@ -17,7 +17,6 @@ export default function MarketingLayout({
         <div id="main-content" className="pt-14">
           {children}
         </div>
-
         <Toaster position="bottom-right" />
       </ThemeProvider>
     </>

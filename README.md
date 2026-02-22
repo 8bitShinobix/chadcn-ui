@@ -26,17 +26,30 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 
 | Category | Blocks | Description |
 |----------|--------|-------------|
+| **AI Interfaces** | 8 | Chat, prompt input, message card, copilot sidebar, AI search, playground, token usage, generation gallery |
 | **Authentication** | 8 | Login, signup, forgot password, reset password, verify email, two-factor, OAuth buttons, magic link |
-| **Dashboard** | 3 | Sidebar navigation, dashboard shell, top navigation |
-| **Tables** | 4 | Data table, sortable table, filterable table, table actions |
-| **Settings** | 6 | Profile, account, notifications, security, API keys, appearance |
 | **Billing** | 5 | Pricing table, plan selection, payment form, invoice history, usage meter |
+| **Cloud** | 7 | Deployment status, environment variables, domain manager, usage dashboard, region selector, service monitor, storage browser |
+| **Dashboard** | 3 | Sidebar navigation, dashboard shell, top navigation |
+| **Design** | 7 | Color picker, layer panel, typography selector, asset gallery, design token editor, template browser, export dialog |
 | **Onboarding** | 2 | Multi-step wizard, checklist |
-| **States** | 7 | Empty state, loading skeleton, error state, success, 404 page, 500 page, maintenance |
+| **Settings** | 6 | Profile, account, notifications, security, API keys, appearance |
+| **States** | 6 | Empty state, error state, success, 404 page, 500 page, maintenance |
+| **Tables** | 4 | Data table, sortable table, filterable table, table actions |
 
-**35 blocks total**, each with 3 variants (minimal, standard, feature-rich) = **105 component variants**.
+**56 blocks total**, each with 3 variants (minimal, standard, feature-rich) = **168 component variants**.
 
 ### All Blocks
+
+**AI Interfaces** (8 blocks)
+- `ai/chat` — Full AI chat interface with streaming text and markdown rendering
+- `ai/prompt-input` — AI prompt bar with attachments, model selector, and actions
+- `ai/message-card` — AI response cards with reasoning blocks, citations, and feedback
+- `ai/copilot-sidebar` — Side panel AI assistant with tool calls and context awareness
+- `ai/ai-search` — Perplexity-style search with citation-forward answers and source cards
+- `ai/playground` — Model testing sandbox with parameter controls and comparison mode
+- `ai/token-usage` — Token/cost monitoring dashboard with model breakdown and projections
+- `ai/generation-gallery` — AI image generation gallery with lightbox and batch queue
 
 **Authentication** (8 blocks)
 - `auth/login` — Email + password login with OAuth options
@@ -48,16 +61,39 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 - `auth/oauth-buttons` — Social login buttons (Google, GitHub, Apple, Microsoft, Twitter)
 - `auth/magic-link` — Passwordless login via email magic link
 
+**Billing** (5 blocks)
+- `billing/pricing-table` — Plan comparison cards with feature checklist
+- `billing/plan-selection` — Interactive plan picker with billing toggle
+- `billing/payment-form` — Card/bank payment with billing address and order summary
+- `billing/invoice-history` — Invoice table with status badges and download actions
+- `billing/usage-meter` — Resource usage bars with color-coded thresholds
+
+**Cloud** (7 blocks)
+- `cloud/deployment-status` — Deployment pipeline with build logs and rollback controls
+- `cloud/env-variables` — Environment variable manager with encryption and inheritance
+- `cloud/domain-manager` — Custom domain configuration with DNS and SSL status
+- `cloud/usage-dashboard` — Resource consumption dashboard with cost breakdown
+- `cloud/region-selector` — Multi-region deployment picker with latency indicators
+- `cloud/service-monitor` — Service health monitoring with uptime and incident timeline
+- `cloud/storage-browser` — File storage browser with upload, preview, and permissions
+
 **Dashboard** (3 blocks)
 - `dashboard/sidebar-nav` — Collapsible sidebar with nested navigation
 - `dashboard/dashboard-shell` — Content layout with header bar and stat cards
 - `dashboard/top-nav` — Horizontal navigation with search and user menu
 
-**Tables** (4 blocks)
-- `tables/data-table` — Data display with checkboxes, badges, and row actions
-- `tables/sortable` — Column sorting with direction indicators and pagination
-- `tables/filterable` — Search input with filter dropdowns and active filter chips
-- `tables/data-table-actions` — Table with inline and bulk action controls
+**Design** (7 blocks)
+- `design/color-picker` — Color picker with palette management and format conversion
+- `design/layer-panel` — Layer management panel with drag-and-drop reordering
+- `design/typography-selector` — Font picker with preview and variable font controls
+- `design/asset-gallery` — Asset library with upload, tagging, and search
+- `design/token-editor` — Design token editor with live preview and export
+- `design/template-browser` — Template gallery with category filtering and preview
+- `design/export-dialog` — Export settings dialog with format and resolution options
+
+**Onboarding** (2 blocks)
+- `onboarding/wizard` — Multi-step form with step indicators and navigation
+- `onboarding/checklist` — Task checklist with progress tracking
 
 **Settings** (6 blocks)
 - `settings/profile` — Personal info form with avatar upload
@@ -67,25 +103,19 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 - `settings/api-keys` — API key management with create, revoke, and permissions
 - `settings/appearance` — Theme, accent color, font size, and density preferences
 
-**Billing** (5 blocks)
-- `billing/pricing-table` — Plan comparison cards with feature checklist
-- `billing/plan-selection` — Interactive plan picker with billing toggle
-- `billing/payment-form` — Card/bank payment with billing address and order summary
-- `billing/invoice-history` — Invoice table with status badges and download actions
-- `billing/usage-meter` — Resource usage bars with color-coded thresholds
-
-**Onboarding** (2 blocks)
-- `onboarding/wizard` — Multi-step form with step indicators and navigation
-- `onboarding/checklist` — Task checklist with progress tracking
-
-**States** (7 blocks)
+**States** (6 blocks)
 - `states/empty` — No-data placeholders with call-to-action prompts
-- `states/loading` — Skeleton loading placeholders mimicking content layout
 - `states/error` — Error displays with retry actions and error details
 - `states/success` — Confirmation screens with summary details
 - `states/404` — Page not found with search and popular links
 - `states/500` — Server error with system status indicators
 - `states/maintenance` — Scheduled maintenance page with status and countdown
+
+**Tables** (4 blocks)
+- `tables/data-table` — Data display with checkboxes, badges, and row actions
+- `tables/sortable` — Column sorting with direction indicators and pagination
+- `tables/filterable` — Search input with filter dropdowns and active filter chips
+- `tables/data-table-actions` — Table with inline and bulk action controls
 
 ---
 
@@ -102,6 +132,7 @@ Every block is **copy-pasteable or CLI-installable**. You own 100% of the code. 
 | Syntax Highlighting | [Shiki](https://shiki.style) |
 | Icons | [Lucide React](https://lucide.dev) |
 | Dark Mode | [next-themes](https://github.com/pacocoursey/next-themes) |
+| Command Palette | [cmdk](https://cmdk.paco.me) |
 | Toasts | [Sonner](https://sonner.emilkowal.dev) |
 | Package Manager | [pnpm](https://pnpm.io) (monorepo) |
 
@@ -132,17 +163,25 @@ Open [http://localhost:3000](http://localhost:3000) to see the docs site.
 
 ### Using a Block
 
-**Option 1: Copy-paste**
-
-Browse to a block on the docs site, switch to the Code tab, and copy the component file into your project.
-
-**Option 2: CLI** (coming soon)
+**Option 1: CLI**
 
 ```bash
 npx @chadcn/cli add auth/login
 ```
 
-The CLI fetches the block files, installs npm dependencies, and scaffolds everything into your project.
+The CLI fetches the block files, detects your project's package manager, installs npm dependencies, and scaffolds everything into your project. You can also specify a variant:
+
+```bash
+npx @chadcn/cli add auth/login --variant feature-rich
+```
+
+**Option 2: Manual installation**
+
+Browse to a block on the docs site, open the manual installation guide, select your variant, and follow the step-by-step instructions to copy files and install dependencies.
+
+**Option 3: Copy-paste**
+
+Browse to a block on the docs site, switch to the Code tab, and copy the component file into your project.
 
 ---
 
@@ -159,7 +198,8 @@ chadcn/
 │       │   ├── (site)/(docs)/        # Docs + block pages (with sidebar)
 │       │   │   ├── docs/[...slug]/   # MDX documentation pages
 │       │   │   └── blocks/           # Block listing + detail pages
-│       │   └── (preview)/            # Isolated block preview (iframe)
+│       │   ├── (preview)/            # Isolated block preview (iframe)
+│       │   └── (dev)/                # Dev-only playground (not in production)
 │       ├── components/
 │       │   ├── ui/                   # shadcn primitives (Button, Input, etc.)
 │       │   ├── layout/              # TopBar, Sidebar, MobileNav, Logo
@@ -167,14 +207,17 @@ chadcn/
 │       │   └── docs/                # MDX components, TOC, CodeBlock
 │       ├── content/
 │       │   ├── blocks/              # Block source code + metadata
-│       │   │   ├── registry.json    # Auto-generated master index (35 blocks)
+│       │   │   ├── registry.json    # Auto-generated master index (56 blocks)
+│       │   │   ├── ai/              # 8 blocks (chat, prompt-input, playground, ...)
 │       │   │   ├── auth/            # 8 blocks (login, signup, magic-link, ...)
-│       │   │   ├── dashboard/       # 3 blocks (sidebar-nav, dashboard-shell, top-nav)
-│       │   │   ├── tables/          # 4 blocks (data-table, sortable, filterable, actions)
-│       │   │   ├── settings/        # 6 blocks (profile, account, appearance, ...)
 │       │   │   ├── billing/         # 5 blocks (pricing-table, payment-form, ...)
+│       │   │   ├── cloud/           # 7 blocks (deployment-status, env-variables, ...)
+│       │   │   ├── dashboard/       # 3 blocks (sidebar-nav, dashboard-shell, top-nav)
+│       │   │   ├── design/          # 7 blocks (color-picker, layer-panel, ...)
 │       │   │   ├── onboarding/      # 2 blocks (wizard, checklist)
-│       │   │   └── states/          # 7 blocks (empty, loading, error, maintenance, ...)
+│       │   │   ├── settings/        # 6 blocks (profile, account, appearance, ...)
+│       │   │   ├── states/          # 6 blocks (empty, error, success, 404, ...)
+│       │   │   └── tables/          # 4 blocks (data-table, sortable, filterable, actions)
 │       │   └── docs/                # MDX documentation files
 │       ├── config/                  # Navigation, site config
 │       ├── lib/                     # Utilities (registry, mdx, highlight)
@@ -397,7 +440,7 @@ Dark theme is the default. Light mode is fully supported via `next-themes`.
 | Documentation | Static (SSG) | `/docs/*`, `/blocks/*` |
 | Block previews | Static (SSG) | `/preview/auth/login` |
 | API routes | Edge Functions | `/api/registry/*`, `/api/search` |
-| Interactive UI | Client Components | Theme toggle, code panel, command palette |
+| Interactive UI | Client Components | Theme toggle, code panel, command palette (`⌘K`), variant selector |
 
 Server Components are the default. Client Components (`"use client"`) are used only where interactivity is needed.
 
@@ -405,7 +448,7 @@ Server Components are the default. Client Components (`"use client"`) are used o
 
 ## Roadmap
 
-chadcn is in active development. Current status: **All 35 blocks implemented across 7 categories**.
+chadcn is in active development. Current status: **56 blocks implemented across 10 categories**.
 
 ### Completed
 - [x] Core layout and navigation (TopBar, Sidebar, Footer, MobileNav)
@@ -418,15 +461,17 @@ chadcn is in active development. Current status: **All 35 blocks implemented acr
 - [x] Settings blocks (6 blocks)
 - [x] Billing blocks (5 blocks)
 - [x] Onboarding blocks (2 blocks)
-- [x] States blocks (7 blocks)
-
-### In Progress
-- [ ] Block preview system with viewport switcher
-- [ ] Block registry API endpoints
-- [ ] Search with command palette (Cmd+K)
+- [x] States blocks (6 blocks)
+- [x] AI Interfaces blocks (8 blocks)
+- [x] Cloud blocks (7 blocks)
+- [x] Design blocks (7 blocks)
+- [x] Dev playground with block browser and sandbox mode
+- [x] Command palette (`⌘K`) for searching and navigating pages, blocks, and docs
+- [x] Manual installation guide with variant selector on every block page
+- [x] CLI tool (`npx @chadcn/cli add`) with dependency detection and variant support
+- [x] Block registry API endpoints
 
 ### Planned
-- [ ] CLI implementation (`npx @chadcn/cli add`)
 - [ ] Theming customization guide
 - [ ] Community block contributions
 - [ ] Integration guides (Supabase, Clerk)

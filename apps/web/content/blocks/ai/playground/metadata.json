@@ -1,0 +1,15 @@
+{
+  "name": "AI Playground",
+  "slug": "playground",
+  "category": "ai",
+  "description": "An AI model playground with system prompts, parameter controls, model comparison, and token counting.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "textarea", "select", "slider", "label", "separator", "badge", "card"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["playground", "ai", "model", "testing", "sandbox", "parameters", "console"]
+}

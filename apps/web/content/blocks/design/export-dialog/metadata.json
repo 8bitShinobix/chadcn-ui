@@ -1,0 +1,15 @@
+{
+  "name": "Export Dialog",
+  "slug": "export-dialog",
+  "category": "design",
+  "description": "File export configuration with format selection, quality settings, and size options for design assets.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "radio-group", "label", "separator", "input", "switch", "select", "card", "badge", "tabs", "checkbox", "progress"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["export", "download", "format", "png", "svg", "pdf", "design", "save"]
+}

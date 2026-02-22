@@ -1,0 +1,17 @@
+{
+  "name": "Message Card",
+  "slug": "message-card",
+  "category": "ai",
+  "description": "AI response cards with markdown rendering, code blocks, citations, reasoning displays, and action controls.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "react-markdown": "^9.0.0"
+  },
+  "registryDependencies": ["button", "avatar", "badge", "collapsible", "tooltip"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["message", "ai", "response", "markdown", "citations", "reasoning", "code block"]
+}

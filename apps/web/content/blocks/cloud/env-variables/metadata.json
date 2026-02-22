@@ -1,0 +1,15 @@
+{
+  "name": "Environment Variables",
+  "slug": "env-variables",
+  "category": "cloud",
+  "description": "Environment variable manager with key-value editing, environment scoping, and secret masking.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["input", "button", "separator", "tabs", "badge", "label", "card", "dropdown-menu", "select", "switch", "textarea", "checkbox"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["environment", "variables", "env", "secrets", "config", "configuration", "dotenv"]
+}

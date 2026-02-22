@@ -1,0 +1,15 @@
+{
+  "name": "Asset Gallery",
+  "slug": "asset-gallery",
+  "category": "design",
+  "description": "Image and file asset browser with grid/list views, upload, search, and folder organization.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["input", "button", "card", "badge", "select", "toggle-group", "separator", "sheet", "checkbox", "dropdown-menu", "tabs"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["assets", "gallery", "images", "files", "upload", "media", "design", "browser"]
+}

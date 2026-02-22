@@ -1,0 +1,15 @@
+{
+  "name": "Color Picker",
+  "slug": "color-picker",
+  "category": "design",
+  "description": "Color selection and palette management with hex/RGB/HSL inputs, swatches, and eyedropper.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input", "label", "tabs", "separator", "badge", "select"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["color", "picker", "palette", "swatch", "hex", "rgb", "hsl", "design"]
+}

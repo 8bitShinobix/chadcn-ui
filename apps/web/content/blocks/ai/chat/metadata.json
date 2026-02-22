@@ -1,0 +1,17 @@
+{
+  "name": "AI Chat",
+  "slug": "chat",
+  "category": "ai",
+  "description": "A complete AI chat interface with streaming responses, markdown rendering, and conversation management.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {
+    "react-markdown": "^9.0.0"
+  },
+  "registryDependencies": ["button", "input", "avatar", "scroll-area", "separator"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["chat", "ai", "chatbot", "conversation", "streaming", "llm", "gpt", "claude"]
+}

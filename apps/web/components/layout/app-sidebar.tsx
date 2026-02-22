@@ -14,12 +14,16 @@ import {
 } from "@/components/ui/sidebar";
 import { blockCategories } from "@/config/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { NewBadge } from "./new-badge";
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
     <>
       <Sidebar>
-        <SidebarContent>
+        <SidebarContent className="pt-5 pb-5">
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -31,8 +35,11 @@ export function AppSidebar() {
                     <SidebarMenuSub>
                       {category.items.map((item) => (
                         <SidebarMenuSubItem key={item.href}>
-                          <SidebarMenuSubButton asChild>
-                            <Link href={item.href}>{item.title}</Link>
+                          <SidebarMenuSubButton asChild isActive={pathname === item.href}>
+                            <Link href={item.href}>
+                              {item.title}
+                              {item.badge === "new" && <NewBadge />}
+                            </Link>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       ))}
@@ -45,12 +52,8 @@ export function AppSidebar() {
         </SidebarContent>
       </Sidebar>
       {/* Fixed gradient overlays - always visible on top and bottom */}
-      <div
-        className="pointer-events-none fixed left-0 top-14 z-50 h-32 w-64 hidden lg:block from-background to-transparent bg-gradient-to-b"
-      />
-      <div
-        className="pointer-events-none fixed left-0 bottom-0 z-50 h-32 w-64 hidden lg:block from-background to-transparent bg-gradient-to-t"
-      />
+      <div className="from-background pointer-events-none fixed top-14 left-0 z-50 hidden h-32 w-64 bg-gradient-to-b to-transparent lg:block" />
+      <div className="from-background pointer-events-none fixed bottom-0 left-0 z-50 hidden h-32 w-64 bg-gradient-to-t to-transparent lg:block" />
     </>
   );
 }

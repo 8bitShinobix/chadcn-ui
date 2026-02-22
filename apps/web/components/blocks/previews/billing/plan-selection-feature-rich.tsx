@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -50,6 +51,7 @@ const plans = [
 export default function PlanSelectionFeatureRich() {
   const [selected, setSelected] = useState("pro");
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+  const [isLoading, setIsLoading] = useState(false);
   const currentPlan = "free";
 
   const selectedPlanData = plans.find((p) => p.id === selected);
@@ -59,6 +61,19 @@ export default function PlanSelectionFeatureRich() {
 
   const proratedAmount =
     isUpgrade && selectedPlanData ? (selectedPlanData.monthlyPrice * 0.67).toFixed(2) : "0.00";
+
+  const handleUpgrade = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.success("Plan updated!");
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    setSelected(currentPlan);
+    toast("Changes discarded");
+  };
 
   return (
     <div className="mx-auto w-full max-w-3xl p-6">
@@ -173,11 +188,22 @@ export default function PlanSelectionFeatureRich() {
           )}
         </div>
         <div className="flex gap-3">
-          <Button variant="outline">Cancel</Button>
+          <Button variant="outline" onClick={handleCancel} disabled={isLoading}>
+            Cancel
+          </Button>
           {selectedPlanData && (
-            <Button>
-              Upgrade to {selectedPlanData.name}
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button onClick={handleUpgrade} disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Upgrading...
+                </>
+              ) : (
+                <>
+                  Upgrade to {selectedPlanData.name}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </>
+              )}
             </Button>
           )}
         </div>

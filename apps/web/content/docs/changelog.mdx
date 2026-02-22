@@ -3,58 +3,13 @@ title: Changelog
 description: Latest updates and announcements.
 ---
 
-## February 2026 - All Block Categories Complete
+## February 2026
 
-The full block library is now available — **35 blocks** across **7 categories**, with **105 component variants** total.
+- **Command palette** — `⌘K` to search and navigate across all pages, blocks, and docs.
+- **Manual installation guide** with variant selector on every block page.
+- **AI Interfaces** — 8 new blocks (Chat, Prompt Input, Copilot Sidebar, AI Search, and more).
+- **56 blocks** across **10 categories**, each with minimal, standard, and feature-rich variants.
+- **Dev Playground** at `/playground` for browsing and testing blocks in a sandbox.
+- **CLI tool** — `npx @chadcn/cli add` to install any block.
 
-### New Categories
-
-- **Dashboard** (3 blocks) - Sidebar navigation, dashboard shell, and top navigation for building complete dashboard layouts.
-- **States** (7 blocks) - Empty state, loading skeleton, error state, success confirmation, 404 page, 500 page, and maintenance page for handling every application state.
-- **Tables** (4 blocks) - Data table with row selection and actions, sortable table with column indicators, filterable table with search and filter chips, and table actions.
-- **Settings** (6 blocks) - Profile, account, notifications, security, API keys, and appearance settings pages with form validation and interactive controls.
-- **Billing** (5 blocks) - Pricing table, plan selection, payment form, invoice history, and usage meter for complete billing flows.
-- **Onboarding** (2 blocks) - Multi-step wizard and setup checklist for user onboarding.
-
-Every block ships with **minimal**, **standard**, and **feature-rich** variants. Browse them all on the [blocks](/blocks) page.
-
-<PackageInstall command="npx @chadcn/cli add billing/pricing-table --variant feature-rich" />
-
----
-
-## February 2026 - Auth Blocks
-
-All [blocks](/blocks) now include a complete authentication suite.
-
-- **8 auth blocks** - Login, Signup, Forgot Password, Reset Password, Verify Email, Two-Factor Auth, OAuth Buttons, and Magic Link.
-- **3 variants each** - Every block ships with minimal, standard, and feature-rich variants.
-- **CLI not yet available** - The CLI is still in development. For now, copy blocks directly from the code panel on each block page.
-
-<PackageInstall command="npx @chadcn/cli add auth/login --variant standard" />
-
-Browse the full collection on the [blocks](/blocks) page.
-
----
-
-## February 2026 - CLI Coming Soon
-
-The CLI is currently in development. For now, you can browse and copy blocks directly from the website.
-
-- **Manual install** - Copy code from the block viewer's code panel into your project.
-- **CLI planned for Phase 17** - The `add` and `init` commands will be fully functional soon.
-
-Once ready, the workflow will be:
-
-<PackageInstall command="npx @chadcn/cli add auth/login --variant standard" />
-
----
-
-## February 2026 - Initial Release
-
-capsule/ui launches with:
-
-- **Documentation site** - Full docs with installation guide, usage examples, and block previews.
-- **Block viewer** - Live preview with variant switching and code display.
-- **CLI tool** - Add blocks to your project with a single command.
-
-<PackageInstall command="npx @chadcn/cli init" />
+<PackageInstall command="npx @chadcn/cli add ai/chat --variant feature-rich" />

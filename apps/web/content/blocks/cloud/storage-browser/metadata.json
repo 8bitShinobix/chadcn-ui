@@ -1,0 +1,15 @@
+{
+  "name": "Storage Browser",
+  "slug": "storage-browser",
+  "category": "cloud",
+  "description": "Cloud storage and database file browser with folder navigation, file actions, and upload functionality.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "separator", "breadcrumb", "dropdown-menu", "badge", "input", "select", "card", "toggle-group", "checkbox", "sheet", "switch", "table", "tabs"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["storage", "files", "browser", "database", "bucket", "s3", "upload", "blob"]
+}

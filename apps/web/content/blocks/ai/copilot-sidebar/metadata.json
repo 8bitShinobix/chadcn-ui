@@ -1,0 +1,15 @@
+{
+  "name": "Copilot Sidebar",
+  "slug": "copilot-sidebar",
+  "category": "ai",
+  "description": "A slide-in AI copilot panel for embedding AI assistance alongside your main application UI.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input", "scroll-area", "sheet", "separator", "badge"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["copilot", "sidebar", "ai", "assistant", "panel", "chat", "help"]
+}

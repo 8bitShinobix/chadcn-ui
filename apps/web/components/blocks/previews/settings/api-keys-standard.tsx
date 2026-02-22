@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Key, Copy, Plus, Trash2 } from "lucide-react";
+import { Copy, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
@@ -33,44 +32,39 @@ export default function ApiKeysStandard() {
       </div>
       <Separator className="my-4" />
 
-      <div className="mt-6 space-y-3">
+      <div className="divide-y">
         {keys.map((key) => (
-          <Card key={key.id} className="rounded-lg py-0 shadow-none">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Key size={16} className="text-muted-foreground" />
-                  <span className="font-medium">{key.name}</span>
-                </div>
-                <div className="flex gap-2">
-                  <Button variant="ghost" size="sm">
-                    <Copy size={14} />
-                  </Button>
-                  <Button variant="ghost" size="sm">
-                    <Trash2 size={14} className="text-destructive" />
-                  </Button>
-                </div>
+          <div key={key.id} className="py-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">{key.name}</span>
+              <div className="flex items-center gap-1">
+                <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Copy className="h-3.5 w-3.5" />
+                </Button>
+                <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Trash2 className="text-muted-foreground h-3.5 w-3.5" />
+                </Button>
               </div>
-              <div className="text-muted-foreground bg-muted mt-2 rounded px-3 py-1.5 font-mono text-sm">
-                {key.key}
-              </div>
-              <div className="text-muted-foreground mt-2 flex gap-4 text-xs">
-                <span>Created: {key.created}</span>
-                <span>Last used: {key.lastUsed}</span>
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+            <code className="text-muted-foreground mt-1 block text-xs">
+              {key.key}
+            </code>
+            <div className="text-muted-foreground mt-2 flex gap-4 text-xs">
+              <span>Created: {key.created}</span>
+              <span>Last used: {key.lastUsed}</span>
+            </div>
+          </div>
         ))}
       </div>
 
-      <Separator className="my-6" />
+      <Separator className="my-4" />
 
-      <div className="mt-6">
-        <h3 className="text-base font-medium">Create New Key</h3>
+      <div>
+        <h3 className="text-sm font-medium">Create New Key</h3>
         <div className="mt-3 flex gap-3">
-          <Input placeholder="Key name..." />
-          <Button>
-            <Plus size={16} className="mr-2" />
+          <Input placeholder="Key name..." className="h-9" />
+          <Button size="sm">
+            <Plus className="mr-2 h-3.5 w-3.5" />
             Create
           </Button>
         </div>

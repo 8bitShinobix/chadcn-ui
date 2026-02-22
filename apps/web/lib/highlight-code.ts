@@ -1,30 +1,40 @@
 import { createHighlighter, type Highlighter, type BundledLanguage } from "shiki";
 
-let highlighter: Highlighter | null = null;
+let highlighterDark: Highlighter | null = null;
+let highlighterLight: Highlighter | null = null;
 
-export async function getHighlighter(): Promise<Highlighter> {
-  if (!highlighter) {
-    highlighter = await createHighlighter({
-      themes: ["github-dark", "github-light"],
-      langs: [
-        "typescript",
-        "javascript",
-        "json",
-        "bash",
-        "shell",
-        "css",
-        "html",
-        "markdown",
-        "mdx",
-        "yaml",
-        "sql",
-        "python",
-        "go",
-        "rust",
-      ],
-    });
+const shikiLangs = [
+  "typescript",
+  "javascript",
+  "tsx",
+  "jsx",
+  "json",
+  "bash",
+  "shell",
+  "css",
+  "html",
+  "markdown",
+  "mdx",
+  "yaml",
+  "sql",
+  "python",
+  "go",
+  "rust",
+] as const;
+
+async function getHighlighterForTheme(
+  theme: "github-dark" | "github-light"
+): Promise<Highlighter> {
+  if (theme === "github-dark") {
+    if (!highlighterDark) {
+      highlighterDark = await createHighlighter({ themes: [theme], langs: [...shikiLangs] });
+    }
+    return highlighterDark;
   }
-  return highlighter;
+  if (!highlighterLight) {
+    highlighterLight = await createHighlighter({ themes: [theme], langs: [...shikiLangs] });
+  }
+  return highlighterLight;
 }
 
 export interface HighlightOptions {
@@ -32,12 +42,6 @@ export interface HighlightOptions {
   lang?: string;
   theme?: "github-dark" | "github-light";
 }
-
-// Remap unstable grammars to stable alternatives
-const LANG_REMAP: Record<string, string> = {
-  tsx: "typescript",
-  jsx: "javascript",
-};
 
 function escapeHtml(text: string): string {
   return text
@@ -53,14 +57,11 @@ export async function highlightCode({
   lang = "typescript",
   theme = "github-dark",
 }: HighlightOptions): Promise<string> {
-  const hl = await getHighlighter();
-
-  // Remap unstable langs (tsx → typescript, jsx → javascript)
-  const remapped = LANG_REMAP[lang] || lang;
+  const hl = await getHighlighterForTheme(theme);
 
   const loaded = hl.getLoadedLanguages();
-  const supportedLang = loaded.includes(remapped as BundledLanguage)
-    ? (remapped as BundledLanguage)
+  const supportedLang = loaded.includes(lang as BundledLanguage)
+    ? (lang as BundledLanguage)
     : "typescript";
 
   try {

@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -55,6 +56,15 @@ const plans = [
 
 export default function PricingTableStandard() {
   const [annual, setAnnual] = useState(false);
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
+  const handleCta = (planName: string) => {
+    setLoadingPlan(planName);
+    setTimeout(() => {
+      setLoadingPlan(null);
+      toast.success("Redirecting to checkout...");
+    }, 2000);
+  };
 
   return (
     <div className="p-6">
@@ -65,10 +75,7 @@ export default function PricingTableStandard() {
           <Switch checked={annual} onCheckedChange={setAnnual} />
           <span className={cn(annual && "font-medium")}>Yearly</span>
           {annual && (
-            <Badge
-              variant="secondary"
-              className="ml-2"
-            >
+            <Badge variant="secondary" className="ml-2">
               Save 20%
             </Badge>
           )}
@@ -77,7 +84,13 @@ export default function PricingTableStandard() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {plans.map((plan) => (
-          <Card key={plan.name} className={cn("rounded-lg py-0 shadow-none", plan.popular && "ring-primary relative ring-2")}>
+          <Card
+            key={plan.name}
+            className={cn(
+              "rounded-lg py-0 shadow-none",
+              plan.popular && "ring-primary relative ring-2"
+            )}
+          >
             <CardContent className="flex flex-col p-6">
               {plan.popular && (
                 <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">Most Popular</Badge>
@@ -100,8 +113,17 @@ export default function PricingTableStandard() {
                   </li>
                 ))}
               </ul>
-              <Button className="mt-6" variant={plan.popular ? "default" : "outline"}>
-                {plan.cta}
+              <Button
+                className="mt-6"
+                variant={plan.popular ? "default" : "outline"}
+                onClick={() => handleCta(plan.name)}
+                disabled={loadingPlan !== null}
+              >
+                {loadingPlan === plan.name ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  plan.cta
+                )}
               </Button>
             </CardContent>
           </Card>

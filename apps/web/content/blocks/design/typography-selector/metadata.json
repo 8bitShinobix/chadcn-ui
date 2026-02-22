@@ -1,0 +1,15 @@
+{
+  "name": "Typography Selector",
+  "slug": "typography-selector",
+  "category": "design",
+  "description": "Font family, size, weight, and text formatting controls for design tool interfaces.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["select", "input", "button", "toggle-group", "label", "separator", "card", "badge", "tabs", "switch"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["typography", "font", "text", "formatting", "design", "font-family", "font-size"]
+}

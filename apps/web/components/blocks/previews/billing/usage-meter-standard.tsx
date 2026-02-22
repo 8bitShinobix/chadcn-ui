@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
 
 const usageData = [
   { name: "API Calls", used: 7500, limit: 10000, unit: "calls" },
@@ -18,6 +21,16 @@ function getColor(pct: number) {
 }
 
 export default function UsageMeterStandard() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleUpgrade = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.success("Redirecting to upgrade...");
+    }, 2000);
+  };
+
   return (
     <div className="mx-auto w-full max-w-lg p-6">
       <div>
@@ -55,7 +68,13 @@ export default function UsageMeterStandard() {
             <p className="text-sm font-medium">Need more resources?</p>
             <p className="text-muted-foreground text-xs">Upgrade your plan for higher limits.</p>
           </div>
-          <Button size="sm">Upgrade Plan</Button>
+          <Button size="sm" onClick={handleUpgrade} disabled={isLoading}>
+            {isLoading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              "Upgrade Plan"
+            )}
+          </Button>
         </CardContent>
       </Card>
     </div>

@@ -1,0 +1,15 @@
+{
+  "name": "Generation Gallery",
+  "slug": "generation-gallery",
+  "category": "ai",
+  "description": "An AI image and content generation gallery with prompt controls, generation grid, and management tools.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["button", "input", "select", "card", "badge", "dialog", "skeleton"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["gallery", "ai", "image", "generation", "midjourney", "dall-e", "stable diffusion"]
+}

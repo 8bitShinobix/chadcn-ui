@@ -1,0 +1,15 @@
+{
+  "name": "Service Monitor",
+  "slug": "service-monitor",
+  "category": "cloud",
+  "description": "Service health and container status monitor with uptime tracking, resource metrics, and incident history.",
+  "variants": ["minimal", "standard", "feature-rich"],
+  "dependencies": {},
+  "registryDependencies": ["badge", "separator", "button", "card", "progress", "dropdown-menu", "switch", "input", "label", "select", "tabs", "collapsible", "tooltip"],
+  "files": {
+    "minimal": ["minimal.tsx"],
+    "standard": ["standard.tsx"],
+    "feature-rich": ["feature-rich.tsx"]
+  },
+  "keywords": ["service", "monitor", "health", "uptime", "status", "container", "infrastructure", "incident"]
+}

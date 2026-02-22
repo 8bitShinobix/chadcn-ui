@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Key, Copy, Plus } from "lucide-react";
+import { Copy, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 export default function ApiKeysMinimal() {
@@ -20,27 +19,22 @@ export default function ApiKeysMinimal() {
       </div>
       <Separator className="my-4" />
 
-      <div className="mt-6 space-y-3">
+      <div className="divide-y">
         {keys.map((key) => (
-          <Card key={key.id} className="rounded-lg py-0 shadow-none">
-            <CardContent className="flex items-center justify-between p-4">
-              <div className="flex items-center gap-3">
-                <Key size={16} className="text-muted-foreground" />
-                <div>
-                  <div className="text-sm font-medium">{key.name}</div>
-                  <div className="text-muted-foreground font-mono text-xs">{key.key}</div>
-                </div>
-              </div>
-              <Button variant="ghost" size="sm">
-                <Copy size={14} />
-              </Button>
-            </CardContent>
-          </Card>
+          <div key={key.id} className="flex items-center justify-between py-3">
+            <div className="min-w-0">
+              <div className="text-sm font-medium">{key.name}</div>
+              <code className="text-muted-foreground text-xs">{key.key}</code>
+            </div>
+            <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0">
+              <Copy className="h-3.5 w-3.5" />
+            </Button>
+          </div>
         ))}
       </div>
 
-      <Button className="mt-4">
-        <Plus size={16} className="mr-2" />
+      <Button className="mt-4" size="sm">
+        <Plus className="mr-2 h-3.5 w-3.5" />
         Create New Key
       </Button>
     </div>

@@ -1,8 +1,10 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { useState } from "react";
+import { Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -50,6 +52,16 @@ const plans = [
 ];
 
 export default function PricingTableMinimal() {
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
+  const handleCta = (planName: string) => {
+    setLoadingPlan(planName);
+    setTimeout(() => {
+      setLoadingPlan(null);
+      toast.success("Redirecting to checkout...");
+    }, 2000);
+  };
+
   return (
     <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-3">
       {plans.map((plan) => (
@@ -69,8 +81,17 @@ export default function PricingTableMinimal() {
                 </li>
               ))}
             </ul>
-            <Button className="mt-6" variant={plan.popular ? "default" : "outline"}>
-              {plan.cta}
+            <Button
+              className="mt-6"
+              variant={plan.popular ? "default" : "outline"}
+              onClick={() => handleCta(plan.name)}
+              disabled={loadingPlan !== null}
+            >
+              {loadingPlan === plan.name ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                plan.cta
+              )}
             </Button>
           </CardContent>
         </Card>
